@@ -7,14 +7,12 @@ public class ProjectSegmentation {
     /**
      * 项目iD
      */
-    @Id
     @Column(name = "project_id")
     private Integer projectId;
 
     /**
      * 领域名称
      */
-    @Id
     @Column(name = "segmentation_name")
     private String segmentationName;
 

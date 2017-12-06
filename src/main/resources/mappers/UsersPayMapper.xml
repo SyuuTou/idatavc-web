@@ -7,7 +7,7 @@
     -->
     <id column="ID" property="id" jdbcType="INTEGER" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
-    <result column="scene_id" property="sceneId" jdbcType="INTEGER" />
+    <result column="scene_key" property="sceneKey" jdbcType="VARCHAR" />
     <result column="amount" property="amount" jdbcType="DECIMAL" />
     <result column="receivable" property="receivable" jdbcType="DECIMAL" />
     <result column="received" property="received" jdbcType="DECIMAL" />

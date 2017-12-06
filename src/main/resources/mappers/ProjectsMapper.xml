@@ -24,5 +24,9 @@
     <result column="city" property="city" jdbcType="VARCHAR" />
     <result column="region" property="region" jdbcType="VARCHAR" />
     <result column="investment_institutions_id" property="investmentInstitutionsId" jdbcType="INTEGER" />
+    <result column="approval_status" property="approvalStatus" jdbcType="INTEGER" />
+    <result column="approval_time" property="approvalTime" jdbcType="TIMESTAMP" />
+    <result column="yn" property="yn" jdbcType="INTEGER" />
+    <result column="userid" property="userid" jdbcType="INTEGER" />
   </resultMap>
 </mapper>

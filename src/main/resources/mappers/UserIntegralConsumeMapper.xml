@@ -7,7 +7,7 @@
     -->
     <id column="ID" property="id" jdbcType="INTEGER" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
-    <result column="scene_id" property="sceneId" jdbcType="INTEGER" />
+    <result column="scene_key" property="sceneKey" jdbcType="VARCHAR" />
     <result column="cost_num" property="costNum" jdbcType="INTEGER" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="begin_time" property="beginTime" jdbcType="TIMESTAMP" />

@@ -42,7 +42,8 @@ public class ViewProjectsInfo {
     private Date establishedTime;
 
     /**
-     * 领域名称
+     * 细分领域
+
      */
     private String segmentation;
 
@@ -209,6 +210,9 @@ public class ViewProjectsInfo {
     @Column(name = "investment_institutions_type")
     private Integer investmentInstitutionsType;
 
+    @Column(name = "all_name")
+    private String allName;
+
     /**
      * @return id
      */
@@ -328,18 +332,22 @@ public class ViewProjectsInfo {
     }
 
     /**
-     * 获取领域名称
+     * 获取细分领域
+
      *
-     * @return segmentation - 领域名称
+     * @return segmentation - 细分领域
+
      */
     public String getSegmentation() {
         return segmentation;
     }
 
     /**
-     * 设置领域名称
+     * 设置细分领域
+
      *
-     * @param segmentation 领域名称
+     * @param segmentation 细分领域
+
      */
     public void setSegmentation(String segmentation) {
         this.segmentation = segmentation;
@@ -889,5 +897,19 @@ public class ViewProjectsInfo {
      */
     public void setInvestmentInstitutionsType(Integer investmentInstitutionsType) {
         this.investmentInstitutionsType = investmentInstitutionsType;
+    }
+
+    /**
+     * @return all_name
+     */
+    public String getAllName() {
+        return allName;
+    }
+
+    /**
+     * @param allName
+     */
+    public void setAllName(String allName) {
+        this.allName = allName;
     }
 }

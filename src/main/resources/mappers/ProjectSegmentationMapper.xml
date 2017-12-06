@@ -5,7 +5,7 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="project_id" property="projectId" jdbcType="INTEGER" />
-    <id column="segmentation_name" property="segmentationName" jdbcType="VARCHAR" />
+    <result column="project_id" property="projectId" jdbcType="INTEGER" />
+    <result column="segmentation_name" property="segmentationName" jdbcType="VARCHAR" />
   </resultMap>
 </mapper>

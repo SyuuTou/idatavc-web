@@ -12,5 +12,8 @@
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="yn" property="yn" jdbcType="INTEGER" />
     <result column="position" property="position" jdbcType="VARCHAR" />
+    <result column="approval_status" property="approvalStatus" jdbcType="INTEGER" />
+    <result column="approval_time" property="approvalTime" jdbcType="TIMESTAMP" />
+    <result column="investors_type" property="investorsType" jdbcType="INTEGER" />
   </resultMap>
 </mapper>

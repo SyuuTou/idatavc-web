@@ -10,5 +10,16 @@
     <result column="commet" property="commet" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="logo" property="logo" jdbcType="VARCHAR" />
+    <result column="case_url" property="caseUrl" jdbcType="VARCHAR" />
+    <result column="kenel_case" property="kenelCase" jdbcType="VARCHAR" />
+    <result column="comment" property="comment" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="stage" property="stage" jdbcType="VARCHAR" />
+    <result column="representative" property="representative" jdbcType="VARCHAR" />
+    <result column="approval_status" property="approvalStatus" jdbcType="INTEGER" />
+    <result column="approval_time" property="approvalTime" jdbcType="TIMESTAMP" />
+    <result column="home_url" property="homeUrl" jdbcType="VARCHAR" />
+    <result column="yn" property="yn" jdbcType="INTEGER" />
   </resultMap>
 </mapper>

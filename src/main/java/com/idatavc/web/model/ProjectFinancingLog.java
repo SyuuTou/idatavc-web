@@ -34,6 +34,18 @@ public class ProjectFinancingLog {
     private BigDecimal amount;
 
     /**
+     * 单机构投资金额状态（0：原有数据，1: 后补充数据）
+     */
+    @Column(name = "amount_status")
+    private Integer amountStatus;
+
+    /**
+     * 投资金额是否是计算值，1:为计算值，0:为原始值
+     */
+    @Column(name = "calculation_amount_status")
+    private Integer calculationAmountStatus;
+
+    /**
      * 投资币种（0人民币/1美元）
      */
     private Integer currency;
@@ -55,6 +67,14 @@ public class ProjectFinancingLog {
      */
     @Column(name = "total_amount")
     private BigDecimal totalAmount;
+
+    /**
+     * 机构总投资金额状态（0：原有数据，1: 后补充数据）
+     */
+    @Column(name = "total_amount_status")
+    private Integer totalAmountStatus;
+
+    private BigDecimal rate;
 
     /**
      * 本轮总出让股份
@@ -89,6 +109,18 @@ public class ProjectFinancingLog {
      * 状态，0，未审核，1，已审核（进行中），2，已完成，3，作废
      */
     private Integer status;
+
+    /**
+     * 审核状态，0表示审核未通过，1表示审核通过，默认0
+     */
+    @Column(name = "approval_status")
+    private Integer approvalStatus;
+
+    /**
+     * 审核时间，审核时存，其他时候为空
+     */
+    @Column(name = "approval_time")
+    private Date approvalTime;
 
     /**
      * @return ID
@@ -177,6 +209,42 @@ public class ProjectFinancingLog {
     }
 
     /**
+     * 获取单机构投资金额状态（0：原有数据，1: 后补充数据）
+     *
+     * @return amount_status - 单机构投资金额状态（0：原有数据，1: 后补充数据）
+     */
+    public Integer getAmountStatus() {
+        return amountStatus;
+    }
+
+    /**
+     * 设置单机构投资金额状态（0：原有数据，1: 后补充数据）
+     *
+     * @param amountStatus 单机构投资金额状态（0：原有数据，1: 后补充数据）
+     */
+    public void setAmountStatus(Integer amountStatus) {
+        this.amountStatus = amountStatus;
+    }
+
+    /**
+     * 获取投资金额是否是计算值，1:为计算值，0:为原始值
+     *
+     * @return calculation_amount_status - 投资金额是否是计算值，1:为计算值，0:为原始值
+     */
+    public Integer getCalculationAmountStatus() {
+        return calculationAmountStatus;
+    }
+
+    /**
+     * 设置投资金额是否是计算值，1:为计算值，0:为原始值
+     *
+     * @param calculationAmountStatus 投资金额是否是计算值，1:为计算值，0:为原始值
+     */
+    public void setCalculationAmountStatus(Integer calculationAmountStatus) {
+        this.calculationAmountStatus = calculationAmountStatus;
+    }
+
+    /**
      * 获取投资币种（0人民币/1美元）
      *
      * @return currency - 投资币种（0人民币/1美元）
@@ -246,6 +314,38 @@ public class ProjectFinancingLog {
      */
     public void setTotalAmount(BigDecimal totalAmount) {
         this.totalAmount = totalAmount;
+    }
+
+    /**
+     * 获取机构总投资金额状态（0：原有数据，1: 后补充数据）
+     *
+     * @return total_amount_status - 机构总投资金额状态（0：原有数据，1: 后补充数据）
+     */
+    public Integer getTotalAmountStatus() {
+        return totalAmountStatus;
+    }
+
+    /**
+     * 设置机构总投资金额状态（0：原有数据，1: 后补充数据）
+     *
+     * @param totalAmountStatus 机构总投资金额状态（0：原有数据，1: 后补充数据）
+     */
+    public void setTotalAmountStatus(Integer totalAmountStatus) {
+        this.totalAmountStatus = totalAmountStatus;
+    }
+
+    /**
+     * @return rate
+     */
+    public BigDecimal getRate() {
+        return rate;
+    }
+
+    /**
+     * @param rate
+     */
+    public void setRate(BigDecimal rate) {
+        this.rate = rate;
     }
 
     /**
@@ -354,5 +454,41 @@ public class ProjectFinancingLog {
      */
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    /**
+     * 获取审核状态，0表示审核未通过，1表示审核通过，默认0
+     *
+     * @return approval_status - 审核状态，0表示审核未通过，1表示审核通过，默认0
+     */
+    public Integer getApprovalStatus() {
+        return approvalStatus;
+    }
+
+    /**
+     * 设置审核状态，0表示审核未通过，1表示审核通过，默认0
+     *
+     * @param approvalStatus 审核状态，0表示审核未通过，1表示审核通过，默认0
+     */
+    public void setApprovalStatus(Integer approvalStatus) {
+        this.approvalStatus = approvalStatus;
+    }
+
+    /**
+     * 获取审核时间，审核时存，其他时候为空
+     *
+     * @return approval_time - 审核时间，审核时存，其他时候为空
+     */
+    public Date getApprovalTime() {
+        return approvalTime;
+    }
+
+    /**
+     * 设置审核时间，审核时存，其他时候为空
+     *
+     * @param approvalTime 审核时间，审核时存，其他时候为空
+     */
+    public void setApprovalTime(Date approvalTime) {
+        this.approvalTime = approvalTime;
     }
 }

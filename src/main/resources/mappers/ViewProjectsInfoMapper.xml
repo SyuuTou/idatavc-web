@@ -44,5 +44,6 @@
     <result column="investment_institutions_short_name" property="investmentInstitutionsShortName" jdbcType="VARCHAR" />
     <result column="investment_institutions_commet" property="investmentInstitutionsCommet" jdbcType="VARCHAR" />
     <result column="investment_institutions_type" property="investmentInstitutionsType" jdbcType="INTEGER" />
+    <result column="all_name" property="allName" jdbcType="VARCHAR" />
   </resultMap>
 </mapper>

@@ -1,5 +1,6 @@
 package com.idatavc.web.service.impl;
 
+import com.alibaba.druid.util.StringUtils;
 import com.idatavc.web.MyCell;
 import com.idatavc.web.mapper.*;
 import com.idatavc.web.model.*;
@@ -43,14 +44,15 @@ public class ProjectsServiceImpl implements ProjectsService {
     private MetaRegionMapper metaRegionMapper;
     @Autowired
     private ProjectSegmentationMapper projectSegmentationMapper;
+
     @Transactional
     @Override
     public void saveProject(Map<Integer, List<MyCell>> data) {
 
-         int i = 1;
-        data.forEach((k,v) ->{
+        int i = 1;
+        data.forEach((k, v) -> {
 
-            final Projects projects =new Projects();
+            final Projects projects = new Projects();
             final ProjectFinancingLog projectFinancingLog = new ProjectFinancingLog();
 //            final Investors investors = new Investors();
             final InvestmentInstitutions investmentInstitutions = new InvestmentInstitutions();
@@ -59,8 +61,8 @@ public class ProjectsServiceImpl implements ProjectsService {
             final FoundersWork foundersWork = new FoundersWork();
             DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
             String index0 = v.get(0).getContent();
-            if (!"".equals(index0)){
-                projects.setSerialNumber(Integer.valueOf(index0.substring(0,index0.indexOf("."))));
+            if (!"".equals(index0)) {
+                projects.setSerialNumber(Integer.valueOf(index0.substring(0, index0.indexOf("."))));
             }
             investmentInstitutions.setShortName(v.get(1).getContent());
 
@@ -71,13 +73,11 @@ public class ProjectsServiceImpl implements ProjectsService {
             projects.setCommet(v.get(6).getContent());
             projects.setUrl(v.get(7).getContent());
             String establishedTime = v.get(8).getContent();
-            if (!"".equals(establishedTime)){
+            if (!"".equals(establishedTime)) {
 
                 projects.setEstablishedTime(formatter.parseDateTime(establishedTime).toDate());
             }
             projects.setSegmentation(v.get(9).getContent()); //细分领域
-
-
 
 
             projects.setItemLabel(v.get(10).getContent()); //项目标签
@@ -86,42 +86,101 @@ public class ProjectsServiceImpl implements ProjectsService {
             projects.setAddress(v.get(12).getContent());
             projects.setCreateTime(DateTime.now().toDate());
             String city = v.get(11).getContent();
-            MetaRegion queryMR = new MetaRegion();
-            queryMR.setQuid(0);
-            queryMR.setShengid(0);
-                queryMR.setMing(city+"区");
-            MetaRegion metaRegion = metaRegionMapper.selectOne(queryMR);
-            if (null == metaRegion) {
-               queryMR.setMing(city+"市");
-               metaRegion = metaRegionMapper.selectOne(queryMR);
+            if (city.indexOf("/")>-1){
+                city = city.split("/")[1];
             }
-            if (null == metaRegion) {
-                queryMR.setMing(city);
-               metaRegion = metaRegionMapper.selectOne(queryMR);
-            }
-            if (null != metaRegion) {
-                if (metaRegion.getGid() == 45055) {
-                    projects.setContinent("亚洲");
-                    projects.setCountry("中国");
-                    metaRegion = metaRegionMapper.selectByPrimaryKey(metaRegion.getShengid());
-                    if (null == metaRegion){
-                        projects.setProvince(city);
-                    }else {
-                        projects.setProvince(metaRegionMapper.selectByPrimaryKey(metaRegion.getShengid()).getMing());
-                    }
-                    projects.setCity(city);
-                }else{
-                    projects.setContinent(metaRegionMapper.selectByPrimaryKey(metaRegion.getGid()).getMing());
-                    projects.setCountry(metaRegionMapper.selectByPrimaryKey(metaRegion.getGid()).getMing());
-                    projects.setCity(metaRegionMapper.selectByPrimaryKey(metaRegion.getGid()).getMing());
 
+            if (!"".equals(city)) {
+                MetaRegion queryMR = new MetaRegion();
+                queryMR.setQuid(0);
+                queryMR.setShid(0);
+                queryMR.setMing(city + "区");
+                MetaRegion metaRegion = metaRegionMapper.selectOne(queryMR);
+                if (null == metaRegion) {
+                    queryMR.setMing(city + "市");
+                    metaRegion = metaRegionMapper.selectOne(queryMR);
                 }
+                if (null == metaRegion) {
+                    queryMR.setMing(city);
+                    queryMR.setShengid(0);
+                    metaRegion = metaRegionMapper.selectOne(queryMR);
+                }
+                if (null != metaRegion) {
+                    if (metaRegion.getGid() == 45055) {
+                        projects.setContinent("亚洲");
+                        projects.setCountry("中国");
+                        metaRegion = metaRegionMapper.selectByPrimaryKey(metaRegion.getShengid());
+                        if (null == metaRegion) {
+                            projects.setProvince(city);
+                        } else {
+                            projects.setProvince(metaRegion.getMing());
+                        }
+                        projects.setCity(city);
+                    } else {
+                        projects.setContinent(metaRegionMapper.selectByPrimaryKey(metaRegion.getGid()).getMing());
+                        projects.setCountry(metaRegionMapper.selectByPrimaryKey(metaRegion.getZid()).getMing());
+                        if (metaRegion.getShengid() == 0) {
+                            projects.setCity(metaRegion.getMing());
+                        } else {
+                            projects.setCity(metaRegionMapper.selectByPrimaryKey(metaRegion.getShengid()).getMing());
+                        }
 
 
+                    }
+
+
+                } else {
+                    queryMR = new MetaRegion();
+                    queryMR.setQuid(0);
+                    queryMR.setMing(city + "区");
+                    metaRegion = metaRegionMapper.selectOne(queryMR);
+                    if (null == metaRegion) {
+                        queryMR.setMing(city + "市");
+                        metaRegion = metaRegionMapper.selectOne(queryMR);
+                    }
+                    if (null == metaRegion) {
+                        queryMR.setMing(city);
+                        try {
+                            metaRegion = metaRegionMapper.selectOne(queryMR);
+                        } catch (Exception e) {
+                            metaRegion = metaRegionMapper.select(queryMR).get(0);
+                        }
+                    }
+                    if (null != metaRegion) {
+                        if (metaRegion.getGid() == 45055) {
+                            projects.setContinent("亚洲");
+                            projects.setCountry("中国");
+                            metaRegion = metaRegionMapper.selectByPrimaryKey(metaRegion.getShengid());
+                            if (null == metaRegion) {
+                                projects.setProvince(city);
+                            } else {
+                                projects.setProvince(metaRegion.getMing());
+                            }
+                            projects.setCity(city);
+                        } else {
+                            projects.setContinent(metaRegionMapper.selectByPrimaryKey(metaRegion.getGid()).getMing());
+                            projects.setCountry(metaRegionMapper.selectByPrimaryKey(metaRegion.getZid()).getMing());
+                            if (metaRegion.getShengid() == 0) {
+                                projects.setCity(metaRegion.getMing());
+                            } else {
+                                projects.setCity(metaRegionMapper.selectByPrimaryKey(metaRegion.getShengid()).getMing());
+                            }
+
+
+                        }
+
+
+                    }
+                }
             }
 //            projects.setCity(v.get(11).getContent());
-            if (null != investmentInstitutions.getShortName()&& !"".equals(investmentInstitutions.getShortName())) {
-                InvestmentInstitutions queryOne = investmentInstitutionsMapper.selectOne(investmentInstitutions);
+            if (null != investmentInstitutions.getShortName() && !"".equals(investmentInstitutions.getShortName())) {
+                InvestmentInstitutions queryOne = null;
+                try {
+                    queryOne = investmentInstitutionsMapper.selectOne(investmentInstitutions);
+                } catch (Exception e) {
+                    queryOne = investmentInstitutionsMapper.select(investmentInstitutions).get(0);
+                }
                 if (null == queryOne) {
 
                     investmentInstitutionsMapper.insert(investmentInstitutions);
@@ -130,13 +189,18 @@ public class ProjectsServiceImpl implements ProjectsService {
                     projects.setInvestmentInstitutionsId(queryOne.getId());
                 }
             }
-            Projects queryP = projectsMapper.selectOne(projects);
+            Projects queryP = null;
+            try {
+                queryP = projectsMapper.selectOne(projects);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             Integer projectId = null;
             if (null == queryP) {
                 projectsMapper.insert(projects);
                 projectFinancingLog.setProjectId(projects.getId());
                 projectId = projects.getId();
-            }else{
+            } else {
                 projectFinancingLog.setProjectId(queryP.getId());
                 projectId = queryP.getId();
             }
@@ -147,66 +211,92 @@ public class ProjectsServiceImpl implements ProjectsService {
             projectFinancingLog.setFinancingTime("".equals(financingTimeCell) ? null : formatter.parseDateTime(financingTimeCell.length() < 9 ? financingTimeCell + "-01" : financingTimeCell).toDate());
             projectFinancingLog.setStage(v.get(14).getContent());
             String amount = v.get(15).getContent();
-            if ("".equals(amount)){
+            if ("".equals(amount)||null == amount) {
                 amount = "0";
             }
-            projectFinancingLog.setAmount(new BigDecimal(amount));
-            projectFinancingLog.setCurrency(v.get(16).getContent().equals("人民币")? 0 : 1);
+            String currency = v.get(16).getContent();
+            BigDecimal rate = null;
+            if (currency.equals("人民币")) {
+                projectFinancingLog.setCurrency(0);
+                rate = new BigDecimal(1);
+                projectFinancingLog.setRate(rate);
+            }else if(currency.equals("美元")) {
+                projectFinancingLog.setCurrency(1);
+                rate = new BigDecimal(6.59);
+                projectFinancingLog.setRate(rate);
+            }else if (currency.equals("卢比")) {
+                projectFinancingLog.setCurrency(2);
+                rate = new BigDecimal(0.1013);
+                projectFinancingLog.setRate(rate);
+            }else if(currency.equals("欧元")) {
+                projectFinancingLog.setCurrency(3);
+                rate = new BigDecimal(8.6857);
+                projectFinancingLog.setRate(rate);
+            }else if(currency.equals("英镑")) {
+                projectFinancingLog.setCurrency(4);
+                rate = new BigDecimal(7.8097);
+                projectFinancingLog.setRate(rate);
+            }else {
+                rate = new BigDecimal(1);
+            }
+            projectFinancingLog.setAmount(new BigDecimal(amount).multiply(rate));
+
             String stockRight = v.get(17).getContent();
-            if ("".equals(stockRight)){
+            if ("".equals(stockRight)) {
                 stockRight = "0";
             }
             projectFinancingLog.setStockRight(new BigDecimal(stockRight));
             String pr = v.get(18).getContent();
-            if (pr.indexOf("未透露") > 0){
+            if (pr.indexOf("未透露") > 0) {
                 projectFinancingLog.setPrAmount(new BigDecimal("100"));
             }
-            if (pr.indexOf("十") > 0){
+            if (pr.indexOf("十") > 0) {
                 projectFinancingLog.setPrAmount(new BigDecimal("20"));
             }
-            if (pr.indexOf("百") > 0){
+            if (pr.indexOf("百") > 0) {
                 projectFinancingLog.setPrAmount(new BigDecimal("200"));
             }
-            if (pr.indexOf("千") > 0){
+            if (pr.indexOf("千") > 0) {
                 projectFinancingLog.setPrAmount(new BigDecimal("1000"));
             }
-            if (pr.indexOf("亿") > 0){
+            if (pr.indexOf("亿") > 0) {
                 projectFinancingLog.setPrAmount(new BigDecimal("5000"));
             }
 
             String totalAmount = v.get(19).getContent();
-            if (totalAmount.indexOf("未透露") > 0){
+            if (totalAmount.indexOf("未透露") > 0) {
                 projectFinancingLog.setTotalAmount(new BigDecimal("100"));
-            }else
-            if (totalAmount.indexOf("十") >= 0){
+            } else if (totalAmount.indexOf("十") >= 0) {
                 projectFinancingLog.setTotalAmount(new BigDecimal("20"));
-            }else
-            if (totalAmount.indexOf("百") >= 0){
+            } else if (totalAmount.indexOf("百") >= 0) {
                 projectFinancingLog.setTotalAmount(new BigDecimal("200"));
-            }else
-            if (totalAmount.indexOf("千") >= 0){
+            } else if (totalAmount.indexOf("千") >= 0) {
                 projectFinancingLog.setTotalAmount(new BigDecimal("1000"));
-            }else
-            if (totalAmount.indexOf("亿") >= 0){
+            } else if (totalAmount.indexOf("亿") >= 0) {
                 projectFinancingLog.setTotalAmount(new BigDecimal("5000"));
-            }else
-            if (null != totalAmount&&!"".equals(totalAmount)){
-                projectFinancingLog.setTotalAmount(new BigDecimal(totalAmount));
+            } else if (null != totalAmount && !"".equals(totalAmount)) {
+                try {
+                    projectFinancingLog.setTotalAmount(new BigDecimal(totalAmount).multiply(rate));
+                } catch (Exception e) {
+                    projectFinancingLog.setTotalAmount(new BigDecimal(0).multiply(rate));
+                }
             }
             projectFinancingLog.setShareDivest(v.get(20).getContent());
             String valuation = v.get(21).getContent();
-            if ("".equals(valuation) || null == valuation){
+            if ("".equals(valuation) || null == valuation) {
                 valuation = "0";
             }
             if (valuation.indexOf("万") > 0) {
-                valuation = valuation.substring(0,valuation.indexOf("万"));
+                valuation = valuation.substring(0, valuation.indexOf("万"));
             }
 
-            projectFinancingLog.setValuation(new BigDecimal(null == valuation?"0": valuation));
+            projectFinancingLog.setValuation(new BigDecimal(null == valuation ? "0" : valuation).multiply(rate));
             projectFinancingLog.setInvestmentInstitutionsList(v.get(22).getContent());
             projectFinancingLog.setProportionList(v.get(23).getContent());
             projectFinancingLog.setCreateTime(DateTime.now().toDate());
             projectFinancingLog.setStatus(2);
+            projectFinancingLog.setTotalAmountStatus(0);
+            projectFinancingLog.setAmountStatus(0);
             if (null == projectFinancingLogMapper.selectOne(projectFinancingLog)) {
                 projectFinancingLogMapper.insert(projectFinancingLog);
             }
@@ -225,14 +315,14 @@ public class ProjectsServiceImpl implements ProjectsService {
                 foundersMapper.insert(founders);
                 foundersEducation.setFounderId(founders.getId());
                 foundersWork.setFounderId(founders.getId());
-            }else{
+            } else {
                 foundersEducation.setFounderId(queryF.getId());
                 foundersWork.setFounderId(queryF.getId());
             }
 
             String[] foundersEducations = v.get(27).getContent().split("、");
             foundersEducation.setFounderId(founders.getId());
-            for(String fe : foundersEducations){
+            for (String fe : foundersEducations) {
                 foundersEducation.setEducationExperience(fe);
                 foundersEducationMapper.insert(foundersEducation);
 
@@ -240,7 +330,7 @@ public class ProjectsServiceImpl implements ProjectsService {
 
             String[] foundersWorks = v.get(29).getContent().split("、");
             foundersWork.setFounderId(founders.getId());
-            for (String fw : foundersWorks){
+            for (String fw : foundersWorks) {
                 foundersWork.setWorkExperience(fw);
                 foundersWorkMapper.insert(foundersWork);
             }
@@ -248,7 +338,7 @@ public class ProjectsServiceImpl implements ProjectsService {
             String[] seStr = v.get(9).getContent().split("、");
             ProjectSegmentation projectSegmentation = new ProjectSegmentation();
             projectSegmentation.setProjectId(projectId);
-            for(String s : seStr){
+            for (String s : seStr) {
                 projectSegmentation.setSegmentationName(s);
                 projectSegmentationMapper.insert(projectSegmentation);
             }
