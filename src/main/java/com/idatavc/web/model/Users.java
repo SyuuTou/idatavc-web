@@ -127,6 +127,12 @@ public class Users {
     private String workCard;
 
     /**
+     * 用户身份类型
+     */
+    @Column(name = "id_type")
+    private String idType;
+
+    /**
      * @return ID
      */
     public Integer getId() {
@@ -530,5 +536,23 @@ public class Users {
      */
     public void setWorkCard(String workCard) {
         this.workCard = workCard;
+    }
+
+    /**
+     * 获取用户身份类型
+     *
+     * @return id_type - 用户身份类型
+     */
+    public String getIdType() {
+        return idType;
+    }
+
+    /**
+     * 设置用户身份类型
+     *
+     * @param idType 用户身份类型
+     */
+    public void setIdType(String idType) {
+        this.idType = idType;
     }
 }

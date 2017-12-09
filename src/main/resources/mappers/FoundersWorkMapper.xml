@@ -7,5 +7,6 @@
     -->
     <result column="founder_id" property="founderId" jdbcType="INTEGER" />
     <result column="work_experience" property="workExperience" jdbcType="VARCHAR" />
+    <result column="count" property="count" jdbcType="INTEGER" />
   </resultMap>
 </mapper>

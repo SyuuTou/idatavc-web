@@ -78,6 +78,24 @@ public class InvestorsApproval {
     private Integer leadership;
 
     /**
+     * 投资人投资案例的字段，先存成字符串
+     */
+    @Column(name = "investors_approvalcol_case")
+    private String investorsApprovalcolCase;
+
+    /**
+     * 发微信消息的formId
+     */
+    @Column(name = "form_id")
+    private String formId;
+
+    /**
+     * 机构id
+     */
+    @Column(name = "institution_id")
+    private Integer institutionId;
+
+    /**
      * @return id
      */
     public Integer getId() {
@@ -305,5 +323,59 @@ public class InvestorsApproval {
      */
     public void setLeadership(Integer leadership) {
         this.leadership = leadership;
+    }
+
+    /**
+     * 获取投资人投资案例的字段，先存成字符串
+     *
+     * @return investors_approvalcol_case - 投资人投资案例的字段，先存成字符串
+     */
+    public String getInvestorsApprovalcolCase() {
+        return investorsApprovalcolCase;
+    }
+
+    /**
+     * 设置投资人投资案例的字段，先存成字符串
+     *
+     * @param investorsApprovalcolCase 投资人投资案例的字段，先存成字符串
+     */
+    public void setInvestorsApprovalcolCase(String investorsApprovalcolCase) {
+        this.investorsApprovalcolCase = investorsApprovalcolCase;
+    }
+
+    /**
+     * 获取发微信消息的formId
+     *
+     * @return form_id - 发微信消息的formId
+     */
+    public String getFormId() {
+        return formId;
+    }
+
+    /**
+     * 设置发微信消息的formId
+     *
+     * @param formId 发微信消息的formId
+     */
+    public void setFormId(String formId) {
+        this.formId = formId;
+    }
+
+    /**
+     * 获取机构id
+     *
+     * @return institution_id - 机构id
+     */
+    public Integer getInstitutionId() {
+        return institutionId;
+    }
+
+    /**
+     * 设置机构id
+     *
+     * @param institutionId 机构id
+     */
+    public void setInstitutionId(Integer institutionId) {
+        this.institutionId = institutionId;
     }
 }

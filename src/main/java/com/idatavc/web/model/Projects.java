@@ -124,6 +124,49 @@ public class Projects {
      */
     private Integer userid;
 
+    @Column(name = "kernel_desc_status")
+    private Integer kernelDescStatus;
+
+    @Column(name = "city_count")
+    private Integer cityCount;
+
+    @Column(name = "evaluation_recommend")
+    private Double evaluationRecommend;
+
+    /**
+     * 用来排除，国外机构投资的国外项目
+     */
+    @Column(name = "project_type")
+    private Integer projectType;
+
+    /**
+     * 项目来源，0表示创始人提交，1表示投资人提交
+     */
+    @Column(name = "project_source")
+    private Integer projectSource;
+
+    /**
+     * 项目logo
+     */
+    @Column(name = "project_logo")
+    private String projectLogo;
+
+    /**
+     * 项目投资亮点
+     */
+    @Column(name = "project_investment_highlights")
+    private String projectInvestmentHighlights;
+
+    /**
+     * ALTER TABLE `idatavc`.`projects`
+CHANGE COLUMN `project_type` `project_type` INT(11) NULL DEFAULT NULL COMMENT '用来排除，国外机构投资的国外项目' ;
+     */
+    @Column(name = "city_count_max")
+    private Integer cityCountMax;
+
+    @Column(name = "city_count_min")
+    private Integer cityCountMin;
+
     /**
      * @return ID
      */
@@ -528,5 +571,155 @@ public class Projects {
      */
     public void setUserid(Integer userid) {
         this.userid = userid;
+    }
+
+    /**
+     * @return kernel_desc_status
+     */
+    public Integer getKernelDescStatus() {
+        return kernelDescStatus;
+    }
+
+    /**
+     * @param kernelDescStatus
+     */
+    public void setKernelDescStatus(Integer kernelDescStatus) {
+        this.kernelDescStatus = kernelDescStatus;
+    }
+
+    /**
+     * @return city_count
+     */
+    public Integer getCityCount() {
+        return cityCount;
+    }
+
+    /**
+     * @param cityCount
+     */
+    public void setCityCount(Integer cityCount) {
+        this.cityCount = cityCount;
+    }
+
+    /**
+     * @return evaluation_recommend
+     */
+    public Double getEvaluationRecommend() {
+        return evaluationRecommend;
+    }
+
+    /**
+     * @param evaluationRecommend
+     */
+    public void setEvaluationRecommend(Double evaluationRecommend) {
+        this.evaluationRecommend = evaluationRecommend;
+    }
+
+    /**
+     * 获取用来排除，国外机构投资的国外项目
+     *
+     * @return project_type - 用来排除，国外机构投资的国外项目
+     */
+    public Integer getProjectType() {
+        return projectType;
+    }
+
+    /**
+     * 设置用来排除，国外机构投资的国外项目
+     *
+     * @param projectType 用来排除，国外机构投资的国外项目
+     */
+    public void setProjectType(Integer projectType) {
+        this.projectType = projectType;
+    }
+
+    /**
+     * 获取项目来源，0表示创始人提交，1表示投资人提交
+     *
+     * @return project_source - 项目来源，0表示创始人提交，1表示投资人提交
+     */
+    public Integer getProjectSource() {
+        return projectSource;
+    }
+
+    /**
+     * 设置项目来源，0表示创始人提交，1表示投资人提交
+     *
+     * @param projectSource 项目来源，0表示创始人提交，1表示投资人提交
+     */
+    public void setProjectSource(Integer projectSource) {
+        this.projectSource = projectSource;
+    }
+
+    /**
+     * 获取项目logo
+     *
+     * @return project_logo - 项目logo
+     */
+    public String getProjectLogo() {
+        return projectLogo;
+    }
+
+    /**
+     * 设置项目logo
+     *
+     * @param projectLogo 项目logo
+     */
+    public void setProjectLogo(String projectLogo) {
+        this.projectLogo = projectLogo;
+    }
+
+    /**
+     * 获取项目投资亮点
+     *
+     * @return project_investment_highlights - 项目投资亮点
+     */
+    public String getProjectInvestmentHighlights() {
+        return projectInvestmentHighlights;
+    }
+
+    /**
+     * 设置项目投资亮点
+     *
+     * @param projectInvestmentHighlights 项目投资亮点
+     */
+    public void setProjectInvestmentHighlights(String projectInvestmentHighlights) {
+        this.projectInvestmentHighlights = projectInvestmentHighlights;
+    }
+
+    /**
+     * 获取ALTER TABLE `idatavc`.`projects`
+CHANGE COLUMN `project_type` `project_type` INT(11) NULL DEFAULT NULL COMMENT '用来排除，国外机构投资的国外项目' ;
+     *
+     * @return city_count_max - ALTER TABLE `idatavc`.`projects`
+CHANGE COLUMN `project_type` `project_type` INT(11) NULL DEFAULT NULL COMMENT '用来排除，国外机构投资的国外项目' ;
+     */
+    public Integer getCityCountMax() {
+        return cityCountMax;
+    }
+
+    /**
+     * 设置ALTER TABLE `idatavc`.`projects`
+CHANGE COLUMN `project_type` `project_type` INT(11) NULL DEFAULT NULL COMMENT '用来排除，国外机构投资的国外项目' ;
+     *
+     * @param cityCountMax ALTER TABLE `idatavc`.`projects`
+CHANGE COLUMN `project_type` `project_type` INT(11) NULL DEFAULT NULL COMMENT '用来排除，国外机构投资的国外项目' ;
+     */
+    public void setCityCountMax(Integer cityCountMax) {
+        this.cityCountMax = cityCountMax;
+    }
+
+    /**
+     * @return city_count_min
+     */
+    public Integer getCityCountMin() {
+        return cityCountMin;
+    }
+
+    /**
+     * @param cityCountMin
+     */
+    public void setCityCountMin(Integer cityCountMin) {
+        this.cityCountMin = cityCountMin;
     }
 }

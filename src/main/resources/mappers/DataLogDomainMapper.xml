@@ -10,5 +10,6 @@
     <result column="domain_name" property="domainName" jdbcType="VARCHAR" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
   </resultMap>
 </mapper>

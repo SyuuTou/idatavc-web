@@ -16,6 +16,8 @@ public class FoundersEducation {
     @Column(name = "education_experience")
     private String educationExperience;
 
+    private Integer count;
+
     /**
      * 获取创始人ID
      *
@@ -50,5 +52,19 @@ public class FoundersEducation {
      */
     public void setEducationExperience(String educationExperience) {
         this.educationExperience = educationExperience;
+    }
+
+    /**
+     * @return count
+     */
+    public Integer getCount() {
+        return count;
+    }
+
+    /**
+     * @param count
+     */
+    public void setCount(Integer count) {
+        this.count = count;
     }
 }

@@ -10,13 +10,11 @@
     <result column="financing_time" property="financingTime" jdbcType="DATE" />
     <result column="stage" property="stage" jdbcType="VARCHAR" />
     <result column="amount" property="amount" jdbcType="DECIMAL" />
-    <result column="amount_status" property="amountStatus" jdbcType="INTEGER" />
     <result column="calculation_amount_status" property="calculationAmountStatus" jdbcType="INTEGER" />
     <result column="currency" property="currency" jdbcType="INTEGER" />
     <result column="stock_right" property="stockRight" jdbcType="DECIMAL" />
     <result column="pr_amount" property="prAmount" jdbcType="DECIMAL" />
     <result column="total_amount" property="totalAmount" jdbcType="DECIMAL" />
-    <result column="total_amount_status" property="totalAmountStatus" jdbcType="INTEGER" />
     <result column="rate" property="rate" jdbcType="DECIMAL" />
     <result column="share_divest" property="shareDivest" jdbcType="VARCHAR" />
     <result column="valuation" property="valuation" jdbcType="DECIMAL" />
@@ -26,5 +24,9 @@
     <result column="status" property="status" jdbcType="INTEGER" />
     <result column="approval_status" property="approvalStatus" jdbcType="INTEGER" />
     <result column="approval_time" property="approvalTime" jdbcType="TIMESTAMP" />
+    <result column="amount_status" property="amountStatus" jdbcType="INTEGER" />
+    <result column="total_amount_status" property="totalAmountStatus" jdbcType="INTEGER" />
+    <result column="project_financing_useful" property="projectFinancingUseful" jdbcType="VARCHAR" />
+    <result column="financing_time_year" property="financingTimeYear" jdbcType="VARCHAR" />
   </resultMap>
 </mapper>

@@ -16,6 +16,8 @@ public class FoundersWork {
     @Column(name = "work_experience")
     private String workExperience;
 
+    private Integer count;
+
     /**
      * 获取创始人ID
      *
@@ -50,5 +52,19 @@ public class FoundersWork {
      */
     public void setWorkExperience(String workExperience) {
         this.workExperience = workExperience;
+    }
+
+    /**
+     * @return count
+     */
+    public Integer getCount() {
+        return count;
+    }
+
+    /**
+     * @param count
+     */
+    public void setCount(Integer count) {
+        this.count = count;
     }
 }

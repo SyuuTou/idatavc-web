@@ -1,0 +1,16 @@
+package com.idatavc.web.service.impl;
+
+import com.idatavc.web.MyCell;
+import com.idatavc.web.service.ProjectsService;
+
+import java.util.List;
+import java.util.Map;
+
+public class ProjectsNewServiceImpl implements ProjectsService {
+    @Override
+    public void saveProject(Integer taskID, Map<Integer, List<MyCell>> data) {
+
+        //
+
+    }
+}

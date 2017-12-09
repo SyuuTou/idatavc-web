@@ -89,6 +89,10 @@ public class InvestmentInstitutions {
 
     private Integer yn;
 
+    private Integer sort;
+
+    private Integer count;
+
     /**
      * @return ID
      */
@@ -367,5 +371,33 @@ public class InvestmentInstitutions {
      */
     public void setYn(Integer yn) {
         this.yn = yn;
+    }
+
+    /**
+     * @return sort
+     */
+    public Integer getSort() {
+        return sort;
+    }
+
+    /**
+     * @param sort
+     */
+    public void setSort(Integer sort) {
+        this.sort = sort;
+    }
+
+    /**
+     * @return count
+     */
+    public Integer getCount() {
+        return count;
+    }
+
+    /**
+     * @param count
+     */
+    public void setCount(Integer count) {
+        this.count = count;
     }
 }

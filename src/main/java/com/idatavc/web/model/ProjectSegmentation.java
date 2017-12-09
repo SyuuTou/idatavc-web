@@ -16,6 +16,8 @@ public class ProjectSegmentation {
     @Column(name = "segmentation_name")
     private String segmentationName;
 
+    private Integer count;
+
     /**
      * 获取项目iD
      *
@@ -50,5 +52,19 @@ public class ProjectSegmentation {
      */
     public void setSegmentationName(String segmentationName) {
         this.segmentationName = segmentationName;
+    }
+
+    /**
+     * @return count
+     */
+    public Integer getCount() {
+        return count;
+    }
+
+    /**
+     * @param count
+     */
+    public void setCount(Integer count) {
+        this.count = count;
     }
 }

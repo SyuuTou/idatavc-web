@@ -28,5 +28,14 @@
     <result column="approval_time" property="approvalTime" jdbcType="TIMESTAMP" />
     <result column="yn" property="yn" jdbcType="INTEGER" />
     <result column="userid" property="userid" jdbcType="INTEGER" />
+    <result column="kernel_desc_status" property="kernelDescStatus" jdbcType="INTEGER" />
+    <result column="city_count" property="cityCount" jdbcType="INTEGER" />
+    <result column="evaluation_recommend" property="evaluationRecommend" jdbcType="DOUBLE" />
+    <result column="project_type" property="projectType" jdbcType="INTEGER" />
+    <result column="project_source" property="projectSource" jdbcType="INTEGER" />
+    <result column="project_logo" property="projectLogo" jdbcType="VARCHAR" />
+    <result column="project_investment_highlights" property="projectInvestmentHighlights" jdbcType="VARCHAR" />
+    <result column="city_count_max" property="cityCountMax" jdbcType="INTEGER" />
+    <result column="city_count_min" property="cityCountMin" jdbcType="INTEGER" />
   </resultMap>
 </mapper>

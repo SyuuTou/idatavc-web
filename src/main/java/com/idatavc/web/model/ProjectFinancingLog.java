@@ -34,12 +34,6 @@ public class ProjectFinancingLog {
     private BigDecimal amount;
 
     /**
-     * 单机构投资金额状态（0：原有数据，1: 后补充数据）
-     */
-    @Column(name = "amount_status")
-    private Integer amountStatus;
-
-    /**
      * 投资金额是否是计算值，1:为计算值，0:为原始值
      */
     @Column(name = "calculation_amount_status")
@@ -67,12 +61,6 @@ public class ProjectFinancingLog {
      */
     @Column(name = "total_amount")
     private BigDecimal totalAmount;
-
-    /**
-     * 机构总投资金额状态（0：原有数据，1: 后补充数据）
-     */
-    @Column(name = "total_amount_status")
-    private Integer totalAmountStatus;
 
     private BigDecimal rate;
 
@@ -121,6 +109,21 @@ public class ProjectFinancingLog {
      */
     @Column(name = "approval_time")
     private Date approvalTime;
+
+    @Column(name = "amount_status")
+    private Integer amountStatus;
+
+    @Column(name = "total_amount_status")
+    private Integer totalAmountStatus;
+
+    @Column(name = "project_financing_useful")
+    private String projectFinancingUseful;
+
+    /**
+     * 保存年份的冗余字段
+     */
+    @Column(name = "financing_time_year")
+    private String financingTimeYear;
 
     /**
      * @return ID
@@ -206,24 +209,6 @@ public class ProjectFinancingLog {
      */
     public void setAmount(BigDecimal amount) {
         this.amount = amount;
-    }
-
-    /**
-     * 获取单机构投资金额状态（0：原有数据，1: 后补充数据）
-     *
-     * @return amount_status - 单机构投资金额状态（0：原有数据，1: 后补充数据）
-     */
-    public Integer getAmountStatus() {
-        return amountStatus;
-    }
-
-    /**
-     * 设置单机构投资金额状态（0：原有数据，1: 后补充数据）
-     *
-     * @param amountStatus 单机构投资金额状态（0：原有数据，1: 后补充数据）
-     */
-    public void setAmountStatus(Integer amountStatus) {
-        this.amountStatus = amountStatus;
     }
 
     /**
@@ -314,24 +299,6 @@ public class ProjectFinancingLog {
      */
     public void setTotalAmount(BigDecimal totalAmount) {
         this.totalAmount = totalAmount;
-    }
-
-    /**
-     * 获取机构总投资金额状态（0：原有数据，1: 后补充数据）
-     *
-     * @return total_amount_status - 机构总投资金额状态（0：原有数据，1: 后补充数据）
-     */
-    public Integer getTotalAmountStatus() {
-        return totalAmountStatus;
-    }
-
-    /**
-     * 设置机构总投资金额状态（0：原有数据，1: 后补充数据）
-     *
-     * @param totalAmountStatus 机构总投资金额状态（0：原有数据，1: 后补充数据）
-     */
-    public void setTotalAmountStatus(Integer totalAmountStatus) {
-        this.totalAmountStatus = totalAmountStatus;
     }
 
     /**
@@ -490,5 +457,65 @@ public class ProjectFinancingLog {
      */
     public void setApprovalTime(Date approvalTime) {
         this.approvalTime = approvalTime;
+    }
+
+    /**
+     * @return amount_status
+     */
+    public Integer getAmountStatus() {
+        return amountStatus;
+    }
+
+    /**
+     * @param amountStatus
+     */
+    public void setAmountStatus(Integer amountStatus) {
+        this.amountStatus = amountStatus;
+    }
+
+    /**
+     * @return total_amount_status
+     */
+    public Integer getTotalAmountStatus() {
+        return totalAmountStatus;
+    }
+
+    /**
+     * @param totalAmountStatus
+     */
+    public void setTotalAmountStatus(Integer totalAmountStatus) {
+        this.totalAmountStatus = totalAmountStatus;
+    }
+
+    /**
+     * @return project_financing_useful
+     */
+    public String getProjectFinancingUseful() {
+        return projectFinancingUseful;
+    }
+
+    /**
+     * @param projectFinancingUseful
+     */
+    public void setProjectFinancingUseful(String projectFinancingUseful) {
+        this.projectFinancingUseful = projectFinancingUseful;
+    }
+
+    /**
+     * 获取保存年份的冗余字段
+     *
+     * @return financing_time_year - 保存年份的冗余字段
+     */
+    public String getFinancingTimeYear() {
+        return financingTimeYear;
+    }
+
+    /**
+     * 设置保存年份的冗余字段
+     *
+     * @param financingTimeYear 保存年份的冗余字段
+     */
+    public void setFinancingTimeYear(String financingTimeYear) {
+        this.financingTimeYear = financingTimeYear;
     }
 }

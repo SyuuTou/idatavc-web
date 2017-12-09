@@ -28,5 +28,6 @@
     <result column="headpic_real" property="headpicReal" jdbcType="VARCHAR" />
     <result column="industry" property="industry" jdbcType="VARCHAR" />
     <result column="work_card" property="workCard" jdbcType="VARCHAR" />
+    <result column="id_type" property="idType" jdbcType="VARCHAR" />
   </resultMap>
 </mapper>

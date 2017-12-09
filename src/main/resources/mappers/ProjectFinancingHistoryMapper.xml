@@ -8,5 +8,6 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="project_send_log_id" property="projectSendLogId" jdbcType="VARCHAR" />
     <result column="history" property="history" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
   </resultMap>
 </mapper>

@@ -13,5 +13,6 @@
     <result column="financing_currency" property="financingCurrency" jdbcType="INTEGER" />
     <result column="transfer_shares" property="transferShares" jdbcType="DECIMAL" />
     <result column="current_demand" property="currentDemand" jdbcType="VARCHAR" />
+    <result column="financing_useful" property="financingUseful" jdbcType="VARCHAR" />
   </resultMap>
 </mapper>

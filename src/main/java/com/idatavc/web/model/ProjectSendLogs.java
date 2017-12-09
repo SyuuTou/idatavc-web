@@ -49,7 +49,7 @@ public class ProjectSendLogs {
     private Date creatTime;
 
     /**
-     * 审核状态：0未联系,1已联系,2审核通过,3已对接,4完成对接；五种状态；
+     * 审核状态：0未审核,1已联系,2审核通过,3已对接,4完成对接,5审核未通过；六种状态；
      */
     @Column(name = "check_status")
     private Integer checkStatus;
@@ -59,6 +59,36 @@ public class ProjectSendLogs {
      */
     @Column(name = "check_time")
     private Date checkTime;
+
+    /**
+     * 公司logo
+     */
+    @Column(name = "company_logo")
+    private String companyLogo;
+
+    /**
+     * 项目一句话介绍
+     */
+    @Column(name = "company_one_sentence_introduct")
+    private String companyOneSentenceIntroduct;
+
+    /**
+     * 公司投资亮点
+     */
+    @Column(name = "company_investment_highlights")
+    private String companyInvestmentHighlights;
+
+    /**
+     * 公司官网
+     */
+    @Column(name = "company_official_website")
+    private String companyOfficialWebsite;
+
+    /**
+     * 项目简称
+     */
+    @Column(name = "company_short_name")
+    private String companyShortName;
 
     /**
      * @return id
@@ -201,18 +231,18 @@ public class ProjectSendLogs {
     }
 
     /**
-     * 获取审核状态：0未联系,1已联系,2审核通过,3已对接,4完成对接；五种状态；
+     * 获取审核状态：0未审核,1已联系,2审核通过,3已对接,4完成对接,5审核未通过；六种状态；
      *
-     * @return check_status - 审核状态：0未联系,1已联系,2审核通过,3已对接,4完成对接；五种状态；
+     * @return check_status - 审核状态：0未审核,1已联系,2审核通过,3已对接,4完成对接,5审核未通过；六种状态；
      */
     public Integer getCheckStatus() {
         return checkStatus;
     }
 
     /**
-     * 设置审核状态：0未联系,1已联系,2审核通过,3已对接,4完成对接；五种状态；
+     * 设置审核状态：0未审核,1已联系,2审核通过,3已对接,4完成对接,5审核未通过；六种状态；
      *
-     * @param checkStatus 审核状态：0未联系,1已联系,2审核通过,3已对接,4完成对接；五种状态；
+     * @param checkStatus 审核状态：0未审核,1已联系,2审核通过,3已对接,4完成对接,5审核未通过；六种状态；
      */
     public void setCheckStatus(Integer checkStatus) {
         this.checkStatus = checkStatus;
@@ -234,5 +264,95 @@ public class ProjectSendLogs {
      */
     public void setCheckTime(Date checkTime) {
         this.checkTime = checkTime;
+    }
+
+    /**
+     * 获取公司logo
+     *
+     * @return company_logo - 公司logo
+     */
+    public String getCompanyLogo() {
+        return companyLogo;
+    }
+
+    /**
+     * 设置公司logo
+     *
+     * @param companyLogo 公司logo
+     */
+    public void setCompanyLogo(String companyLogo) {
+        this.companyLogo = companyLogo;
+    }
+
+    /**
+     * 获取项目一句话介绍
+     *
+     * @return company_one_sentence_introduct - 项目一句话介绍
+     */
+    public String getCompanyOneSentenceIntroduct() {
+        return companyOneSentenceIntroduct;
+    }
+
+    /**
+     * 设置项目一句话介绍
+     *
+     * @param companyOneSentenceIntroduct 项目一句话介绍
+     */
+    public void setCompanyOneSentenceIntroduct(String companyOneSentenceIntroduct) {
+        this.companyOneSentenceIntroduct = companyOneSentenceIntroduct;
+    }
+
+    /**
+     * 获取公司投资亮点
+     *
+     * @return company_investment_highlights - 公司投资亮点
+     */
+    public String getCompanyInvestmentHighlights() {
+        return companyInvestmentHighlights;
+    }
+
+    /**
+     * 设置公司投资亮点
+     *
+     * @param companyInvestmentHighlights 公司投资亮点
+     */
+    public void setCompanyInvestmentHighlights(String companyInvestmentHighlights) {
+        this.companyInvestmentHighlights = companyInvestmentHighlights;
+    }
+
+    /**
+     * 获取公司官网
+     *
+     * @return company_official_website - 公司官网
+     */
+    public String getCompanyOfficialWebsite() {
+        return companyOfficialWebsite;
+    }
+
+    /**
+     * 设置公司官网
+     *
+     * @param companyOfficialWebsite 公司官网
+     */
+    public void setCompanyOfficialWebsite(String companyOfficialWebsite) {
+        this.companyOfficialWebsite = companyOfficialWebsite;
+    }
+
+    /**
+     * 获取项目简称
+     *
+     * @return company_short_name - 项目简称
+     */
+    public String getCompanyShortName() {
+        return companyShortName;
+    }
+
+    /**
+     * 设置项目简称
+     *
+     * @param companyShortName 项目简称
+     */
+    public void setCompanyShortName(String companyShortName) {
+        this.companyShortName = companyShortName;
     }
 }

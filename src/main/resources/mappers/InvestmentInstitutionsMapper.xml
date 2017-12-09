@@ -21,5 +21,7 @@
     <result column="approval_time" property="approvalTime" jdbcType="TIMESTAMP" />
     <result column="home_url" property="homeUrl" jdbcType="VARCHAR" />
     <result column="yn" property="yn" jdbcType="INTEGER" />
+    <result column="sort" property="sort" jdbcType="INTEGER" />
+    <result column="count" property="count" jdbcType="INTEGER" />
   </resultMap>
 </mapper>

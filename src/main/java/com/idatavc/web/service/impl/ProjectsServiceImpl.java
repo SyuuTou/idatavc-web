@@ -1,11 +1,10 @@
 package com.idatavc.web.service.impl;
 
-import com.alibaba.druid.util.StringUtils;
+import com.github.pagehelper.util.StringUtil;
 import com.idatavc.web.MyCell;
 import com.idatavc.web.mapper.*;
 import com.idatavc.web.model.*;
 import com.idatavc.web.service.ProjectsService;
-import org.apache.poi.ss.usermodel.DataFormatter;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
@@ -16,7 +15,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
-import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Map;
 
@@ -44,13 +42,18 @@ public class ProjectsServiceImpl implements ProjectsService {
     private MetaRegionMapper metaRegionMapper;
     @Autowired
     private ProjectSegmentationMapper projectSegmentationMapper;
+    @Autowired
+    private InvestmentInstitutionsProjectMapper investmentInstitutionsProjectMapper;
 
     @Transactional
     @Override
-    public void saveProject(Map<Integer, List<MyCell>> data) {
-
-        int i = 1;
+    public void saveProject(Integer taskID, Map<Integer, List<MyCell>> data) {
+        LOGGER.info("Task id is {},Begin time {}",taskID, DateTime.now().toDate());
+        DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
+        DateTimeFormatter formatterShort = DateTimeFormat.forPattern("yyyy-MM");
         data.forEach((k, v) -> {
+            if(StringUtil.isNotEmpty(v.get(3).getContent())){
+
 
             final Projects projects = new Projects();
             final ProjectFinancingLog projectFinancingLog = new ProjectFinancingLog();
@@ -59,7 +62,7 @@ public class ProjectsServiceImpl implements ProjectsService {
             final Founders founders = new Founders();
             final FoundersEducation foundersEducation = new FoundersEducation();
             final FoundersWork foundersWork = new FoundersWork();
-            DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
+
             String index0 = v.get(0).getContent();
             if (!"".equals(index0)) {
                 projects.setSerialNumber(Integer.valueOf(index0.substring(0, index0.indexOf("."))));
@@ -67,15 +70,20 @@ public class ProjectsServiceImpl implements ProjectsService {
             investmentInstitutions.setShortName(v.get(1).getContent());
 
 //            investmentInstitutions.setCommet(v.get(2).getContent());
+
+
             projects.setShortName(v.get(3).getContent());
             projects.setFullName(v.get(4).getContent());
             projects.setKernelDesc(v.get(5).getContent());
             projects.setCommet(v.get(6).getContent());
             projects.setUrl(v.get(7).getContent());
             String establishedTime = v.get(8).getContent();
-            if (!"".equals(establishedTime)) {
-
-                projects.setEstablishedTime(formatter.parseDateTime(establishedTime).toDate());
+            if (!"".equals(establishedTime)&&!"--".equals(establishedTime)&&!"-".equals(establishedTime)) {
+                if (establishedTime.length() < 10){
+                    projects.setEstablishedTime(formatterShort.parseDateTime(establishedTime).toDate());
+                }else {
+                    projects.setEstablishedTime(formatter.parseDateTime(establishedTime).toDate());
+                }
             }
             projects.setSegmentation(v.get(9).getContent()); //细分领域
 
@@ -84,7 +92,7 @@ public class ProjectsServiceImpl implements ProjectsService {
 //            v.get(11)地域
             projects.setTerritory(v.get(11).getContent());
             projects.setAddress(v.get(12).getContent());
-            projects.setCreateTime(DateTime.now().toDate());
+//            projects.setCreateTime(DateTime.now().toDate());
             String city = v.get(11).getContent();
             if (city.indexOf("/")>-1){
                 city = city.split("/")[1];
@@ -124,8 +132,6 @@ public class ProjectsServiceImpl implements ProjectsService {
                         } else {
                             projects.setCity(metaRegionMapper.selectByPrimaryKey(metaRegion.getShengid()).getMing());
                         }
-
-
                     }
 
 
@@ -189,12 +195,12 @@ public class ProjectsServiceImpl implements ProjectsService {
                     projects.setInvestmentInstitutionsId(queryOne.getId());
                 }
             }
-            Projects queryP = null;
-            try {
-                queryP = projectsMapper.selectOne(projects);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+
+
+            Projects queryProjects = new Projects();
+            queryProjects.setShortName(v.get(3).getContent());
+
+            Projects queryP = projectsMapper.selectOne(queryProjects);
             Integer projectId = null;
             if (null == queryP) {
                 projectsMapper.insert(projects);
@@ -208,6 +214,9 @@ public class ProjectsServiceImpl implements ProjectsService {
 
 //            DateTimeFormatter formatDate = DateTimeFormat.forPattern("yyyy-MM-dd");
             String financingTimeCell = v.get(13).getContent();
+            if (financingTimeCell.equals("--")){
+                financingTimeCell = "";
+            }
             projectFinancingLog.setFinancingTime("".equals(financingTimeCell) ? null : formatter.parseDateTime(financingTimeCell.length() < 9 ? financingTimeCell + "-01" : financingTimeCell).toDate());
             projectFinancingLog.setStage(v.get(14).getContent());
             String amount = v.get(15).getContent();
@@ -343,7 +352,54 @@ public class ProjectsServiceImpl implements ProjectsService {
                 projectSegmentationMapper.insert(projectSegmentation);
             }
 
+            String[] jgs = v.get(23).getContent().split("、");
+
+            InvestmentInstitutions query = new InvestmentInstitutions();
+
+            List<InvestmentInstitutions> ii = null;
+            InvestmentInstitutions investmentInstitutions2=null;
+
+            if (StringUtil.isNotEmpty(v.get(1).getContent())) {
+                saveInvestmentInstitutionsProject(projectId, query, v.get(1).getContent());
+            }else {
+                for(String s : jgs) {
+                    if (StringUtil.isNotEmpty(s)) {
+                        saveInvestmentInstitutionsProject(projectId, query, s);
+                    }
+                }
+            }
+            }
         });
+
+        LOGGER.info("Task id is {},End time {}",taskID, DateTime.now().toDate());
+    }
+
+    private void saveInvestmentInstitutionsProject(Integer projectId, InvestmentInstitutions query, String s) {
+        List<InvestmentInstitutions> ii;
+        InvestmentInstitutions investmentInstitutions2;
+        InvestmentInstitutionsProject iip = new InvestmentInstitutionsProject();
+        query.setShortName(s);
+        ii = investmentInstitutionsMapper.select(query);
+        if (null == ii || ii.size() < 1){
+            investmentInstitutions2 = new InvestmentInstitutions();
+            investmentInstitutions2.setShortName(s);
+            try {
+                investmentInstitutionsMapper.insert(investmentInstitutions2);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            iip.setInvestmentInstitutionsId(investmentInstitutions2.getId());
+        }else {
+            iip.setInvestmentInstitutionsId(ii.get(0).getId());
+        }
+        iip.setProjectId(projectId); // 项目ID（新的ID）
+
+        try {
+            investmentInstitutionsProjectMapper.insert(iip);
+        } catch (Exception e) {
+           LOGGER.error(e.getMessage());
+        }
     }
 
     public static void main(String[] args) {
@@ -351,7 +407,5 @@ public class ProjectsServiceImpl implements ProjectsService {
 //        DateTimeFormatter formatter = DateTimeFormat.forPattern();
 //        formatter.parseDateTime("Sun Jan 01 00:00:00 CST 2017").toDate();
 //        DateTime dt = new DateTime("Sun Jan 01 00:00:00 CST 2017");
-
-
     }
 }

@@ -74,6 +74,9 @@ public class UsersPay {
     @Column(name = "pay_time")
     private Date payTime;
 
+    @Column(name = "trade_no")
+    private String tradeNo;
+
     /**
      * @return ID
      */
@@ -284,5 +287,19 @@ public class UsersPay {
      */
     public void setPayTime(Date payTime) {
         this.payTime = payTime;
+    }
+
+    /**
+     * @return trade_no
+     */
+    public String getTradeNo() {
+        return tradeNo;
+    }
+
+    /**
+     * @param tradeNo
+     */
+    public void setTradeNo(String tradeNo) {
+        this.tradeNo = tradeNo;
     }
 }

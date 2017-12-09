@@ -37,6 +37,12 @@ public class DataLogDomain {
     private Date createTime;
 
     /**
+     * 结束时间
+     */
+    @Column(name = "end_time")
+    private Date endTime;
+
+    /**
      * 获取表id
      *
      * @return id - 表id
@@ -124,5 +130,23 @@ public class DataLogDomain {
      */
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    /**
+     * 获取结束时间
+     *
+     * @return end_time - 结束时间
+     */
+    public Date getEndTime() {
+        return endTime;
+    }
+
+    /**
+     * 设置结束时间
+     *
+     * @param endTime 结束时间
+     */
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
     }
 }
