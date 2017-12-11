@@ -53,7 +53,7 @@ public class ProjectsServiceImpl implements ProjectsService {
         DateTimeFormatter formatterShort = DateTimeFormat.forPattern("yyyy-MM");
         data.forEach((k, v) -> {
             if(StringUtil.isNotEmpty(v.get(3).getContent())){
-
+            LOGGER.info(String.valueOf(1));
 
             final Projects projects = new Projects();
             final ProjectFinancingLog projectFinancingLog = new ProjectFinancingLog();
@@ -396,7 +396,10 @@ public class ProjectsServiceImpl implements ProjectsService {
         iip.setProjectId(projectId); // 项目ID（新的ID）
 
         try {
-            investmentInstitutionsProjectMapper.insert(iip);
+            InvestmentInstitutionsProject iipOld = investmentInstitutionsProjectMapper.selectOne(iip);
+            if (null == iipOld) {
+                investmentInstitutionsProjectMapper.insert(iip);
+            }
         } catch (Exception e) {
            LOGGER.error(e.getMessage());
         }
