@@ -37,7 +37,10 @@ public class ExcelPoiHelper {
             data = readXSSFWorkbook(fis);
         }
 
-        int maxNrCols = 32;
+        int maxNrCols = data.values().stream()
+                .mapToInt(List::size)
+                .max()
+                .orElse(0);
 
         data.values().stream()
                 .filter(ls -> ls.size() < maxNrCols)

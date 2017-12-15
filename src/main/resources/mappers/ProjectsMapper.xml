@@ -37,5 +37,6 @@
     <result column="project_investment_highlights" property="projectInvestmentHighlights" jdbcType="VARCHAR" />
     <result column="city_count_max" property="cityCountMax" jdbcType="INTEGER" />
     <result column="city_count_min" property="cityCountMin" jdbcType="INTEGER" />
+    <result column="total_amount" property="totalAmount" jdbcType="DECIMAL" />
   </resultMap>
 </mapper>

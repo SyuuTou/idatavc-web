@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import tk.mybatis.mapper.entity.Example;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -70,13 +71,16 @@ public class ProjectsServiceImpl implements ProjectsService {
             investmentInstitutions.setShortName(v.get(1).getContent());
 
 //            investmentInstitutions.setCommet(v.get(2).getContent());
-
+            if (!"".equals(v.get(32).getContent())){
+                projects.setTotalAmount(new BigDecimal(v.get(32).getContent()));
+            }
 
             projects.setShortName(v.get(3).getContent());
             projects.setFullName(v.get(4).getContent());
             projects.setKernelDesc(v.get(5).getContent());
             projects.setCommet(v.get(6).getContent());
             projects.setUrl(v.get(7).getContent());
+
             String establishedTime = v.get(8).getContent();
             if (!"".equals(establishedTime)&&!"--".equals(establishedTime)&&!"-".equals(establishedTime)) {
                 if (establishedTime.length() < 10){
@@ -200,15 +204,15 @@ public class ProjectsServiceImpl implements ProjectsService {
             Projects queryProjects = new Projects();
             queryProjects.setShortName(v.get(3).getContent());
 
-            Projects queryP = projectsMapper.selectOne(queryProjects);
+            List<Projects> queryP = projectsMapper.select(queryProjects);
             Integer projectId = null;
-            if (null == queryP) {
+            if (null == queryP||queryP.size()==0) {
                 projectsMapper.insert(projects);
                 projectFinancingLog.setProjectId(projects.getId());
                 projectId = projects.getId();
             } else {
-                projectFinancingLog.setProjectId(queryP.getId());
-                projectId = queryP.getId();
+                projectFinancingLog.setProjectId(queryP.get(0).getId());
+                projectId = queryP.get(0).getId();
             }
 
 
@@ -319,29 +323,44 @@ public class ProjectsServiceImpl implements ProjectsService {
             founders.setCreateTime(DateTime.now().toDate());
             founders.setYn(1);
             founders.setProjectId(projectId);
-            Founders queryF = foundersMapper.selectOne(founders);
-            if (null == queryF) {
+                Example queryExample = new Example(Founders.class);
+                queryExample.createCriteria().andLike("name","%"+v.get(24).getContent().trim()+"%");
+            List<Founders> queryF = foundersMapper.selectByExample(queryExample);
+
+            Integer founderId= null;
+            if (null == queryF||queryF.size() == 0) {
                 foundersMapper.insert(founders);
                 foundersEducation.setFounderId(founders.getId());
                 foundersWork.setFounderId(founders.getId());
+//                founderId = founders.getId();
             } else {
-                foundersEducation.setFounderId(queryF.getId());
-                foundersWork.setFounderId(queryF.getId());
+                founderId = queryF.get(0).getId();
+                foundersEducation.setFounderId(founderId);
+                foundersWork.setFounderId(founderId);
+
             }
 
             String[] foundersEducations = v.get(27).getContent().split("、");
-            foundersEducation.setFounderId(founders.getId());
+//            foundersEducation.setFounderId(founderId);
             for (String fe : foundersEducations) {
                 foundersEducation.setEducationExperience(fe);
-                foundersEducationMapper.insert(foundersEducation);
+                try {
+                    foundersEducationMapper.insert(foundersEducation);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
             }
 
             String[] foundersWorks = v.get(29).getContent().split("、");
-            foundersWork.setFounderId(founders.getId());
+//            foundersWork.setFounderId(founderId);
             for (String fw : foundersWorks) {
                 foundersWork.setWorkExperience(fw);
-                foundersWorkMapper.insert(foundersWork);
+                try {
+                    foundersWorkMapper.insert(foundersWork);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
 
             String[] seStr = v.get(9).getContent().split("、");
@@ -360,11 +379,11 @@ public class ProjectsServiceImpl implements ProjectsService {
             InvestmentInstitutions investmentInstitutions2=null;
 
             if (StringUtil.isNotEmpty(v.get(1).getContent())) {
-                saveInvestmentInstitutionsProject(projectId, query, v.get(1).getContent());
+                saveInvestmentInstitutionsProject(projectFinancingLog.getId(), query, v.get(1).getContent());
             }else {
                 for(String s : jgs) {
                     if (StringUtil.isNotEmpty(s)) {
-                        saveInvestmentInstitutionsProject(projectId, query, s);
+                        saveInvestmentInstitutionsProject(projectFinancingLog.getId(), query, s);
                     }
                 }
             }

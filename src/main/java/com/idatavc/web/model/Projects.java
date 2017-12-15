@@ -1,5 +1,6 @@
 package com.idatavc.web.model;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.*;
 
@@ -166,6 +167,17 @@ CHANGE COLUMN `project_type` `project_type` INT(11) NULL DEFAULT NULL COMMENT 'ç
 
     @Column(name = "city_count_min")
     private Integer cityCountMin;
+
+    @Column(name = "total_amount")
+    private BigDecimal totalAmount;
+
+    public BigDecimal getTotalAmount() {
+        return totalAmount;
+    }
+
+    public void setTotalAmount(BigDecimal totalAmount) {
+        this.totalAmount = totalAmount;
+    }
 
     /**
      * @return ID
