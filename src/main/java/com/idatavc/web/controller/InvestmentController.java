@@ -19,12 +19,13 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
+@RequestMapping("/i")
 public class InvestmentController {
 
     @RequestMapping(value = "/invest")
     public String init(){
 
-        return "welcome";
+        return "welcome_i";
     }
 
     private String fileLocation;

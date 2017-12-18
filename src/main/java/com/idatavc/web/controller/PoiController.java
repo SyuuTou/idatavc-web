@@ -23,6 +23,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 @Controller
+@RequestMapping("/p")
 public class PoiController {
 
     @RequestMapping(value = "/index")

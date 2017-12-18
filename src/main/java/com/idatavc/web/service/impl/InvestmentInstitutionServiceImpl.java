@@ -50,7 +50,11 @@ public class InvestmentInstitutionServiceImpl implements InvestmentInstitutionSe
             InvestmentInstitutionsType investmentInstitutionsType = new InvestmentInstitutionsType();
             investmentInstitutionsType.setInvestmentInstitutionsId(investmentInstitutions.getId());
             investmentInstitutionsType.setType(v.get(3).getContent());
-            investmentInstitutionsTypeMapper.insert(investmentInstitutionsType);
+            try {
+                investmentInstitutionsTypeMapper.insert(investmentInstitutionsType);
+            } catch (Exception e) {
+
+            }
             String[] adrs = v.get(6).getContent().split("\\\n");
             InvestmentInstitutionsAddress investmentInstitutionsAddress = new InvestmentInstitutionsAddress();
             investmentInstitutionsAddress.setInvestmentInstitutionId(investmentInstitutions.getId());
@@ -59,6 +63,7 @@ public class InvestmentInstitutionServiceImpl implements InvestmentInstitutionSe
 
             for (String adr : adrs){
                 investmentInstitutionsAddress.setDetailAddress(adr);
+                investmentInstitutionsAddress.setId(null);
                 investmentInstitutionsAddressMapper.insert(investmentInstitutionsAddress);
             }
 

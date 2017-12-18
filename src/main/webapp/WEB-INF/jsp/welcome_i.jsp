@@ -6,7 +6,7 @@
 <html lang="en">
 
 <body>
-<c:url value="/p/uploadExcelFile" var="uploadFileUrl" />
+<c:url value="/i/uploadExcelFile" var="uploadFileUrl" />
 <form method="post" enctype="multipart/form-data"
 	  action="${uploadFileUrl}">
 	<input type="file" name="file" accept=".xls,.xlsx" /> <input
