@@ -1,5 +1,6 @@
 package com.idatavc.web.service.impl;
 
+import com.alibaba.druid.util.StringUtils;
 import com.github.pagehelper.util.StringUtil;
 import com.idatavc.web.MyCell;
 import com.idatavc.web.mapper.*;
@@ -71,9 +72,9 @@ public class ProjectsServiceImpl implements ProjectsService {
             investmentInstitutions.setShortName(v.get(1).getContent());
 
 //            investmentInstitutions.setCommet(v.get(2).getContent());
-            if (!"".equals(v.get(32).getContent())){
-                projects.setTotalAmount(new BigDecimal(v.get(32).getContent()));
-            }
+//            if (v.size()>32&&!"".equals(v.get(32).getContent())){
+//                projects.setTotalAmount(new BigDecimal(v.get(32).getContent()));
+//            }
 
             projects.setShortName(v.get(3).getContent());
             projects.setFullName(v.get(4).getContent());
@@ -314,55 +315,58 @@ public class ProjectsServiceImpl implements ProjectsService {
                 projectFinancingLogMapper.insert(projectFinancingLog);
             }
 
-            founders.setName(v.get(24).getContent());
-            founders.setPosition(v.get(25).getContent());
-            founders.setIntroduction(v.get(26).getContent());
-            founders.setEducationalBackgroundDesc(v.get(28).getContent());
-            founders.setWorkingBackgroundDesc(v.get(30).getContent());
-            founders.setEntrepreneurialExperience(v.get(31).getContent());
-            founders.setCreateTime(DateTime.now().toDate());
-            founders.setYn(1);
-            founders.setProjectId(projectId);
-                Example queryExample = new Example(Founders.class);
-                queryExample.createCriteria().andLike("name","%"+v.get(24).getContent().trim()+"%");
-            List<Founders> queryF = foundersMapper.selectByExample(queryExample);
 
-            Integer founderId= null;
-            if (null == queryF||queryF.size() == 0) {
-                foundersMapper.insert(founders);
-                foundersEducation.setFounderId(founders.getId());
-                foundersWork.setFounderId(founders.getId());
+                LOGGER.info("Founders's name {}",v.get(24).getContent().trim());
+                if (!StringUtils.isEmpty(v.get(24).getContent().trim())) {
+                    founders.setName(v.get(24).getContent());
+                    founders.setPosition(v.get(25).getContent());
+                    founders.setIntroduction(v.get(26).getContent());
+                    founders.setEducationalBackgroundDesc(v.get(28).getContent());
+                    founders.setWorkingBackgroundDesc(v.get(30).getContent());
+                    founders.setEntrepreneurialExperience(v.get(31).getContent());
+                    founders.setCreateTime(DateTime.now().toDate());
+                    founders.setYn(1);
+                    founders.setProjectId(projectId);
+                    Example queryExample = new Example(Founders.class);
+                    queryExample.createCriteria().andLike("name", "%" + v.get(24).getContent().trim() + "%");
+                    List<Founders> queryF = foundersMapper.selectByExample(queryExample);
+
+                    Integer founderId = null;
+                    if (null == queryF || queryF.size() == 0) {
+                        foundersMapper.insert(founders);
+                        foundersEducation.setFounderId(founders.getId());
+                        foundersWork.setFounderId(founders.getId());
 //                founderId = founders.getId();
-            } else {
-                founderId = queryF.get(0).getId();
-                foundersEducation.setFounderId(founderId);
-                foundersWork.setFounderId(founderId);
+                    } else {
+                        founderId = queryF.get(0).getId();
+                        foundersEducation.setFounderId(founderId);
+                        foundersWork.setFounderId(founderId);
 
-            }
+                    }
 
-            String[] foundersEducations = v.get(27).getContent().split("、");
+                    String[] foundersEducations = v.get(27).getContent().split("、");
 //            foundersEducation.setFounderId(founderId);
-            for (String fe : foundersEducations) {
-                foundersEducation.setEducationExperience(fe);
-                try {
-                    foundersEducationMapper.insert(foundersEducation);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                    for (String fe : foundersEducations) {
+                        foundersEducation.setEducationExperience(fe);
+                        try {
+                            foundersEducationMapper.insert(foundersEducation);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
 
-            }
+                    }
 
-            String[] foundersWorks = v.get(29).getContent().split("、");
+                    String[] foundersWorks = v.get(29).getContent().split("、");
 //            foundersWork.setFounderId(founderId);
-            for (String fw : foundersWorks) {
-                foundersWork.setWorkExperience(fw);
-                try {
-                    foundersWorkMapper.insert(foundersWork);
-                } catch (Exception e) {
-                    e.printStackTrace();
+                    for (String fw : foundersWorks) {
+                        foundersWork.setWorkExperience(fw);
+                        try {
+                            foundersWorkMapper.insert(foundersWork);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
                 }
-            }
-
             String[] seStr = v.get(9).getContent().split("、");
             ProjectSegmentation projectSegmentation = new ProjectSegmentation();
             projectSegmentation.setProjectId(projectId);

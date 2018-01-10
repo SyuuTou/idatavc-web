@@ -37,10 +37,7 @@ public class ExcelPoiHelper {
             data = readXSSFWorkbook(fis);
         }
 
-        int maxNrCols = data.values().stream()
-                .mapToInt(List::size)
-                .max()
-                .orElse(0);
+        int maxNrCols = 32;
 
         data.values().stream()
                 .filter(ls -> ls.size() < maxNrCols)
@@ -93,13 +90,14 @@ public class ExcelPoiHelper {
         try {
             workbook = new HSSFWorkbook(fis);
 
-            HSSFSheet[] sheets = new HSSFSheet[3];
-            sheets[0] = workbook.getSheetAt(0);
-            sheets[1] = workbook.getSheetAt(1);
-            sheets[2] = workbook.getSheetAt(2);
+//            HSSFSheet[] sheets = new HSSFSheet[3];
+//            sheets[0] = workbook.getSheetAt(0);
+//            sheets[1] = workbook.getSheetAt(1);
+//            sheets[2] = workbook.getSheetAt(2);
 //            HSSFSheet sheet = workbook.getSheetAt(0);
-            for (HSSFSheet sheet : sheets) {
-                for (int i = 1; i <= sheet.getLastRowNum(); i++) {
+//            for (HSSFSheet sheet : sheets) {
+            HSSFSheet sheet = workbook.getSheetAt(0);
+                for (int i = 1; i <= workbook.getSheetAt(0).getLastRowNum(); i++) {
                     HSSFRow row = sheet.getRow(i);
                     data.put(i, new ArrayList<>());
                     log.info("Index {}", i);
@@ -140,7 +138,7 @@ public class ExcelPoiHelper {
                         }
                     }
                 }
-            }
+//            }
         } finally {
             if (workbook != null) {
                 workbook.close();
