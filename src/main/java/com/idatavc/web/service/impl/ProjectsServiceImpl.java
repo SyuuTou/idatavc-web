@@ -66,8 +66,13 @@ public class ProjectsServiceImpl implements ProjectsService {
             final FoundersWork foundersWork = new FoundersWork();
 
             String index0 = v.get(0).getContent();
-            if (!"".equals(index0)) {
-                projects.setSerialNumber(Integer.valueOf(index0.substring(0, index0.indexOf("."))));
+            if (!StringUtils.isEmpty(index0)) {
+                if (index0.indexOf(".")!=-1) {
+                    projects.setSerialNumber(Integer.valueOf(index0.substring(0, index0.indexOf("."))));
+                }else{
+                    projects.setSerialNumber(Integer.valueOf(index0));
+
+                }
             }
             investmentInstitutions.setShortName(v.get(1).getContent());
 
