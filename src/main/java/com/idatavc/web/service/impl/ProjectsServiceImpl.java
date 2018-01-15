@@ -224,7 +224,7 @@ public class ProjectsServiceImpl implements ProjectsService {
 
 //            DateTimeFormatter formatDate = DateTimeFormat.forPattern("yyyy-MM-dd");
             String financingTimeCell = v.get(13).getContent();
-            if (financingTimeCell.equals("--")){
+            if (financingTimeCell.equals("--")||financingTimeCell.equals("-")){
                 financingTimeCell = "";
             }
             projectFinancingLog.setFinancingTime("".equals(financingTimeCell) ? null : formatter.parseDateTime(financingTimeCell.length() < 9 ? financingTimeCell + "-01" : financingTimeCell).toDate());
