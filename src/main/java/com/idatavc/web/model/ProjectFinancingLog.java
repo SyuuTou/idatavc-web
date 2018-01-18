@@ -116,14 +116,14 @@ public class ProjectFinancingLog {
     @Column(name = "total_amount_status")
     private Integer totalAmountStatus;
 
-    @Column(name = "project_financing_useful")
-    private String projectFinancingUseful;
-
     /**
      * 保存年份的冗余字段
      */
     @Column(name = "financing_time_year")
     private String financingTimeYear;
+
+    @Column(name = "project_financing_useful")
+    private String projectFinancingUseful;
 
     /**
      * @return ID
@@ -488,20 +488,6 @@ public class ProjectFinancingLog {
     }
 
     /**
-     * @return project_financing_useful
-     */
-    public String getProjectFinancingUseful() {
-        return projectFinancingUseful;
-    }
-
-    /**
-     * @param projectFinancingUseful
-     */
-    public void setProjectFinancingUseful(String projectFinancingUseful) {
-        this.projectFinancingUseful = projectFinancingUseful;
-    }
-
-    /**
      * 获取保存年份的冗余字段
      *
      * @return financing_time_year - 保存年份的冗余字段
@@ -517,5 +503,19 @@ public class ProjectFinancingLog {
      */
     public void setFinancingTimeYear(String financingTimeYear) {
         this.financingTimeYear = financingTimeYear;
+    }
+
+    /**
+     * @return project_financing_useful
+     */
+    public String getProjectFinancingUseful() {
+        return projectFinancingUseful;
+    }
+
+    /**
+     * @param projectFinancingUseful
+     */
+    public void setProjectFinancingUseful(String projectFinancingUseful) {
+        this.projectFinancingUseful = projectFinancingUseful;
     }
 }

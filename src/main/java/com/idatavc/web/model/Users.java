@@ -133,6 +133,17 @@ public class Users {
     private String idType;
 
     /**
+     * 微信唯一ID
+     */
+    private String unionid;
+
+    /**
+     * 应用id
+     */
+    @Column(name = "meta_app_id")
+    private Integer metaAppId;
+
+    /**
      * @return ID
      */
     public Integer getId() {
@@ -554,5 +565,41 @@ public class Users {
      */
     public void setIdType(String idType) {
         this.idType = idType;
+    }
+
+    /**
+     * 获取微信唯一ID
+     *
+     * @return unionid - 微信唯一ID
+     */
+    public String getUnionid() {
+        return unionid;
+    }
+
+    /**
+     * 设置微信唯一ID
+     *
+     * @param unionid 微信唯一ID
+     */
+    public void setUnionid(String unionid) {
+        this.unionid = unionid;
+    }
+
+    /**
+     * 获取应用id
+     *
+     * @return meta_app_id - 应用id
+     */
+    public Integer getMetaAppId() {
+        return metaAppId;
+    }
+
+    /**
+     * 设置应用id
+     *
+     * @param metaAppId 应用id
+     */
+    public void setMetaAppId(Integer metaAppId) {
+        this.metaAppId = metaAppId;
     }
 }

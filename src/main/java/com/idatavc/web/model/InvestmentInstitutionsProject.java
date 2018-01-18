@@ -7,14 +7,12 @@ public class InvestmentInstitutionsProject {
     /**
      * 项目ID
      */
-    @Id
     @Column(name = "project_id")
     private Integer projectId;
 
     /**
      * 机构ID
      */
-    @Id
     @Column(name = "investment_institutions_id")
     private Integer investmentInstitutionsId;
 

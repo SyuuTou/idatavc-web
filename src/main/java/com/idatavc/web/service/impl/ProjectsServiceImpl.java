@@ -258,7 +258,9 @@ public class ProjectsServiceImpl implements ProjectsService {
             }else {
                 rate = new BigDecimal(1);
             }
-            projectFinancingLog.setAmount(new BigDecimal(amount).multiply(rate));
+            if (!StringUtils.isEmpty(amount)) {
+                projectFinancingLog.setAmount(new BigDecimal(amount).multiply(rate));
+            }
 
             String stockRight = v.get(17).getContent();
             if ("".equals(stockRight)) {

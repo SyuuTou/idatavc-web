@@ -41,6 +41,11 @@ public class Interview {
     private Date createTime;
 
     /**
+     * 约谈批注_新增
+     */
+    private String comment;
+
+    /**
      * 获取约谈id
      *
      * @return ID - 约谈id
@@ -146,5 +151,23 @@ public class Interview {
      */
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    /**
+     * 获取约谈批注_新增
+     *
+     * @return comment - 约谈批注_新增
+     */
+    public String getComment() {
+        return comment;
+    }
+
+    /**
+     * 设置约谈批注_新增
+     *
+     * @param comment 约谈批注_新增
+     */
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 }

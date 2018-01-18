@@ -43,6 +43,12 @@ public class UserFilterLog {
     private String work;
 
     /**
+     * 融资年份
+     */
+    @Column(name = "financing_year")
+    private String financingYear;
+
+    /**
      * 筛选用户id(MD5)关联原平台用户id
      */
     @Column(name = "user_id")
@@ -173,6 +179,24 @@ public class UserFilterLog {
      */
     public void setWork(String work) {
         this.work = work;
+    }
+
+    /**
+     * 获取融资年份
+     *
+     * @return financing_year - 融资年份
+     */
+    public String getFinancingYear() {
+        return financingYear;
+    }
+
+    /**
+     * 设置融资年份
+     *
+     * @param financingYear 融资年份
+     */
+    public void setFinancingYear(String financingYear) {
+        this.financingYear = financingYear;
     }
 
     /**

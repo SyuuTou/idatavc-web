@@ -31,7 +31,7 @@ public class Follow {
     private Date createTime;
 
     /**
-     * 关注状态：0：关注，1未关注
+     * 关注状态：1：关注，0未关注
      */
     private Integer status;
 
@@ -108,18 +108,18 @@ public class Follow {
     }
 
     /**
-     * 获取关注状态：0：关注，1未关注
+     * 获取关注状态：1：关注，0未关注
      *
-     * @return status - 关注状态：0：关注，1未关注
+     * @return status - 关注状态：1：关注，0未关注
      */
     public Integer getStatus() {
         return status;
     }
 
     /**
-     * 设置关注状态：0：关注，1未关注
+     * 设置关注状态：1：关注，0未关注
      *
-     * @param status 关注状态：0：关注，1未关注
+     * @param status 关注状态：1：关注，0未关注
      */
     public void setStatus(Integer status) {
         this.status = status;

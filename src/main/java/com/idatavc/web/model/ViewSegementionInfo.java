@@ -1,6 +1,5 @@
 package com.idatavc.web.model;
 
-import java.util.Date;
 import javax.persistence.*;
 
 @Table(name = "view_segemention_info")
@@ -8,110 +7,53 @@ public class ViewSegementionInfo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    /**
-     * 项目编号
-     */
     @Column(name = "serial_number")
     private Integer serialNumber;
 
-    /**
-     * 项目简称
-     */
     @Column(name = "short_name")
-    private String shortName;
+    private Integer shortName;
 
-    /**
-     * 工商注册全称
-     */
     @Column(name = "full_name")
-    private String fullName;
+    private Integer fullName;
 
-    /**
-     * 一句话介绍
-     */
     @Column(name = "kernel_desc")
-    private String kernelDesc;
+    private Integer kernelDesc;
 
-    /**
-     * 官网url
-     */
-    private String url;
+    private Integer url;
 
     @Column(name = "established_time")
-    private Date establishedTime;
+    private Integer establishedTime;
 
-    /**
-     * 轮次
-     */
-    private String stage;
+    private Integer stage;
 
-    /**
-     * 领域名称
-     */
-    private String segmentation;
+    private Integer segmentation;
 
-    /**
-     * 项目标签
-     */
     @Column(name = "item_label")
-    private String itemLabel;
+    private Integer itemLabel;
 
-    /**
-     * 公司地址
-     */
-    private String address;
+    private Integer address;
 
-    /**
-     * 地域
-     */
-    private String territory;
+    private Integer territory;
 
-    /**
-     * 公司成立时间
-     */
     @Column(name = "create_time")
-    private Date createTime;
+    private Integer createTime;
 
-    /**
-     * 洲
-     */
-    private String continent;
+    private Integer continent;
 
-    /**
-     * 国家
-     */
-    private String country;
+    private Integer country;
 
-    /**
-     * 省
-     */
-    private String province;
+    private Integer province;
 
-    /**
-     * 城市
-     */
-    private String city;
+    private Integer city;
 
-    /**
-     * 区县
-     */
-    private String region;
+    private Integer region;
 
-    /**
-     * 机构简称
-     */
     @Column(name = "investment_institutions_short_name")
-    private String investmentInstitutionsShortName;
+    private Integer investmentInstitutionsShortName;
 
-    /**
-     * 机构备注
-     */
     @Column(name = "investment_institutions_commet")
-    private String investmentInstitutionsCommet;
+    private Integer investmentInstitutionsCommet;
 
-    /**
-     * 机构类型：1: 50机构，0: 非50机构
-     */
     @Column(name = "investment_institutions_type")
     private Integer investmentInstitutionsType;
 
@@ -130,356 +72,280 @@ public class ViewSegementionInfo {
     }
 
     /**
-     * 获取项目编号
-     *
-     * @return serial_number - 项目编号
+     * @return serial_number
      */
     public Integer getSerialNumber() {
         return serialNumber;
     }
 
     /**
-     * 设置项目编号
-     *
-     * @param serialNumber 项目编号
+     * @param serialNumber
      */
     public void setSerialNumber(Integer serialNumber) {
         this.serialNumber = serialNumber;
     }
 
     /**
-     * 获取项目简称
-     *
-     * @return short_name - 项目简称
+     * @return short_name
      */
-    public String getShortName() {
+    public Integer getShortName() {
         return shortName;
     }
 
     /**
-     * 设置项目简称
-     *
-     * @param shortName 项目简称
+     * @param shortName
      */
-    public void setShortName(String shortName) {
+    public void setShortName(Integer shortName) {
         this.shortName = shortName;
     }
 
     /**
-     * 获取工商注册全称
-     *
-     * @return full_name - 工商注册全称
+     * @return full_name
      */
-    public String getFullName() {
+    public Integer getFullName() {
         return fullName;
     }
 
     /**
-     * 设置工商注册全称
-     *
-     * @param fullName 工商注册全称
+     * @param fullName
      */
-    public void setFullName(String fullName) {
+    public void setFullName(Integer fullName) {
         this.fullName = fullName;
     }
 
     /**
-     * 获取一句话介绍
-     *
-     * @return kernel_desc - 一句话介绍
+     * @return kernel_desc
      */
-    public String getKernelDesc() {
+    public Integer getKernelDesc() {
         return kernelDesc;
     }
 
     /**
-     * 设置一句话介绍
-     *
-     * @param kernelDesc 一句话介绍
+     * @param kernelDesc
      */
-    public void setKernelDesc(String kernelDesc) {
+    public void setKernelDesc(Integer kernelDesc) {
         this.kernelDesc = kernelDesc;
     }
 
     /**
-     * 获取官网url
-     *
-     * @return url - 官网url
+     * @return url
      */
-    public String getUrl() {
+    public Integer getUrl() {
         return url;
     }
 
     /**
-     * 设置官网url
-     *
-     * @param url 官网url
+     * @param url
      */
-    public void setUrl(String url) {
+    public void setUrl(Integer url) {
         this.url = url;
     }
 
     /**
      * @return established_time
      */
-    public Date getEstablishedTime() {
+    public Integer getEstablishedTime() {
         return establishedTime;
     }
 
     /**
      * @param establishedTime
      */
-    public void setEstablishedTime(Date establishedTime) {
+    public void setEstablishedTime(Integer establishedTime) {
         this.establishedTime = establishedTime;
     }
 
     /**
-     * 获取轮次
-     *
-     * @return stage - 轮次
+     * @return stage
      */
-    public String getStage() {
+    public Integer getStage() {
         return stage;
     }
 
     /**
-     * 设置轮次
-     *
-     * @param stage 轮次
+     * @param stage
      */
-    public void setStage(String stage) {
+    public void setStage(Integer stage) {
         this.stage = stage;
     }
 
     /**
-     * 获取领域名称
-     *
-     * @return segmentation - 领域名称
+     * @return segmentation
      */
-    public String getSegmentation() {
+    public Integer getSegmentation() {
         return segmentation;
     }
 
     /**
-     * 设置领域名称
-     *
-     * @param segmentation 领域名称
+     * @param segmentation
      */
-    public void setSegmentation(String segmentation) {
+    public void setSegmentation(Integer segmentation) {
         this.segmentation = segmentation;
     }
 
     /**
-     * 获取项目标签
-     *
-     * @return item_label - 项目标签
+     * @return item_label
      */
-    public String getItemLabel() {
+    public Integer getItemLabel() {
         return itemLabel;
     }
 
     /**
-     * 设置项目标签
-     *
-     * @param itemLabel 项目标签
+     * @param itemLabel
      */
-    public void setItemLabel(String itemLabel) {
+    public void setItemLabel(Integer itemLabel) {
         this.itemLabel = itemLabel;
     }
 
     /**
-     * 获取公司地址
-     *
-     * @return address - 公司地址
+     * @return address
      */
-    public String getAddress() {
+    public Integer getAddress() {
         return address;
     }
 
     /**
-     * 设置公司地址
-     *
-     * @param address 公司地址
+     * @param address
      */
-    public void setAddress(String address) {
+    public void setAddress(Integer address) {
         this.address = address;
     }
 
     /**
-     * 获取地域
-     *
-     * @return territory - 地域
+     * @return territory
      */
-    public String getTerritory() {
+    public Integer getTerritory() {
         return territory;
     }
 
     /**
-     * 设置地域
-     *
-     * @param territory 地域
+     * @param territory
      */
-    public void setTerritory(String territory) {
+    public void setTerritory(Integer territory) {
         this.territory = territory;
     }
 
     /**
-     * 获取公司成立时间
-     *
-     * @return create_time - 公司成立时间
+     * @return create_time
      */
-    public Date getCreateTime() {
+    public Integer getCreateTime() {
         return createTime;
     }
 
     /**
-     * 设置公司成立时间
-     *
-     * @param createTime 公司成立时间
+     * @param createTime
      */
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(Integer createTime) {
         this.createTime = createTime;
     }
 
     /**
-     * 获取洲
-     *
-     * @return continent - 洲
+     * @return continent
      */
-    public String getContinent() {
+    public Integer getContinent() {
         return continent;
     }
 
     /**
-     * 设置洲
-     *
-     * @param continent 洲
+     * @param continent
      */
-    public void setContinent(String continent) {
+    public void setContinent(Integer continent) {
         this.continent = continent;
     }
 
     /**
-     * 获取国家
-     *
-     * @return country - 国家
+     * @return country
      */
-    public String getCountry() {
+    public Integer getCountry() {
         return country;
     }
 
     /**
-     * 设置国家
-     *
-     * @param country 国家
+     * @param country
      */
-    public void setCountry(String country) {
+    public void setCountry(Integer country) {
         this.country = country;
     }
 
     /**
-     * 获取省
-     *
-     * @return province - 省
+     * @return province
      */
-    public String getProvince() {
+    public Integer getProvince() {
         return province;
     }
 
     /**
-     * 设置省
-     *
-     * @param province 省
+     * @param province
      */
-    public void setProvince(String province) {
+    public void setProvince(Integer province) {
         this.province = province;
     }
 
     /**
-     * 获取城市
-     *
-     * @return city - 城市
+     * @return city
      */
-    public String getCity() {
+    public Integer getCity() {
         return city;
     }
 
     /**
-     * 设置城市
-     *
-     * @param city 城市
+     * @param city
      */
-    public void setCity(String city) {
+    public void setCity(Integer city) {
         this.city = city;
     }
 
     /**
-     * 获取区县
-     *
-     * @return region - 区县
+     * @return region
      */
-    public String getRegion() {
+    public Integer getRegion() {
         return region;
     }
 
     /**
-     * 设置区县
-     *
-     * @param region 区县
+     * @param region
      */
-    public void setRegion(String region) {
+    public void setRegion(Integer region) {
         this.region = region;
     }
 
     /**
-     * 获取机构简称
-     *
-     * @return investment_institutions_short_name - 机构简称
+     * @return investment_institutions_short_name
      */
-    public String getInvestmentInstitutionsShortName() {
+    public Integer getInvestmentInstitutionsShortName() {
         return investmentInstitutionsShortName;
     }
 
     /**
-     * 设置机构简称
-     *
-     * @param investmentInstitutionsShortName 机构简称
+     * @param investmentInstitutionsShortName
      */
-    public void setInvestmentInstitutionsShortName(String investmentInstitutionsShortName) {
+    public void setInvestmentInstitutionsShortName(Integer investmentInstitutionsShortName) {
         this.investmentInstitutionsShortName = investmentInstitutionsShortName;
     }
 
     /**
-     * 获取机构备注
-     *
-     * @return investment_institutions_commet - 机构备注
+     * @return investment_institutions_commet
      */
-    public String getInvestmentInstitutionsCommet() {
+    public Integer getInvestmentInstitutionsCommet() {
         return investmentInstitutionsCommet;
     }
 
     /**
-     * 设置机构备注
-     *
-     * @param investmentInstitutionsCommet 机构备注
+     * @param investmentInstitutionsCommet
      */
-    public void setInvestmentInstitutionsCommet(String investmentInstitutionsCommet) {
+    public void setInvestmentInstitutionsCommet(Integer investmentInstitutionsCommet) {
         this.investmentInstitutionsCommet = investmentInstitutionsCommet;
     }
 
     /**
-     * 获取机构类型：1: 50机构，0: 非50机构
-     *
-     * @return investment_institutions_type - 机构类型：1: 50机构，0: 非50机构
+     * @return investment_institutions_type
      */
     public Integer getInvestmentInstitutionsType() {
         return investmentInstitutionsType;
     }
 
     /**
-     * 设置机构类型：1: 50机构，0: 非50机构
-     *
-     * @param investmentInstitutionsType 机构类型：1: 50机构，0: 非50机构
+     * @param investmentInstitutionsType
      */
     public void setInvestmentInstitutionsType(Integer investmentInstitutionsType) {
         this.investmentInstitutionsType = investmentInstitutionsType;

@@ -1,5 +1,6 @@
 package com.idatavc.web.model;
 
+import java.util.Date;
 import javax.persistence.*;
 
 @Table(name = "admin_user")
@@ -7,6 +8,35 @@ public class AdminUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    /**
+     * 对应用户表id
+     */
+    @Column(name = "user_id")
+    private Integer userId;
+
+    /**
+     * 管理员类型，0表示root管理员（超级管理员），1普通管理员
+     */
+    @Column(name = "admin_type")
+    private Integer adminType;
+
+    /**
+     * 应用id
+     */
+    @Column(name = "meta_app_id")
+    private Integer metaAppId;
+
+    /**
+     * 创建时间
+     */
+    @Column(name = "create_time")
+    private Date createTime;
+
+    /**
+     * 0表示无效了，1表示有效
+     */
+    private Integer yn;
 
     /**
      * @return id
@@ -20,5 +50,95 @@ public class AdminUser {
      */
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    /**
+     * 获取对应用户表id
+     *
+     * @return user_id - 对应用户表id
+     */
+    public Integer getUserId() {
+        return userId;
+    }
+
+    /**
+     * 设置对应用户表id
+     *
+     * @param userId 对应用户表id
+     */
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    /**
+     * 获取管理员类型，0表示root管理员（超级管理员），1普通管理员
+     *
+     * @return admin_type - 管理员类型，0表示root管理员（超级管理员），1普通管理员
+     */
+    public Integer getAdminType() {
+        return adminType;
+    }
+
+    /**
+     * 设置管理员类型，0表示root管理员（超级管理员），1普通管理员
+     *
+     * @param adminType 管理员类型，0表示root管理员（超级管理员），1普通管理员
+     */
+    public void setAdminType(Integer adminType) {
+        this.adminType = adminType;
+    }
+
+    /**
+     * 获取应用id
+     *
+     * @return meta_app_id - 应用id
+     */
+    public Integer getMetaAppId() {
+        return metaAppId;
+    }
+
+    /**
+     * 设置应用id
+     *
+     * @param metaAppId 应用id
+     */
+    public void setMetaAppId(Integer metaAppId) {
+        this.metaAppId = metaAppId;
+    }
+
+    /**
+     * 获取创建时间
+     *
+     * @return create_time - 创建时间
+     */
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    /**
+     * 设置创建时间
+     *
+     * @param createTime 创建时间
+     */
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    /**
+     * 获取0表示无效了，1表示有效
+     *
+     * @return yn - 0表示无效了，1表示有效
+     */
+    public Integer getYn() {
+        return yn;
+    }
+
+    /**
+     * 设置0表示无效了，1表示有效
+     *
+     * @param yn 0表示无效了，1表示有效
+     */
+    public void setYn(Integer yn) {
+        this.yn = yn;
     }
 }

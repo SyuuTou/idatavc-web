@@ -171,14 +171,6 @@ CHANGE COLUMN `project_type` `project_type` INT(11) NULL DEFAULT NULL COMMENT 'ç
     @Column(name = "total_amount")
     private BigDecimal totalAmount;
 
-    public BigDecimal getTotalAmount() {
-        return totalAmount;
-    }
-
-    public void setTotalAmount(BigDecimal totalAmount) {
-        this.totalAmount = totalAmount;
-    }
-
     /**
      * @return ID
      */
@@ -733,5 +725,19 @@ CHANGE COLUMN `project_type` `project_type` INT(11) NULL DEFAULT NULL COMMENT 'ç
      */
     public void setCityCountMin(Integer cityCountMin) {
         this.cityCountMin = cityCountMin;
+    }
+
+    /**
+     * @return total_amount
+     */
+    public BigDecimal getTotalAmount() {
+        return totalAmount;
+    }
+
+    /**
+     * @param totalAmount
+     */
+    public void setTotalAmount(BigDecimal totalAmount) {
+        this.totalAmount = totalAmount;
     }
 }

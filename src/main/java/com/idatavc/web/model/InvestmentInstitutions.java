@@ -1,5 +1,6 @@
 package com.idatavc.web.model;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.*;
 
@@ -15,6 +16,18 @@ public class InvestmentInstitutions {
      */
     @Column(name = "short_name")
     private String shortName;
+
+    /**
+     * 机构工商注册名称_新增
+     */
+    @Column(name = "full_name")
+    private String fullName;
+
+    /**
+     * 唯一key
+     */
+    @Column(name = "key_words")
+    private String keyWords;
 
     /**
      * 机构备注
@@ -94,6 +107,78 @@ public class InvestmentInstitutions {
     private Integer count;
 
     /**
+     * 总基金管理规模
+     */
+    @Column(name = "total_fund_scale")
+    private BigDecimal totalFundScale;
+
+    /**
+     * 人民币基金管理规模
+     */
+    @Column(name = "rmb_fund_scale")
+    private BigDecimal rmbFundScale;
+
+    /**
+     * 美元基金管理规模
+     */
+    @Column(name = "dollar_fund_scale")
+    private BigDecimal dollarFundScale;
+
+    /**
+     * 人民币区间开始
+     */
+    @Column(name = "rmb_invest_amount_min")
+    private BigDecimal rmbInvestAmountMin;
+
+    /**
+     * 人民币区间结束
+     */
+    @Column(name = "rmb_invest_amount_max")
+    private BigDecimal rmbInvestAmountMax;
+
+    /**
+     * 美元区间开始
+     */
+    @Column(name = "dollar_invest_amount_min")
+    private BigDecimal dollarInvestAmountMin;
+
+    /**
+     * 美元区间结束
+     */
+    @Column(name = "dollar_invest_amount_max")
+    private BigDecimal dollarInvestAmountMax;
+
+    /**
+     * 投资理念_新增
+     */
+    @Column(name = "investment_idea")
+    private String investmentIdea;
+
+    /**
+     * 项目需求_新增
+     */
+    @Column(name = "product_requirement")
+    private String productRequirement;
+
+    /**
+     * 招聘需求_新增
+     */
+    @Column(name = "recruitment_requirement")
+    private String recruitmentRequirement;
+
+    /**
+     * 机构类型： 天使（Angell）、VC、PE
+     */
+    @Column(name = "investment_institutions_type")
+    private String investmentInstitutionsType;
+
+    /**
+     * 机构成立时间
+     */
+    @Column(name = "established_time")
+    private String establishedTime;
+
+    /**
      * @return ID
      */
     public Integer getId() {
@@ -123,6 +208,42 @@ public class InvestmentInstitutions {
      */
     public void setShortName(String shortName) {
         this.shortName = shortName;
+    }
+
+    /**
+     * 获取机构工商注册名称_新增
+     *
+     * @return full_name - 机构工商注册名称_新增
+     */
+    public String getFullName() {
+        return fullName;
+    }
+
+    /**
+     * 设置机构工商注册名称_新增
+     *
+     * @param fullName 机构工商注册名称_新增
+     */
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    /**
+     * 获取唯一key
+     *
+     * @return key_words - 唯一key
+     */
+    public String getKeyWords() {
+        return keyWords;
+    }
+
+    /**
+     * 设置唯一key
+     *
+     * @param keyWords 唯一key
+     */
+    public void setKeyWords(String keyWords) {
+        this.keyWords = keyWords;
     }
 
     /**
@@ -399,5 +520,221 @@ public class InvestmentInstitutions {
      */
     public void setCount(Integer count) {
         this.count = count;
+    }
+
+    /**
+     * 获取总基金管理规模
+     *
+     * @return total_fund_scale - 总基金管理规模
+     */
+    public BigDecimal getTotalFundScale() {
+        return totalFundScale;
+    }
+
+    /**
+     * 设置总基金管理规模
+     *
+     * @param totalFundScale 总基金管理规模
+     */
+    public void setTotalFundScale(BigDecimal totalFundScale) {
+        this.totalFundScale = totalFundScale;
+    }
+
+    /**
+     * 获取人民币基金管理规模
+     *
+     * @return rmb_fund_scale - 人民币基金管理规模
+     */
+    public BigDecimal getRmbFundScale() {
+        return rmbFundScale;
+    }
+
+    /**
+     * 设置人民币基金管理规模
+     *
+     * @param rmbFundScale 人民币基金管理规模
+     */
+    public void setRmbFundScale(BigDecimal rmbFundScale) {
+        this.rmbFundScale = rmbFundScale;
+    }
+
+    /**
+     * 获取美元基金管理规模
+     *
+     * @return dollar_fund_scale - 美元基金管理规模
+     */
+    public BigDecimal getDollarFundScale() {
+        return dollarFundScale;
+    }
+
+    /**
+     * 设置美元基金管理规模
+     *
+     * @param dollarFundScale 美元基金管理规模
+     */
+    public void setDollarFundScale(BigDecimal dollarFundScale) {
+        this.dollarFundScale = dollarFundScale;
+    }
+
+    /**
+     * 获取人民币区间开始
+     *
+     * @return rmb_invest_amount_min - 人民币区间开始
+     */
+    public BigDecimal getRmbInvestAmountMin() {
+        return rmbInvestAmountMin;
+    }
+
+    /**
+     * 设置人民币区间开始
+     *
+     * @param rmbInvestAmountMin 人民币区间开始
+     */
+    public void setRmbInvestAmountMin(BigDecimal rmbInvestAmountMin) {
+        this.rmbInvestAmountMin = rmbInvestAmountMin;
+    }
+
+    /**
+     * 获取人民币区间结束
+     *
+     * @return rmb_invest_amount_max - 人民币区间结束
+     */
+    public BigDecimal getRmbInvestAmountMax() {
+        return rmbInvestAmountMax;
+    }
+
+    /**
+     * 设置人民币区间结束
+     *
+     * @param rmbInvestAmountMax 人民币区间结束
+     */
+    public void setRmbInvestAmountMax(BigDecimal rmbInvestAmountMax) {
+        this.rmbInvestAmountMax = rmbInvestAmountMax;
+    }
+
+    /**
+     * 获取美元区间开始
+     *
+     * @return dollar_invest_amount_min - 美元区间开始
+     */
+    public BigDecimal getDollarInvestAmountMin() {
+        return dollarInvestAmountMin;
+    }
+
+    /**
+     * 设置美元区间开始
+     *
+     * @param dollarInvestAmountMin 美元区间开始
+     */
+    public void setDollarInvestAmountMin(BigDecimal dollarInvestAmountMin) {
+        this.dollarInvestAmountMin = dollarInvestAmountMin;
+    }
+
+    /**
+     * 获取美元区间结束
+     *
+     * @return dollar_invest_amount_max - 美元区间结束
+     */
+    public BigDecimal getDollarInvestAmountMax() {
+        return dollarInvestAmountMax;
+    }
+
+    /**
+     * 设置美元区间结束
+     *
+     * @param dollarInvestAmountMax 美元区间结束
+     */
+    public void setDollarInvestAmountMax(BigDecimal dollarInvestAmountMax) {
+        this.dollarInvestAmountMax = dollarInvestAmountMax;
+    }
+
+    /**
+     * 获取投资理念_新增
+     *
+     * @return investment_idea - 投资理念_新增
+     */
+    public String getInvestmentIdea() {
+        return investmentIdea;
+    }
+
+    /**
+     * 设置投资理念_新增
+     *
+     * @param investmentIdea 投资理念_新增
+     */
+    public void setInvestmentIdea(String investmentIdea) {
+        this.investmentIdea = investmentIdea;
+    }
+
+    /**
+     * 获取项目需求_新增
+     *
+     * @return product_requirement - 项目需求_新增
+     */
+    public String getProductRequirement() {
+        return productRequirement;
+    }
+
+    /**
+     * 设置项目需求_新增
+     *
+     * @param productRequirement 项目需求_新增
+     */
+    public void setProductRequirement(String productRequirement) {
+        this.productRequirement = productRequirement;
+    }
+
+    /**
+     * 获取招聘需求_新增
+     *
+     * @return recruitment_requirement - 招聘需求_新增
+     */
+    public String getRecruitmentRequirement() {
+        return recruitmentRequirement;
+    }
+
+    /**
+     * 设置招聘需求_新增
+     *
+     * @param recruitmentRequirement 招聘需求_新增
+     */
+    public void setRecruitmentRequirement(String recruitmentRequirement) {
+        this.recruitmentRequirement = recruitmentRequirement;
+    }
+
+    /**
+     * 获取机构类型： 天使（Angell）、VC、PE
+     *
+     * @return investment_institutions_type - 机构类型： 天使（Angell）、VC、PE
+     */
+    public String getInvestmentInstitutionsType() {
+        return investmentInstitutionsType;
+    }
+
+    /**
+     * 设置机构类型： 天使（Angell）、VC、PE
+     *
+     * @param investmentInstitutionsType 机构类型： 天使（Angell）、VC、PE
+     */
+    public void setInvestmentInstitutionsType(String investmentInstitutionsType) {
+        this.investmentInstitutionsType = investmentInstitutionsType;
+    }
+
+    /**
+     * 获取机构成立时间
+     *
+     * @return established_time - 机构成立时间
+     */
+    public String getEstablishedTime() {
+        return establishedTime;
+    }
+
+    /**
+     * 设置机构成立时间
+     *
+     * @param establishedTime 机构成立时间
+     */
+    public void setEstablishedTime(String establishedTime) {
+        this.establishedTime = establishedTime;
     }
 }
