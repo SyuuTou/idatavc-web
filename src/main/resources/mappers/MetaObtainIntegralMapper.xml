@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.idatavc.web.mapper.MetaObtainIntegralMapper" >
+  <resultMap id="BaseResultMap" type="com.idatavc.web.model.MetaObtainIntegral" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="scene_key" property="sceneKey" jdbcType="VARCHAR" />
+    <result column="user_level" property="userLevel" jdbcType="INTEGER" />
+    <result column="integral" property="integral" jdbcType="INTEGER" />
+    <result column="period" property="period" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="yn" property="yn" jdbcType="INTEGER" />
+    <result column="ratio" property="ratio" jdbcType="REAL" />
+    <result column="deliver_num" property="deliverNum" jdbcType="INTEGER" />
+    <result column="projects_type" property="projectsType" jdbcType="INTEGER" />
+  </resultMap>
+</mapper>
