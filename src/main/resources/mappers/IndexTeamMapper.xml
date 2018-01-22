@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.idatavc.web.mapper.IndexTeamMapper" >
+  <resultMap id="BaseResultMap" type="com.idatavc.web.model.IndexTeam" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="project_id" property="projectId" jdbcType="INTEGER" />
+    <result column="founder" property="founder" jdbcType="INTEGER" />
+    <result column="partner" property="partner" jdbcType="INTEGER" />
+    <result column="members" property="members" jdbcType="INTEGER" />
+    <result column="educational_background" property="educationalBackground" jdbcType="INTEGER" />
+    <result column="work_background" property="workBackground" jdbcType="INTEGER" />
+    <result column="territory" property="territory" jdbcType="INTEGER" />
+  </resultMap>
+</mapper>

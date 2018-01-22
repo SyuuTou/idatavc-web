@@ -9,4 +9,10 @@
     <result column="education_experience" property="educationExperience" jdbcType="VARCHAR" />
     <result column="count" property="count" jdbcType="INTEGER" />
   </resultMap>
+
+  <select id="selectEdus" resultType="java.lang.String">
+    select education_experience from (
+select count(1), education_experience from founders_education where education_experience is not null and education_experience != '' group by education_experience
+order by count(1) desc ) a
+  </select>
 </mapper>

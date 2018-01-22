@@ -18,6 +18,12 @@ public class ProjectFinancingLog {
     private Integer projectId;
 
     /**
+     * 项目编号
+     */
+    @Column(name = "serial_number")
+    private Integer serialNumber;
+
+    /**
      * 投／融资时间
      */
     @Column(name = "financing_time")
@@ -126,6 +132,23 @@ public class ProjectFinancingLog {
     private String projectFinancingUseful;
 
     /**
+     * 数据来源类型表id
+     */
+    @Column(name = "data_soruce_type_id")
+    private Integer dataSoruceTypeId;
+
+    /**
+     * 更新时间
+     */
+    @Column(name = "update_time")
+    private Date updateTime;
+
+    /**
+     * 删除标志:0代表有效；1代表无效
+     */
+    private Integer yn;
+
+    /**
      * @return ID
      */
     public Integer getId() {
@@ -155,6 +178,24 @@ public class ProjectFinancingLog {
      */
     public void setProjectId(Integer projectId) {
         this.projectId = projectId;
+    }
+
+    /**
+     * 获取项目编号
+     *
+     * @return serial_number - 项目编号
+     */
+    public Integer getSerialNumber() {
+        return serialNumber;
+    }
+
+    /**
+     * 设置项目编号
+     *
+     * @param serialNumber 项目编号
+     */
+    public void setSerialNumber(Integer serialNumber) {
+        this.serialNumber = serialNumber;
     }
 
     /**
@@ -517,5 +558,59 @@ public class ProjectFinancingLog {
      */
     public void setProjectFinancingUseful(String projectFinancingUseful) {
         this.projectFinancingUseful = projectFinancingUseful;
+    }
+
+    /**
+     * 获取数据来源类型表id
+     *
+     * @return data_soruce_type_id - 数据来源类型表id
+     */
+    public Integer getDataSoruceTypeId() {
+        return dataSoruceTypeId;
+    }
+
+    /**
+     * 设置数据来源类型表id
+     *
+     * @param dataSoruceTypeId 数据来源类型表id
+     */
+    public void setDataSoruceTypeId(Integer dataSoruceTypeId) {
+        this.dataSoruceTypeId = dataSoruceTypeId;
+    }
+
+    /**
+     * 获取更新时间
+     *
+     * @return update_time - 更新时间
+     */
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    /**
+     * 设置更新时间
+     *
+     * @param updateTime 更新时间
+     */
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    /**
+     * 获取删除标志:0代表有效；1代表无效
+     *
+     * @return yn - 删除标志:0代表有效；1代表无效
+     */
+    public Integer getYn() {
+        return yn;
+    }
+
+    /**
+     * 设置删除标志:0代表有效；1代表无效
+     *
+     * @param yn 删除标志:0代表有效；1代表无效
+     */
+    public void setYn(Integer yn) {
+        this.yn = yn;
     }
 }

@@ -11,10 +11,21 @@
     <result column="demand" property="demand" jdbcType="VARCHAR" />
     <result column="investment_amount_low" property="investmentAmountLow" jdbcType="DECIMAL" />
     <result column="investment_amount_high" property="investmentAmountHigh" jdbcType="DECIMAL" />
+    <result column="investment_amount_low_dollars" property="investmentAmountLowDollars" jdbcType="DECIMAL" />
+    <result column="investment_amount_high_dollars" property="investmentAmountHighDollars" jdbcType="DECIMAL" />
     <result column="recently_concerned_subdivision_circuit" property="recentlyConcernedSubdivisionCircuit" jdbcType="VARCHAR" />
     <result column="concerned_founders_characteristic" property="concernedFoundersCharacteristic" jdbcType="VARCHAR" />
     <result column="industry" property="industry" jdbcType="VARCHAR" />
     <result column="financing_stage" property="financingStage" jdbcType="VARCHAR" />
     <result column="creat_time" property="creatTime" jdbcType="TIMESTAMP" />
+    <result column="future" property="future" jdbcType="VARCHAR" />
+    <result column="weights" property="weights" jdbcType="INTEGER" />
+    <result column="demand_status" property="demandStatus" jdbcType="INTEGER" />
+    <result column="appid" property="appid" jdbcType="INTEGER" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="company_name" property="companyName" jdbcType="VARCHAR" />
+    <result column="company_duties" property="companyDuties" jdbcType="VARCHAR" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="phonenumber" property="phonenumber" jdbcType="VARCHAR" />
   </resultMap>
 </mapper>

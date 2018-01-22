@@ -314,10 +314,16 @@ public class ResolveFileServiceImpl implements ResolveFileService {
                         if (dd.length == 2) {
 
                             date = dd[0] + "-" + (dd[1].length() < 2 ? "0" + dd[1] : dd[1]) + "-01";
+                            if ("2012-11-31".equals(date)){
+                                date = "2012-11-30";
+                            }
                             projectFinancingLog.setFinancingTime(formatter.parseDateTime(date).toDate());
                         } else {
 
                             date = dd[0] + "-" + (dd[1].length() < 2 ? "0" + dd[1] : dd[1]) + "-" + (dd[2].length() < 2 ? "0" + dd[2] : dd[2]);
+                            if ("2012-11-31".equals(date)){
+                                date = "2012-11-30";
+                            }
                             projectFinancingLog.setFinancingTime(formatter.parseDateTime(date).toDate());
                         }
                     }
@@ -336,16 +342,26 @@ public class ResolveFileServiceImpl implements ResolveFileService {
                 projectFinancingLog.setStage(projectCrawler.getStage());
                 String date;
                 String[] dd = projectCrawler.getFinancingTime().replace(".", "/").split("/");
-                if (null != dd && dd.length > 1) {
-                    if (dd.length == 2) {
+                try {
+                    if (null != dd && dd.length > 1) {
+                        if (dd.length == 2) {
 
-                        date = dd[0] + "-" + (dd[1].length() < 2 ? "0" + dd[1] : dd[1]) + "-01";
-                        projectFinancingLog.setFinancingTime(formatter.parseDateTime(date).toDate());
-                    } else {
+                            date = dd[0] + "-" + (dd[1].length() < 2 ? "0" + dd[1] : dd[1]) + "-01";
+                            if ("2012-11-31".equals(date)){
+                                date = "2012-11-30";
+                            }
+                            projectFinancingLog.setFinancingTime(formatter.parseDateTime(date).toDate());
+                        } else {
 
-                        date = dd[0] + "-" + (dd[1].length() < 2 ? "0" + dd[1] : dd[1]) + "-" + (dd[2].length() < 2 ? "0" + dd[2] : dd[2]);
-                        projectFinancingLog.setFinancingTime(formatter.parseDateTime(date).toDate());
+                            date = dd[0] + "-" + (dd[1].length() < 2 ? "0" + dd[1] : dd[1]) + "-" + (dd[2].length() < 2 ? "0" + dd[2] : dd[2]);
+                            if ("2012-11-31".equals(date)){
+                                date = "2012-11-30";
+                            }
+                            projectFinancingLog.setFinancingTime(formatter.parseDateTime(date).toDate());
+                        }
                     }
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
 
 
@@ -356,6 +372,10 @@ public class ResolveFileServiceImpl implements ResolveFileService {
                 investmentInstitutionsProjectMapper.insert(investmentInstitutionsProject);
             }
 //            projects.
+
+
+
+
 
 
     }
@@ -386,26 +406,26 @@ public class ResolveFileServiceImpl implements ResolveFileService {
             return "";
         }
 
-//        if (filePath.indexOf(".txt")> 0) {
-//            StringBuffer sb = null;
-//            try {
-//                File f = new File(filePath);
-//                FileInputStream fis = new FileInputStream(f);
-//                InputStreamReader isr = new InputStreamReader(fis, initBookEncode(fis));
-//                BufferedReader reader = new BufferedReader(isr);
-//                sb = new StringBuffer();
-//                String s;
-//                while ((s = reader.readLine()) != null) {
-//                    sb.append(s + "\\r\\n");
-//                }
-//                reader.close();
-//                isr.close();
-//                fis.close();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//            return sb.toString();
-//        }else{
+        if (filePath.indexOf(".txt")> 0) {
+            StringBuffer sb = null;
+            try {
+                File f = new File(filePath);
+                FileInputStream fis = new FileInputStream(f);
+                InputStreamReader isr = new InputStreamReader(fis, initBookEncode(fis));
+                BufferedReader reader = new BufferedReader(isr);
+                sb = new StringBuffer();
+                String s;
+                while ((s = reader.readLine()) != null) {
+                    sb.append(s + "\\r\\n");
+                }
+                reader.close();
+                isr.close();
+                fis.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return sb.toString();
+        }else{
             StringBuilder contentBuilder = new StringBuilder();
             try (Stream<String> stream = Files.lines(Paths.get(filePath), StandardCharsets.UTF_8)) {
                 stream.forEach(s -> contentBuilder.append(s).append("\n"));
@@ -413,7 +433,7 @@ public class ResolveFileServiceImpl implements ResolveFileService {
                 e.printStackTrace();
             }
             return contentBuilder.toString();
-//        }
+        }
     }
 
     //读取文件编码

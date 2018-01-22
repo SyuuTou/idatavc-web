@@ -21,5 +21,6 @@
     <result column="investment_amount_end" property="investmentAmountEnd" jdbcType="DECIMAL" />
     <result column="investment_philosophy" property="investmentPhilosophy" jdbcType="VARCHAR" />
     <result column="funs_addres" property="funsAddres" jdbcType="VARCHAR" />
+    <result column="yn" property="yn" jdbcType="INTEGER" />
   </resultMap>
 </mapper>

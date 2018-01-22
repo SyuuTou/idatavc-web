@@ -7,6 +7,7 @@
     -->
     <id column="ID" property="id" jdbcType="INTEGER" />
     <result column="project_id" property="projectId" jdbcType="INTEGER" />
+    <result column="serial_number" property="serialNumber" jdbcType="INTEGER" />
     <result column="financing_time" property="financingTime" jdbcType="DATE" />
     <result column="stage" property="stage" jdbcType="VARCHAR" />
     <result column="amount" property="amount" jdbcType="DECIMAL" />
@@ -28,5 +29,8 @@
     <result column="total_amount_status" property="totalAmountStatus" jdbcType="INTEGER" />
     <result column="financing_time_year" property="financingTimeYear" jdbcType="VARCHAR" />
     <result column="project_financing_useful" property="projectFinancingUseful" jdbcType="VARCHAR" />
+    <result column="data_soruce_type_id" property="dataSoruceTypeId" jdbcType="INTEGER" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="yn" property="yn" jdbcType="INTEGER" />
   </resultMap>
 </mapper>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.idatavc.web.mapper.IndexCapitalMapper" >
+  <resultMap id="BaseResultMap" type="com.idatavc.web.model.IndexCapital" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="project_id" property="projectId" jdbcType="INTEGER" />
+    <result column="stage" property="stage" jdbcType="INTEGER" />
+    <result column="amount" property="amount" jdbcType="INTEGER" />
+    <result column="valuation" property="valuation" jdbcType="INTEGER" />
+    <result column="accumulative_stage" property="accumulativeStage" jdbcType="INTEGER" />
+    <result column="accumulative_amount" property="accumulativeAmount" jdbcType="INTEGER" />
+    <result column="investment_institutions_backgroud" property="investmentInstitutionsBackgroud" jdbcType="INTEGER" />
+  </resultMap>
+</mapper>

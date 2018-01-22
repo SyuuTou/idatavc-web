@@ -38,5 +38,9 @@
     <result column="city_count_max" property="cityCountMax" jdbcType="INTEGER" />
     <result column="city_count_min" property="cityCountMin" jdbcType="INTEGER" />
     <result column="total_amount" property="totalAmount" jdbcType="DECIMAL" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="company_email" property="companyEmail" jdbcType="VARCHAR" />
+    <result column="company_hr_email" property="companyHrEmail" jdbcType="VARCHAR" />
+    <result column="foreign_investment_yn" property="foreignInvestmentYn" jdbcType="INTEGER" />
   </resultMap>
 </mapper>

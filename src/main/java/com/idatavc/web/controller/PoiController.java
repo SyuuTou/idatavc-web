@@ -32,6 +32,13 @@ public class PoiController {
         return "welcome";
     }
 
+
+
+    @RequestMapping(value = "/resolve")
+    public String initR(){
+
+        return "welcome_r";
+    }
     private String fileLocation;
 
     @Resource(name = "excelPoiHelper")
@@ -39,6 +46,34 @@ public class PoiController {
 
     @Resource(name = "projectsService")
     private ProjectsService projectsService;
+    @RequestMapping(value = "/resolveCity")
+    public String resolveCity(){
+        projectsService.resolveCity();
+
+        return "welcome";
+    }
+
+    @PostMapping("/resolveExcelFile")
+    public String resolveFile(Model model, MultipartFile file) throws  IOException {
+        fileLocation = file.getOriginalFilename();
+        InputStream in = file.getInputStream();
+        File currDir = new File(".");
+        String path = currDir.getAbsolutePath();
+        fileLocation = path.substring(0, path.length() - 1) + file.getOriginalFilename();
+        FileOutputStream f = new FileOutputStream(fileLocation);
+        int ch = 0;
+        while ((ch = in.read()) != -1) {
+            f.write(ch);
+        }
+        f.flush();
+        f.close();
+
+        Map<Integer, List<MyCell>> data
+                = excelPoiHelper.readExcel(new File(fileLocation));
+//        projectsService.resolveProjects(data);
+        projectsService.handlerProjectShortName(data);
+        return "ok";
+    }
 
     @PostMapping("/uploadExcelFile")
     public String uploadFile(Model model, MultipartFile file) throws IOException {

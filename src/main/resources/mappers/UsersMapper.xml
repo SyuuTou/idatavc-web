@@ -31,5 +31,6 @@
     <result column="id_type" property="idType" jdbcType="VARCHAR" />
     <result column="unionid" property="unionid" jdbcType="VARCHAR" />
     <result column="meta_app_id" property="metaAppId" jdbcType="INTEGER" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
   </resultMap>
 </mapper>

@@ -11,5 +11,6 @@
     <result column="app_description" property="appDescription" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="yn" property="yn" jdbcType="INTEGER" />
+    <result column="investment_institution_id" property="investmentInstitutionId" jdbcType="INTEGER" />
   </resultMap>
 </mapper>

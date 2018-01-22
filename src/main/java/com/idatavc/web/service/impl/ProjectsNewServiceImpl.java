@@ -13,4 +13,19 @@ public class ProjectsNewServiceImpl implements ProjectsService {
         //
 
     }
+
+    @Override
+    public void resolveProjects(Map<Integer, List<MyCell>> data) {
+
+    }
+
+    @Override
+    public void resolveCity() {
+
+    }
+
+    @Override
+    public void handlerProjectShortName(Map<Integer, List<MyCell>> data) {
+
+    }
 }

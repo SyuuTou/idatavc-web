@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.idatavc.web.mapper.IndexProjectMapper" >
+  <resultMap id="BaseResultMap" type="com.idatavc.web.model.IndexProject" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="project_id" property="projectId" jdbcType="INTEGER" />
+    <result column="market" property="market" jdbcType="INTEGER" />
+    <result column="team" property="team" jdbcType="INTEGER" />
+    <result column="dynamic" property="dynamic" jdbcType="INTEGER" />
+    <result column="capital" property="capital" jdbcType="INTEGER" />
+    <result column="brand" property="brand" jdbcType="INTEGER" />
+  </resultMap>
+</mapper>

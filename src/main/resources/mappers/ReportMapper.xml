@@ -19,5 +19,6 @@
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
     <result column="creater" property="creater" jdbcType="VARCHAR" />
+    <result column="author" property="author" jdbcType="VARCHAR" />
   </resultMap>
 </mapper>

@@ -28,6 +28,12 @@ public class InvestmentController {
         return "welcome_i";
     }
 
+    @RequestMapping(value = "/index")
+    public String initM(){
+
+        return "welcome_m";
+    }
+
     private String fileLocation;
 
     @Resource(name = "excelPoiHelper")
@@ -35,6 +41,32 @@ public class InvestmentController {
 
     @Resource
     private InvestmentInstitutionService investmentInstitutionService;
+
+
+    @PostMapping("/memberExcelFile")
+    public String uploadMemberFile(Model model, MultipartFile file) throws IOException {
+        fileLocation = file.getOriginalFilename();
+
+        InputStream in = file.getInputStream();
+        File currDir = new File(".");
+        String path = currDir.getAbsolutePath();
+        fileLocation = path.substring(0, path.length() - 1) + file.getOriginalFilename();
+        FileOutputStream f = new FileOutputStream(fileLocation);
+        int ch = 0;
+        while ((ch = in.read()) != -1) {
+            f.write(ch);
+        }
+        f.flush();
+        f.close();
+
+        Map<Integer, List<MyCell>> data
+                = excelPoiHelper.readExcel(new File(fileLocation));
+//        investmentInstitutionService.member(data);
+
+//        investmentInstitutionService.updateLogo(data);
+        investmentInstitutionService.handlerData(data);
+        return "excel";
+    }
 
     @PostMapping("/uploadExcelFile")
     public String uploadFile(Model model, MultipartFile file) throws IOException {

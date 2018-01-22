@@ -11,5 +11,7 @@
     <result column="meta_app_id" property="metaAppId" jdbcType="INTEGER" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="yn" property="yn" jdbcType="INTEGER" />
+    <result column="phonenumber" property="phonenumber" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
   </resultMap>
 </mapper>

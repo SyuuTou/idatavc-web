@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.idatavc.web.mapper.IndexBrandMapper" >
+  <resultMap id="BaseResultMap" type="com.idatavc.web.model.IndexBrand" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="project_id" property="projectId" jdbcType="INTEGER" />
+    <result column="honor" property="honor" jdbcType="INTEGER" />
+    <result column="baidu_index" property="baiduIndex" jdbcType="INTEGER" />
+    <result column="tencent_index" property="tencentIndex" jdbcType="INTEGER" />
+  </resultMap>
+</mapper>

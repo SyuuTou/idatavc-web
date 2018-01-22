@@ -13,5 +13,17 @@
     <result column="mumber_desc" property="mumberDesc" jdbcType="VARCHAR" />
     <result column="yn" property="yn" jdbcType="INTEGER" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="isOnJob" property="isonjob" jdbcType="INTEGER" />
+    <result column="weight" property="weight" jdbcType="INTEGER" />
+    <result column="head_picture" property="headPicture" jdbcType="VARCHAR" />
+    <result column="picture" property="picture" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="weiChat" property="weichat" jdbcType="VARCHAR" />
+    <result column="isHide" property="ishide" jdbcType="INTEGER" />
+    <result column="business_experience_desc" property="businessExperienceDesc" jdbcType="VARCHAR" />
+    <result column="work_experience_desc" property="workExperienceDesc" jdbcType="VARCHAR" />
+    <result column="education_experience_desc" property="educationExperienceDesc" jdbcType="VARCHAR" />
+    <result column="team_id" property="teamId" jdbcType="INTEGER" />
   </resultMap>
 </mapper>

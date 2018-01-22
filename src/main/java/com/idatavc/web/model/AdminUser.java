@@ -16,7 +16,7 @@ public class AdminUser {
     private Integer userId;
 
     /**
-     * 管理员类型，0表示root管理员（超级管理员），1普通管理员
+     * 管理员类型，0表示root管理员（超级管理员），1普通管理员, 2业务员
      */
     @Column(name = "admin_type")
     private Integer adminType;
@@ -37,6 +37,10 @@ public class AdminUser {
      * 0表示无效了，1表示有效
      */
     private Integer yn;
+
+    private String phonenumber;
+
+    private String name;
 
     /**
      * @return id
@@ -71,18 +75,18 @@ public class AdminUser {
     }
 
     /**
-     * 获取管理员类型，0表示root管理员（超级管理员），1普通管理员
+     * 获取管理员类型，0表示root管理员（超级管理员），1普通管理员, 2业务员
      *
-     * @return admin_type - 管理员类型，0表示root管理员（超级管理员），1普通管理员
+     * @return admin_type - 管理员类型，0表示root管理员（超级管理员），1普通管理员, 2业务员
      */
     public Integer getAdminType() {
         return adminType;
     }
 
     /**
-     * 设置管理员类型，0表示root管理员（超级管理员），1普通管理员
+     * 设置管理员类型，0表示root管理员（超级管理员），1普通管理员, 2业务员
      *
-     * @param adminType 管理员类型，0表示root管理员（超级管理员），1普通管理员
+     * @param adminType 管理员类型，0表示root管理员（超级管理员），1普通管理员, 2业务员
      */
     public void setAdminType(Integer adminType) {
         this.adminType = adminType;
@@ -140,5 +144,33 @@ public class AdminUser {
      */
     public void setYn(Integer yn) {
         this.yn = yn;
+    }
+
+    /**
+     * @return phonenumber
+     */
+    public String getPhonenumber() {
+        return phonenumber;
+    }
+
+    /**
+     * @param phonenumber
+     */
+    public void setPhonenumber(String phonenumber) {
+        this.phonenumber = phonenumber;
+    }
+
+    /**
+     * @return name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @param name
+     */
+    public void setName(String name) {
+        this.name = name;
     }
 }
