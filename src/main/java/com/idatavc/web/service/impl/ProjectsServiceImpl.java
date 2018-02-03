@@ -68,8 +68,7 @@ public class ProjectsServiceImpl implements ProjectsService {
 
 
         data.forEach((k, v) -> {
-            if(StringUtil.isNotEmpty(v.get(3).getContent())){
-            LOGGER.info(String.valueOf(1));
+            LOGGER.info("{}",k);
 
             final Projects projects = new Projects();
             final ProjectFinancingLog projectFinancingLog = new ProjectFinancingLog();
@@ -122,59 +121,21 @@ public class ProjectsServiceImpl implements ProjectsService {
                 city = city.split("/")[1];
             }
 
-            if (!"".equals(city)) {
-                MetaRegion queryMR = new MetaRegion();
-                queryMR.setQuid(0);
-                queryMR.setShid(0);
-                queryMR.setMing(city + "区");
-                MetaRegion metaRegion = metaRegionMapper.selectOne(queryMR);
-                if (null == metaRegion) {
-                    queryMR.setMing(city + "市");
-                    metaRegion = metaRegionMapper.selectOne(queryMR);
-                }
-                if (null == metaRegion) {
-                    queryMR.setMing(city);
-                    queryMR.setShengid(0);
-                    metaRegion = metaRegionMapper.selectOne(queryMR);
-                }
-                if (null != metaRegion) {
-                    if (metaRegion.getGid() == 45055) {
-                        projects.setContinent("亚洲");
-                        projects.setCountry("中国");
-                        metaRegion = metaRegionMapper.selectByPrimaryKey(metaRegion.getShengid());
-                        if (null == metaRegion) {
-                            projects.setProvince(city);
-                        } else {
-                            projects.setProvince(metaRegion.getMing());
-                        }
-                        projects.setCity(city);
-                    } else {
-                        projects.setContinent(metaRegionMapper.selectByPrimaryKey(metaRegion.getGid()).getMing());
-                        projects.setCountry(metaRegionMapper.selectByPrimaryKey(metaRegion.getZid()).getMing());
-                        if (metaRegion.getShengid() == 0) {
-                            projects.setCity(metaRegion.getMing());
-                        } else {
-                            projects.setCity(metaRegionMapper.selectByPrimaryKey(metaRegion.getShengid()).getMing());
-                        }
-                    }
-
-
-                } else {
-                    queryMR = new MetaRegion();
+            try {
+                if (!"".equals(city)) {
+                    MetaRegion queryMR = new MetaRegion();
                     queryMR.setQuid(0);
+                    queryMR.setShid(0);
                     queryMR.setMing(city + "区");
-                    metaRegion = metaRegionMapper.selectOne(queryMR);
+                    MetaRegion metaRegion = metaRegionMapper.selectOne(queryMR);
                     if (null == metaRegion) {
                         queryMR.setMing(city + "市");
                         metaRegion = metaRegionMapper.selectOne(queryMR);
                     }
                     if (null == metaRegion) {
                         queryMR.setMing(city);
-                        try {
-                            metaRegion = metaRegionMapper.selectOne(queryMR);
-                        } catch (Exception e) {
-                            metaRegion = metaRegionMapper.select(queryMR).get(0);
-                        }
+                        queryMR.setShengid(0);
+                        metaRegion = metaRegionMapper.selectOne(queryMR);
                     }
                     if (null != metaRegion) {
                         if (metaRegion.getGid() == 45055) {
@@ -195,13 +156,55 @@ public class ProjectsServiceImpl implements ProjectsService {
                             } else {
                                 projects.setCity(metaRegionMapper.selectByPrimaryKey(metaRegion.getShengid()).getMing());
                             }
-
-
                         }
 
 
+                    } else {
+                        queryMR = new MetaRegion();
+                        queryMR.setQuid(0);
+                        queryMR.setMing(city + "区");
+                        metaRegion = metaRegionMapper.selectOne(queryMR);
+                        if (null == metaRegion) {
+                            queryMR.setMing(city + "市");
+                            metaRegion = metaRegionMapper.selectOne(queryMR);
+                        }
+                        if (null == metaRegion) {
+                            queryMR.setMing(city);
+                            try {
+                                metaRegion = metaRegionMapper.selectOne(queryMR);
+                            } catch (Exception e) {
+                                metaRegion = metaRegionMapper.select(queryMR).get(0);
+                            }
+                        }
+                        if (null != metaRegion) {
+                            if (metaRegion.getGid() == 45055) {
+                                projects.setContinent("亚洲");
+                                projects.setCountry("中国");
+                                metaRegion = metaRegionMapper.selectByPrimaryKey(metaRegion.getShengid());
+                                if (null == metaRegion) {
+                                    projects.setProvince(city);
+                                } else {
+                                    projects.setProvince(metaRegion.getMing());
+                                }
+                                projects.setCity(city);
+                            } else {
+                                projects.setContinent(metaRegionMapper.selectByPrimaryKey(metaRegion.getGid()).getMing());
+                                projects.setCountry(metaRegionMapper.selectByPrimaryKey(metaRegion.getZid()).getMing());
+                                if (metaRegion.getShengid() == 0) {
+                                    projects.setCity(metaRegion.getMing());
+                                } else {
+                                    projects.setCity(metaRegionMapper.selectByPrimaryKey(metaRegion.getShengid()).getMing());
+                                }
+
+
+                            }
+
+
+                        }
                     }
                 }
+            } catch (Exception e) {
+                LOGGER.error(e.getMessage());
             }
 //            projects.setCity(v.get(11).getContent());
             if (null != investmentInstitutions.getShortName() && !"".equals(investmentInstitutions.getShortName())) {
@@ -222,7 +225,9 @@ public class ProjectsServiceImpl implements ProjectsService {
 
 
             Projects queryProjects = new Projects();
-            queryProjects.setShortName(v.get(3).getContent());
+            queryProjects.setShortName(v.get(3).getContent().trim());
+            LOGGER.info("Full name is "+ v.get(4).getContent().trim());
+            queryProjects.setFullName(v.get(4).getContent().trim());
 
             List<Projects> queryP = projectsMapper.select(queryProjects);
             Integer projectId = null;
@@ -273,7 +278,7 @@ public class ProjectsServiceImpl implements ProjectsService {
                 rate = new BigDecimal(1);
             }
             amount = amount.replaceAll("\n","");
-            if (!StringUtils.isEmpty(amount)) {
+            if (!StringUtils.isEmpty(amount.trim())) {
                 projectFinancingLog.setAmount(new BigDecimal(amount).multiply(rate));
             }
 
@@ -282,6 +287,9 @@ public class ProjectsServiceImpl implements ProjectsService {
                 stockRight = "0";
             }
 
+            if (stockRight.indexOf("可转债") > -1){
+                stockRight = "0";
+            }
             projectFinancingLog.setStockRight(new BigDecimal(stockRight));
             String pr = v.get(18).getContent();
             if (pr.indexOf("未透露") > 0) {
@@ -301,7 +309,10 @@ public class ProjectsServiceImpl implements ProjectsService {
             }
 
             String totalAmount = v.get(19).getContent();
-            if (totalAmount.indexOf("未透露") > 0) {
+            if (totalAmount.indexOf("可转债") > -1){
+                projectFinancingLog.setTotalAmount(new BigDecimal("0"));
+            }else
+            if (totalAmount.indexOf("未透露") > -1) {
                 projectFinancingLog.setTotalAmount(new BigDecimal("100"));
             } else if (totalAmount.indexOf("十") >= 0) {
                 projectFinancingLog.setTotalAmount(new BigDecimal("20"));
@@ -336,6 +347,8 @@ public class ProjectsServiceImpl implements ProjectsService {
                         serialNum =Integer.valueOf(index0);
 
                     }
+                }else{
+                    return;
                 }
 
 
@@ -347,9 +360,18 @@ public class ProjectsServiceImpl implements ProjectsService {
                     projectFinancingLog.setDataSoruceTypeId(3);
                 }else if (v.get(32).getContent().trim().equals("万德")){
                     projectFinancingLog.setDataSoruceTypeId(6);
+                }else if (v.get(32).getContent().trim().equals("kr")){
+                    projectFinancingLog.setDataSoruceTypeId(12);
                 }
                 projectFinancingLog.setSerialNumber(serialNum);
-            projectFinancingLog.setValuation(new BigDecimal(null == valuation ? "0" : valuation).multiply(rate));
+
+                if (org.apache.commons.lang3.StringUtils.isEmpty(valuation.trim())){
+                    valuation = "0";
+                }
+                if (valuation.indexOf("可转债")> -1){
+                    valuation = "0";
+                }
+            projectFinancingLog.setValuation(new BigDecimal(valuation).multiply(rate));
             projectFinancingLog.setInvestmentInstitutionsList(v.get(22).getContent());
             projectFinancingLog.setProportionList(v.get(23).getContent());
             projectFinancingLog.setCreateTime(DateTime.now().toDate());
@@ -357,11 +379,12 @@ public class ProjectsServiceImpl implements ProjectsService {
             projectFinancingLog.setTotalAmountStatus(0);
             projectFinancingLog.setAmountStatus(0);
 
+
             ProjectFinancingLog queryPFL = new ProjectFinancingLog();
             queryPFL.setSerialNumber(serialNum);
             ProjectFinancingLog projectFinancingLogOld = projectFinancingLogMapper.selectOne(queryPFL);
             Integer projectFinancingLogId = null;
-            if (null == projectFinancingLog) {
+            if (null == projectFinancingLogOld) {
 
                 projectFinancingLogMapper.insert(projectFinancingLog);
                 projectFinancingLogId = projectFinancingLog.getId();
@@ -444,7 +467,6 @@ public class ProjectsServiceImpl implements ProjectsService {
                         saveInvestmentInstitutionsProject(projectFinancingLog.getId(), query, s);
                     }
                 }
-            }
             }
         });
 

@@ -49,4 +49,11 @@ public class CrawlerController {
         return "ok";
     }
 
+    @GetMapping("resolve/cninf")
+    public String handlerCninfResolve(){
+
+        resolveFileService.handlerCninf();
+        return "ok";
+    }
+
 }

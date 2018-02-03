@@ -61,10 +61,10 @@ public class InvestmentController {
 
         Map<Integer, List<MyCell>> data
                 = excelPoiHelper.readExcel(new File(fileLocation));
-//        investmentInstitutionService.member(data);
+        investmentInstitutionService.member(data);
 
 //        investmentInstitutionService.updateLogo(data);
-        investmentInstitutionService.handlerData(data);
+//        investmentInstitutionService.handlerData(data);
         return "excel";
     }
 

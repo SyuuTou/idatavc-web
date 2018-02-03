@@ -1,9 +1,12 @@
 package com.idatavc.web.service.impl;
 
+import com.idatavc.web.dto.Announcement;
+import com.idatavc.web.dto.CninfDto;
 import com.idatavc.web.dto.ProjectDto;
 import com.idatavc.web.mapper.*;
 import com.idatavc.web.model.*;
 import com.idatavc.web.service.ResolveFileService;
+import com.idatavc.web.service.thread.CninfAsyncService;
 import com.idatavc.web.utils.AliOssUtils;
 import com.idatavc.web.utils.MD5Util;
 import net.coobird.thumbnailator.Thumbnails;
@@ -15,17 +18,33 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.converter.FormHttpMessageConverter;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.RestTemplate;
 import us.codecraft.webmagic.selector.XpathSelector;
 
 import java.io.*;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.stream.Stream;
 
@@ -50,6 +69,12 @@ public class ResolveFileServiceImpl implements ResolveFileService {
     private ProjectCrawlerMapper projectCrawlerMapper;
     @Autowired
     private InvestmentInstitutionsProjectMapper investmentInstitutionsProjectMapper;
+
+    @Autowired
+    private RestTemplate restTemplate;
+
+    @Autowired
+    private CninfAsyncService cninfAsyncService;
 
     @Transactional
     @Override
@@ -82,11 +107,11 @@ public class ResolveFileServiceImpl implements ResolveFileService {
             entity.setShortName(xpathSelectorJGName.select(html));
             String jgLogo = xpathSelectorJGLogo.select(html);
             if (null != jgLogo) {
-                entity.setLogo(uploadFile(jgLogo.substring(jgLogo.indexOf("(\"") + 2, jgLogo.indexOf("\")"))));
+                entity.setLogo(svaeFileLocal(jgLogo.substring(jgLogo.indexOf("(\"") + 2, jgLogo.indexOf("\")" )), xpathSelectorJGName.select(html)));
             }
             try {
                 List<String> infoList = xpathSelectorJGInfo.selectList(html);
-                if (infoList.size()>2) {
+                if (infoList.size()>3) {
                     entity.setInvestmentInstitutionsType(infoList.get(0));
                     entity.setEstablishedTime(infoList.get(1));
                     entity.setCity(infoList.get(2));
@@ -97,108 +122,108 @@ public class ResolveFileServiceImpl implements ResolveFileService {
             } catch (Exception e) {
                 log.error(e.getMessage(),e.fillInStackTrace());
             }
-            List<ProjectDto> projectDtoList = new ArrayList<>();
-            List<String> listTr = xpathSelectorAllTr.selectList(html);
-            List<String> listTd = null;
-            ProjectCrawler projectDto = null;
-            String urlPath = null;
-            String logoUrl = null;
-            if (html.indexOf("投资事件")>0){
-                for (String stringTr : listTr) {
-                    listTd = xpathSelectorAllText.selectList("<table>" + stringTr + "</table>");
-                    projectDto = new ProjectCrawler();
-//                    projectDto.setId(Integer.valueOf(listTd.get(0)));
-                    projectDto.setFinancingTime(listTd.get(1));
-                    projectDto.setStage(listTd.get(2));
-                    projectDto.setAmountDesc(listTd.get(3));
-                    projectDto.setInvestors(listTd.get(4));
-                    projectDto.setShortName(listTd.get(5));
-                    projectDto.setSegmentation(listTd.get(7).replace("\\\\r\\\\n", "").trim());
-                    projectDto.setKenelWords(listTd.get(8).replace("\\\\r\\\\n", "").trim());
+//            List<ProjectDto> projectDtoList = new ArrayList<>();
+//            List<String> listTr = xpathSelectorAllTr.selectList(html);
+//            List<String> listTd = null;
+//            ProjectCrawler projectDto = null;
+//            String urlPath = null;
+//            String logoUrl = null;
+//            if (html.indexOf("投资事件")>0){
+//                for (String stringTr : listTr) {
+//                    listTd = xpathSelectorAllText.selectList("<table>" + stringTr + "</table>");
+//                    projectDto = new ProjectCrawler();
+////                    projectDto.setId(Integer.valueOf(listTd.get(0)));
+//                    projectDto.setFinancingTime(listTd.get(1));
+//                    projectDto.setStage(listTd.get(2));
+//                    projectDto.setAmountDesc(listTd.get(3));
+//                    projectDto.setInvestors(listTd.get(4));
+//                    projectDto.setShortName(listTd.get(5));
+//                    projectDto.setSegmentation(listTd.get(7).replace("\\\\r\\\\n", "").trim());
+//                    projectDto.setKenelWords(listTd.get(8).replace("\\\\r\\\\n", "").trim());
+////                    projectDto.setNowStage(listTd.get(6));
+//                    projectDto.setCity(listTd.get(6));
+//                    urlPath = xpathSelector.select("<table>" + stringTr + "</table>");
+//                    log.info("stringTr:{}","<table>" + stringTr + "</table>");
+//                    log.info("urlPath:{}",urlPath);
+//                    if (StringUtils.isEmpty(urlPath)){
+//                        urlPath = xpathSelectorHand.select("<table>" + stringTr + "</table>");
+//                        projectDto = new ProjectCrawler();
+////                    projectDto.setId(Integer.valueOf(listTd.get(0)));
+//                        projectDto.setFinancingTime(listTd.get(1));
+//                        projectDto.setStage(listTd.get(2));
+//                        projectDto.setShortName(listTd.get(3));
+//                        projectDto.setSegmentation(listTd.get(5));
+//                        projectDto.setKenelWords(listTd.get(6).replace("\\\\r\\\\n", "").trim());
+//                        projectDto.setNowStage(listTd.get(7));
+//                        projectDto.setCity(listTd.get(4));
+//                        log.info("stringTr:{}","<table>" + stringTr + "</table>");
+//                        log.info("urlPath:{}",urlPath);
+//                        if (StringUtils.isNotEmpty(urlPath)) {
+//                            projectDto.setLogo(urlPath.substring(urlPath.indexOf("(\"") + 2, urlPath.indexOf("\")")));
+//                            logoUrl = uploadFile(projectDto.getLogo());
+//                            projectDto.setNewLogo(logoUrl);
+//                            projectCrawlerMapper.insert(projectDto);
+//                            Projects projects = new Projects();
+//                            projects.setShortName(projectDto.getShortName());
+//
+//                            List<Projects> projectsList = projectsMapper.select(projects);
+//                            for (Projects p : projectsList) {
+//                                p.setProjectLogo(logoUrl);
+//                                projectsMapper.updateByPrimaryKey(p);
+//                                log.info("update project {}, {}", p.getShortName(), p.getProjectLogo());
+//                            }
+//                        }
+//                        saveProjects(projectDto,entity);
+//                    } else {
+//                        projectDto.setLogo(urlPath.substring(urlPath.indexOf("(\"") + 2, urlPath.indexOf("\")")));
+//                        logoUrl = uploadFile(projectDto.getLogo());
+//                        projectDto.setNewLogo(logoUrl);
+////                    projectDtoList.add(projectDto);
+//                        projectCrawlerMapper.insert(projectDto);
+//                        Projects projects = new Projects();
+//                        projects.setShortName(projectDto.getShortName());
+//
+//                        List<Projects> projectsList = projectsMapper.select(projects);
+//                        for (Projects p : projectsList) {
+//                            p.setProjectLogo(logoUrl);
+//                            projectsMapper.updateByPrimaryKey(p);
+//                            log.info("update project {}, {}", p.getShortName(), p.getProjectLogo());
+//                        }
+//                        saveProjects(projectDto,entity);
+//                    }
+//
+//                }
+//            }else {
+//                for (String stringTr : listTr) {
+//                    listTd = xpathSelectorAllText.selectList("<table>" + stringTr + "</table>");
+//                    projectDto = new ProjectCrawler();
+////                    projectDto.setId(Integer.valueOf(listTd.get(0)));
+//                    projectDto.setFinancingTime(listTd.get(1));
+//                    projectDto.setStage(listTd.get(2));
+//                    projectDto.setShortName(listTd.get(3));
+//                    projectDto.setSegmentation(listTd.get(4));
+//                    projectDto.setKenelWords(listTd.get(5).replace("\\\\r\\\\n", "").trim());
 //                    projectDto.setNowStage(listTd.get(6));
-                    projectDto.setCity(listTd.get(6));
-                    urlPath = xpathSelector.select("<table>" + stringTr + "</table>");
-                    log.info("stringTr:{}","<table>" + stringTr + "</table>");
-                    log.info("urlPath:{}",urlPath);
-                    if (StringUtils.isEmpty(urlPath)){
-                        urlPath = xpathSelectorHand.select("<table>" + stringTr + "</table>");
-                        projectDto = new ProjectCrawler();
-//                    projectDto.setId(Integer.valueOf(listTd.get(0)));
-                        projectDto.setFinancingTime(listTd.get(1));
-                        projectDto.setStage(listTd.get(2));
-                        projectDto.setShortName(listTd.get(3));
-                        projectDto.setSegmentation(listTd.get(5));
-                        projectDto.setKenelWords(listTd.get(6).replace("\\\\r\\\\n", "").trim());
-                        projectDto.setNowStage(listTd.get(7));
-                        projectDto.setCity(listTd.get(4));
-                        log.info("stringTr:{}","<table>" + stringTr + "</table>");
-                        log.info("urlPath:{}",urlPath);
-                        if (StringUtils.isNotEmpty(urlPath)) {
-                            projectDto.setLogo(urlPath.substring(urlPath.indexOf("(\"") + 2, urlPath.indexOf("\")")));
-                            logoUrl = uploadFile(projectDto.getLogo());
-                            projectDto.setNewLogo(logoUrl);
-                            projectCrawlerMapper.insert(projectDto);
-                            Projects projects = new Projects();
-                            projects.setShortName(projectDto.getShortName());
-
-                            List<Projects> projectsList = projectsMapper.select(projects);
-                            for (Projects p : projectsList) {
-                                p.setProjectLogo(logoUrl);
-                                projectsMapper.updateByPrimaryKey(p);
-                                log.info("update project {}, {}", p.getShortName(), p.getProjectLogo());
-                            }
-                        }
-                        saveProjects(projectDto,entity);
-                    } else {
-                        projectDto.setLogo(urlPath.substring(urlPath.indexOf("(\"") + 2, urlPath.indexOf("\")")));
-                        logoUrl = uploadFile(projectDto.getLogo());
-                        projectDto.setNewLogo(logoUrl);
-//                    projectDtoList.add(projectDto);
-                        projectCrawlerMapper.insert(projectDto);
-                        Projects projects = new Projects();
-                        projects.setShortName(projectDto.getShortName());
-
-                        List<Projects> projectsList = projectsMapper.select(projects);
-                        for (Projects p : projectsList) {
-                            p.setProjectLogo(logoUrl);
-                            projectsMapper.updateByPrimaryKey(p);
-                            log.info("update project {}, {}", p.getShortName(), p.getProjectLogo());
-                        }
-                        saveProjects(projectDto,entity);
-                    }
-
-                }
-            }else {
-                for (String stringTr : listTr) {
-                    listTd = xpathSelectorAllText.selectList("<table>" + stringTr + "</table>");
-                    projectDto = new ProjectCrawler();
-//                    projectDto.setId(Integer.valueOf(listTd.get(0)));
-                    projectDto.setFinancingTime(listTd.get(1));
-                    projectDto.setStage(listTd.get(2));
-                    projectDto.setShortName(listTd.get(3));
-                    projectDto.setSegmentation(listTd.get(4));
-                    projectDto.setKenelWords(listTd.get(5).replace("\\\\r\\\\n", "").trim());
-                    projectDto.setNowStage(listTd.get(6));
-                    urlPath = xpathSelector.select("<table>" + stringTr + "</table>");
-                    log.info("stringTr:{}","<table>" + stringTr + "</table>");
-                    log.info("urlPath:{}",urlPath);
-                    if (StringUtils.isNotEmpty(urlPath)) {
-                        logoUrl = uploadFile(projectDto.getLogo());
-                        projectDto.setLogo(urlPath.substring(urlPath.indexOf("(\"") + 2, urlPath.indexOf("\")")));
-                        projectDto.setNewLogo(logoUrl);
-                        projectCrawlerMapper.insert(projectDto);
-                        saveProjects(projectDto, entity);
-                        Projects projects = new Projects();
-                        projects.setShortName(projectDto.getShortName());
-                        List<Projects> projectsList = projectsMapper.select(projects);
-                        for (Projects p : projectsList) {
-                            p.setProjectLogo(logoUrl);
-                            projectsMapper.updateByPrimaryKey(p);
-                            log.info("update project {}, {}", p.getShortName(), p.getProjectLogo());
-                        }
-                    }
-                }
-            }
+//                    urlPath = xpathSelector.select("<table>" + stringTr + "</table>");
+//                    log.info("stringTr:{}","<table>" + stringTr + "</table>");
+//                    log.info("urlPath:{}",urlPath);
+//                    if (StringUtils.isNotEmpty(urlPath)) {
+//                        logoUrl = uploadFile(projectDto.getLogo());
+//                        projectDto.setLogo(urlPath.substring(urlPath.indexOf("(\"") + 2, urlPath.indexOf("\")")));
+//                        projectDto.setNewLogo(logoUrl);
+//                        projectCrawlerMapper.insert(projectDto);
+//                        saveProjects(projectDto, entity);
+//                        Projects projects = new Projects();
+//                        projects.setShortName(projectDto.getShortName());
+//                        List<Projects> projectsList = projectsMapper.select(projects);
+//                        for (Projects p : projectsList) {
+//                            p.setProjectLogo(logoUrl);
+//                            projectsMapper.updateByPrimaryKey(p);
+//                            log.info("update project {}, {}", p.getShortName(), p.getProjectLogo());
+//                        }
+//                    }
+//                }
+//            }
 
 
             log.info("ending handler file {}",fileName);
@@ -210,6 +235,85 @@ public class ResolveFileServiceImpl implements ResolveFileService {
         }
         return false;
 
+    }
+
+    @Override
+    public void handlerCninf() {
+
+        boolean flag = true;
+        Integer pageNo = 1;
+        Integer pageSize = 30;
+        while (flag) {
+            List<Announcement> announcements = this.crawlerCninf(pageNo, pageSize);
+
+            if (null == announcements || announcements.size() == 0 ){
+                flag = false;
+            }
+
+            for (Announcement announcement : announcements){
+                cninfAsyncService.downloadFile(announcement);
+            }
+            pageNo ++;
+
+        }
+
+
+
+    }
+
+
+
+    private List<Announcement> crawlerCninf(Integer pageNo, Integer pageSize){
+
+        MultiValueMap<String, String> values = new LinkedMultiValueMap<>();
+        values.add("stock","");
+        values.add("searchkey","");
+        values.add("plate","");
+        values.add("trade","");
+        values.add("pageNum",String.valueOf(pageNo));
+        values.add("pageSize",String.valueOf(pageSize));
+        values.add("sortName","");
+        values.add("sortType","");
+        values.add("limit","");
+        values.add("showTitle","");
+        values.add("setDate","请选择日期");
+        values.add("category","category_scgkfx_szsh");
+        values.add("column","szse");
+        values.add("columnTitle","历史公告查询");
+        values.add("tabName","fulltext");
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+        headers.set("Host","www.cninfo.com.cn");
+        headers.set("Connection","keep-alive");
+        headers.set("Content-Length","273");
+        headers.setConnection("keep-alive");
+        headers.setContentLength(273);
+        headers.setAccept(MediaType.parseMediaTypes("application/json, text/javascript, */*; q=0.01"));
+        headers.setOrigin("http://www.cninfo.com.cn");
+        headers.set("X-Requested-With","XMLHttpRequest");
+        headers.set("User-Agent","Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36");
+        headers.set("Referer","http://www.cninfo.com.cn/cninfo-new/announcement/show");
+        headers.set("Accept-Encoding","gzip, deflate");
+        headers.set("Accept-Language","zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7");
+        headers.set("Cookie","JSESSIONID=A97C878F92CD82CBFD4D3CFC0875B3F1; __lnkrntdmcvrd=-1");
+        List<HttpMessageConverter<?>> messageConverters = new ArrayList<HttpMessageConverter<?>>();
+        messageConverters.add(new MappingJackson2HttpMessageConverter());
+        messageConverters.add(new FormHttpMessageConverter());
+        restTemplate.setMessageConverters(messageConverters);
+        HttpEntity<MultiValueMap<String, String>> entity = new HttpEntity<>(values, headers);
+        HttpEntity<CninfDto> cninfs =  restTemplate.exchange("http://www.cninfo.com.cn/cninfo-new/announcement/query", HttpMethod.POST,entity,new ParameterizedTypeReference<CninfDto>(){} );
+
+        return cninfs.getBody().getAnnouncements();
+    }
+
+    private String svaeFileLocal(String substring,String jgName) {
+        try {
+            Thumbnails.of(new URL(substring).openStream()).size(750,750).toFile("/Users/zhhu/jgImg/"+jgName+".jpg");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return "";
     }
 
     private void saveProjects(ProjectCrawler projectCrawler, InvestmentInstitutions entity) {
@@ -393,7 +497,7 @@ public class ResolveFileServiceImpl implements ResolveFileService {
        String path = "upload/auto/"+md5String+".jpg";
        try {
            Thumbnails.of(new URL(oldPath).openStream()).size(750,750).toOutputStream(os);
-               AliOssUtils.putObject(path, new ByteArrayInputStream(os.toByteArray()));
+           AliOssUtils.putObject(path, new ByteArrayInputStream(os.toByteArray()));
        }catch(Exception e){
            log.error(e.getMessage(),e.fillInStackTrace());
        }
@@ -455,6 +559,16 @@ public class ResolveFileServiceImpl implements ResolveFileService {
 
         }
         return encode;
+    }
+
+    public static void main(String[] args) {
+//        try {
+//            File file = new File(new URL("http://www.cninfo.com.cn//cninfo-new/disclosure/szse/bulletin_detail/true/1204370823?announceTime=2018-01-29"));
+//        } catch (URISyntaxException e) {
+//            e.printStackTrace();
+//        } catch (MalformedURLException e) {
+//            e.printStackTrace();
+//        }
     }
 
 }

@@ -74,6 +74,10 @@ public class InvestmentInstitutionServiceImpl implements InvestmentInstitutionSe
             } catch (Exception e) {
 
             }
+
+
+
+
             String[] adrs = v.get(6).getContent().split("\\\n");
             InvestmentInstitutionsAddress investmentInstitutionsAddress = new InvestmentInstitutionsAddress();
             investmentInstitutionsAddress.setInvestmentInstitutionId(investmentInstitutions.getId());
