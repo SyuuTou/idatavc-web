@@ -1,19 +1,49 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.idatavc.web.mapper.InvestorsMapper" >
-  <resultMap id="BaseResultMap" type="com.idatavc.web.model.Investors" >
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.idatavc.web.mapper.InvestorsMapper">
+  <resultMap id="BaseResultMap" type="com.idatavc.web.model.Investors">
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="ID" property="id" jdbcType="INTEGER" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="investment_institutions_id" property="investmentInstitutionsId" jdbcType="INTEGER" />
-    <result column="user_id" property="userId" jdbcType="INTEGER" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="yn" property="yn" jdbcType="INTEGER" />
-    <result column="position" property="position" jdbcType="VARCHAR" />
-    <result column="approval_status" property="approvalStatus" jdbcType="INTEGER" />
-    <result column="approval_time" property="approvalTime" jdbcType="TIMESTAMP" />
-    <result column="investors_type" property="investorsType" jdbcType="INTEGER" />
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="investment_institutions_id" jdbcType="INTEGER" property="investmentInstitutionsId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="yn" jdbcType="INTEGER" property="yn" />
+    <result column="position" jdbcType="VARCHAR" property="position" />
+    <result column="approval_status" jdbcType="INTEGER" property="approvalStatus" />
+    <result column="approval_time" jdbcType="TIMESTAMP" property="approvalTime" />
+    <result column="investors_type" jdbcType="INTEGER" property="investorsType" />
+    <result column="investor_source_type" jdbcType="INTEGER" property="investorSourceType" />
+    <result column="team_id" jdbcType="INTEGER" property="teamId" />
+    <result column="self_def_team" jdbcType="VARCHAR" property="selfDefTeam" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="kernel_description" jdbcType="VARCHAR" property="kernelDescription" />
+    <result column="identity_type" jdbcType="INTEGER" property="identityType" />
+    <result column="weichat" jdbcType="VARCHAR" property="weichat" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="birth_day" jdbcType="TIMESTAMP" property="birthDay" />
+    <result column="sex" jdbcType="INTEGER" property="sex" />
+    <result column="diploma" jdbcType="INTEGER" property="diploma" />
+    <result column="nationality" jdbcType="INTEGER" property="nationality" />
+    <result column="tenure_time" jdbcType="TIMESTAMP" property="tenureTime" />
+    <result column="business_card" jdbcType="VARCHAR" property="businessCard" />
+    <result column="picture" jdbcType="VARCHAR" property="picture" />
+    <result column="business_description" jdbcType="VARCHAR" property="businessDescription" />
+    <result column="education_description" jdbcType="VARCHAR" property="educationDescription" />
+    <result column="work_description" jdbcType="VARCHAR" property="workDescription" />
+    <result column="honor" jdbcType="VARCHAR" property="honor" />
+    <result column="personal_introduction" jdbcType="VARCHAR" property="personalIntroduction" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="company_introduction" jdbcType="VARCHAR" property="companyIntroduction" />
+    <result column="certification_instructions" jdbcType="VARCHAR" property="certificationInstructions" />
+    <result column="business_card_opposite" jdbcType="VARCHAR" property="businessCardOpposite" />
+    <result column="head_picture" jdbcType="VARCHAR" property="headPicture" />
   </resultMap>
+
+  <select id="selectByInstitutionIdAndName" resultMap="BaseResultMap">
+    select * from investors where `name` =#{name} and investment_institutions_id =#{institutionId};
+  </select>
+
 </mapper>
