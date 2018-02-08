@@ -11,6 +11,7 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,8 +45,25 @@ public class InvestmentInstitutionServiceImpl implements InvestmentInstitutionSe
     private InvestmentInstitutionsMemberEducationMapper investmentInstitutionsMemberEducationMapper;
     @Autowired
     private InvestmentInstitutionsProjectMapper investmentInstitutionsProjectMapper;
-@Autowired
+    @Autowired
     private ProjectFinancingLogMapper projectFinancingLogMapper;
+    @Autowired
+    private InvestorDemandMapper investorDemandMapper;
+    @Autowired
+    private InvestorCityMapper investorCityMapper;
+    @Autowired
+    private InvestorDemandSegmentationMapper investorDemandSegmentationMapper;
+    @Autowired
+    private InvestorDemandStageMapper investorDemandStageMapper;
+    @Autowired
+    private InvestorInvestmentCaseMapper investorInvestmentCaseMapper;
+    @Autowired
+    private InvestorsMapper investorsMapper;
+    @Autowired
+    private DatasOperationManageMapper datasOperationManageMapper;
+    @Autowired
+    private MetaProjectStageMapper metaProjectStageMapper;
+
     @Override
     public void save(int i, Map<Integer, List<MyCell>> data) {
 
@@ -91,7 +109,10 @@ public class InvestmentInstitutionServiceImpl implements InvestmentInstitutionSe
             }
 
 
-            LOGGER.info("{}",1);
+
+
+
+            LOGGER.info("{}",k);
         });
         LOGGER.info("Investment be import . Ending.....");
     }
@@ -156,14 +177,15 @@ public class InvestmentInstitutionServiceImpl implements InvestmentInstitutionSe
     @Transactional
     @Override
     public void member(Map<Integer, List<MyCell>> data) {
-
+        this.LOGGER.info("beginning ........");
         data.forEach((k,v) -> {
+            this.LOGGER.info("{}",k);
             InvestmentInstitutions query = new InvestmentInstitutions();
             query.setShortName(v.get(0).getContent().trim());
-
+            Integer investmentInstitutionsId = null;
             List<InvestmentInstitutions> investmentInstitutionsList = investmentInstitutionsMapper.select(query);
             if (null != investmentInstitutionsList && investmentInstitutionsList.size() > 0){
-                Integer investmentInstitutionsId = investmentInstitutionsList.get(0).getId();
+                investmentInstitutionsId = investmentInstitutionsList.get(0).getId();
 
                 InvestmentInstitutionTeam investmentInstitutionTeam = new InvestmentInstitutionTeam();
                 investmentInstitutionTeam.setActualName(v.get(1).getContent().trim());
@@ -213,11 +235,104 @@ public class InvestmentInstitutionServiceImpl implements InvestmentInstitutionSe
                     }
                 }
 
+                //投资人
+                Investors investors = new Investors();
+                investors.setName(v.get(1).getContent().trim());
+                LOGGER.info("投资人：{}", v.get(1).getContent().trim());
+                investors.setInvestmentInstitutionsId(investmentInstitutionsId);
+                Investors result1 = investorsMapper.selectByInstitutionIdAndName(v.get(2).getContent().trim(), investmentInstitutionsId);
+                Integer investorId = null;
+                if (null == result1){
+                    investors.setPosition(v.get(2).getContent().trim());
+                    investorsMapper.insert(investors);
+                    investorId = investors.getId();
+                }else{
+                    investors.setId(result1.getId());
+                    investors.setPosition(v.get(2).getContent().trim());
+                    investorsMapper.updateByPrimaryKeySelective(investors);
+                    investorId = result1.getId();
+                }
+
+                DatasOperationManage datasOperationManage = new DatasOperationManage();
+                datasOperationManage.setDataId(investors.getId());
+                datasOperationManage.setDataType("INVESTOR");
+                DatasOperationManage result2 = datasOperationManageMapper.selectByPrimaryKey(datasOperationManage);
+                if(null == result2){
+//                    datasOperationManage.setWechatGroupId(v.get(0).getContent().trim());
+                    datasOperationManageMapper.insert(datasOperationManage);
+                }else{
+//                    datasOperationManage.setWechatGroupId(v.get(0).getContent().trim());
+                    datasOperationManageMapper.updateByPrimaryKeySelective(datasOperationManage);
+                }
+
+
+                InvestorDemand investorDemand = new InvestorDemand();
+                investorDemand.setAppid(1);
+                investorDemand.setInvestorId(investorId);
+                investorDemand.setCreatTime(DateTime.now().toDate());
+
+                investorDemandMapper.insert(investorDemand);
+
+
+                InvestorDemandStage investorDemandStage = null;
+                for (String stage : v.get(6).getContent().split("、")){
+                    investorDemandStage = new InvestorDemandStage();
+                    investorDemandStage.setAppid(1);
+                    investorDemandStage.setInvestorDemandId(investorDemand.getId());
+                    MetaProjectStage metaProjectStage = new MetaProjectStage();
+                    metaProjectStage.setName(stage);
+                    metaProjectStage = metaProjectStageMapper.selectOne(metaProjectStage);
+                    if (null != metaProjectStage) {
+                        investorDemandStage.setMetaProjectStageId(metaProjectStage.getId());
+                    }
+                    LOGGER.info("阶段：{}", stage);
+                    investorDemandStageMapper.insert(investorDemandStage);
+                }
+
+                InvestorDemandSegmentation investorDemandSegmentation = null;
+
+                for (String segmentation : v.get(5).getContent().split("、")){
+                    investorDemandSegmentation = new InvestorDemandSegmentation();
+                    investorDemandSegmentation.setAppid(1);
+                    investorDemandSegmentation.setInvestorDemandId(investorDemand.getId());
+                    investorDemandSegmentation.setSegmentation(segmentation);
+                    this.LOGGER.info("领域：{}",segmentation);
+                    investorDemandSegmentationMapper.insert(investorDemandSegmentation);
+                }
+
+
+                InvestorCity investorCity = null;
+
+                for (String city : v.get(7).getContent().split("、")){
+                    investorCity = new InvestorCity();
+                    investorCity.setCity(city);
+                    this.LOGGER.info("常驻城市：{}",city);
+                    investorCity.setId(investorId);
+                    try {
+                        investorCityMapper.insert(investorCity);
+                    } catch (Exception e) {
+
+                    }
+                }
+
+                InvestorInvestmentCase investorInvestmentCase = null;
+
+                for (String investorCase : v.get(10).getContent().split("、")){
+                    investorInvestmentCase = new InvestorInvestmentCase();
+                    investorInvestmentCase.setInvestmentCase(investorCase.trim());
+                    investorInvestmentCase.setInvestorId(investorId);
+                    this.LOGGER.info("案例：{}",investorCase);
+                    investorInvestmentCaseMapper.insert(investorInvestmentCase);
+                }
+
+
+
+
 
 
             }
         });
-
+        this.LOGGER.info("ending ........");
     }
 
     @Transactional

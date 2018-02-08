@@ -1,45 +1,45 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.idatavc.web.mapper.InvestorsMapper">
-  <resultMap id="BaseResultMap" type="com.idatavc.web.model.Investors">
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.idatavc.web.mapper.InvestorsMapper" >
+  <resultMap id="BaseResultMap" type="com.idatavc.web.model.Investors" >
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="ID" jdbcType="INTEGER" property="id" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="investment_institutions_id" jdbcType="INTEGER" property="investmentInstitutionsId" />
-    <result column="user_id" jdbcType="INTEGER" property="userId" />
-    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
-    <result column="yn" jdbcType="INTEGER" property="yn" />
-    <result column="position" jdbcType="VARCHAR" property="position" />
-    <result column="approval_status" jdbcType="INTEGER" property="approvalStatus" />
-    <result column="approval_time" jdbcType="TIMESTAMP" property="approvalTime" />
-    <result column="investors_type" jdbcType="INTEGER" property="investorsType" />
-    <result column="investor_source_type" jdbcType="INTEGER" property="investorSourceType" />
-    <result column="team_id" jdbcType="INTEGER" property="teamId" />
-    <result column="self_def_team" jdbcType="VARCHAR" property="selfDefTeam" />
-    <result column="phone" jdbcType="VARCHAR" property="phone" />
-    <result column="kernel_description" jdbcType="VARCHAR" property="kernelDescription" />
-    <result column="identity_type" jdbcType="INTEGER" property="identityType" />
-    <result column="weichat" jdbcType="VARCHAR" property="weichat" />
-    <result column="email" jdbcType="VARCHAR" property="email" />
-    <result column="birth_day" jdbcType="TIMESTAMP" property="birthDay" />
-    <result column="sex" jdbcType="INTEGER" property="sex" />
-    <result column="diploma" jdbcType="INTEGER" property="diploma" />
-    <result column="nationality" jdbcType="INTEGER" property="nationality" />
-    <result column="tenure_time" jdbcType="TIMESTAMP" property="tenureTime" />
-    <result column="business_card" jdbcType="VARCHAR" property="businessCard" />
-    <result column="picture" jdbcType="VARCHAR" property="picture" />
-    <result column="business_description" jdbcType="VARCHAR" property="businessDescription" />
-    <result column="education_description" jdbcType="VARCHAR" property="educationDescription" />
-    <result column="work_description" jdbcType="VARCHAR" property="workDescription" />
-    <result column="honor" jdbcType="VARCHAR" property="honor" />
-    <result column="personal_introduction" jdbcType="VARCHAR" property="personalIntroduction" />
-    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
-    <result column="company_introduction" jdbcType="VARCHAR" property="companyIntroduction" />
-    <result column="certification_instructions" jdbcType="VARCHAR" property="certificationInstructions" />
-    <result column="business_card_opposite" jdbcType="VARCHAR" property="businessCardOpposite" />
-    <result column="head_picture" jdbcType="VARCHAR" property="headPicture" />
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="investment_institutions_id" property="investmentInstitutionsId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="yn" property="yn" jdbcType="INTEGER" />
+    <result column="position" property="position" jdbcType="VARCHAR" />
+    <result column="approval_status" property="approvalStatus" jdbcType="INTEGER" />
+    <result column="approval_time" property="approvalTime" jdbcType="TIMESTAMP" />
+    <result column="investors_type" property="investorsType" jdbcType="INTEGER" />
+    <result column="investor_source_type" property="investorSourceType" jdbcType="INTEGER" />
+    <result column="team_id" property="teamId" jdbcType="INTEGER" />
+    <result column="self_def_team" property="selfDefTeam" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="kernel_description" property="kernelDescription" jdbcType="VARCHAR" />
+    <result column="identity_type" property="identityType" jdbcType="INTEGER" />
+    <result column="weichat" property="weichat" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="birth_day" property="birthDay" jdbcType="TIMESTAMP" />
+    <result column="sex" property="sex" jdbcType="INTEGER" />
+    <result column="diploma" property="diploma" jdbcType="INTEGER" />
+    <result column="nationality" property="nationality" jdbcType="INTEGER" />
+    <result column="tenure_time" property="tenureTime" jdbcType="TIMESTAMP" />
+    <result column="business_card" property="businessCard" jdbcType="VARCHAR" />
+    <result column="picture" property="picture" jdbcType="VARCHAR" />
+    <result column="business_description" property="businessDescription" jdbcType="VARCHAR" />
+    <result column="education_description" property="educationDescription" jdbcType="VARCHAR" />
+    <result column="work_description" property="workDescription" jdbcType="VARCHAR" />
+    <result column="honor" property="honor" jdbcType="VARCHAR" />
+    <result column="personal_introduction" property="personalIntroduction" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="company_introduction" property="companyIntroduction" jdbcType="VARCHAR" />
+    <result column="certification_instructions" property="certificationInstructions" jdbcType="VARCHAR" />
+    <result column="business_card_opposite" property="businessCardOpposite" jdbcType="VARCHAR" />
+    <result column="head_picture" property="headPicture" jdbcType="VARCHAR" />
   </resultMap>
 
   <select id="selectByInstitutionIdAndName" resultMap="BaseResultMap">

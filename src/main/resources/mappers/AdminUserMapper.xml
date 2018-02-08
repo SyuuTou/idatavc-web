@@ -13,5 +13,6 @@
     <result column="yn" property="yn" jdbcType="INTEGER" />
     <result column="phonenumber" property="phonenumber" jdbcType="VARCHAR" />
     <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
   </resultMap>
 </mapper>

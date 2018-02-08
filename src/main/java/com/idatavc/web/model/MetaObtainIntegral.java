@@ -1,5 +1,6 @@
 package com.idatavc.web.model;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.*;
 
@@ -25,7 +26,7 @@ public class MetaObtainIntegral {
     /**
      * 积分，
      */
-    private Integer integral;
+    private BigDecimal integral;
 
     /**
      * 周期
@@ -115,7 +116,7 @@ public class MetaObtainIntegral {
      *
      * @return integral - 积分，
      */
-    public Integer getIntegral() {
+    public BigDecimal getIntegral() {
         return integral;
     }
 
@@ -124,7 +125,7 @@ public class MetaObtainIntegral {
      *
      * @param integral 积分，
      */
-    public void setIntegral(Integer integral) {
+    public void setIntegral(BigDecimal integral) {
         this.integral = integral;
     }
 

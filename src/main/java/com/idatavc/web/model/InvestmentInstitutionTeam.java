@@ -96,13 +96,25 @@ public class InvestmentInstitutionTeam {
     @Column(name = "investment_case")
     private String investmentCase;
 
+    /**
+     * 投资阶段
+     */
     @Column(name = "investment_stage")
     private String investmentStage;
 
+    /**
+     * 投资领域
+     */
     @Column(name = "investment_segmentation")
     private String investmentSegmentation;
 
+    /**
+     * 城市
+     */
     private String city;
+
+    @Column(name = "investor_id")
+    private Integer investorId;
 
     /**
      * @return id
@@ -403,44 +415,70 @@ public class InvestmentInstitutionTeam {
     }
 
     /**
-     * @return investment_stage
+     * 获取投资阶段
+     *
+     * @return investment_stage - 投资阶段
      */
     public String getInvestmentStage() {
         return investmentStage;
     }
 
     /**
-     * @param investmentStage
+     * 设置投资阶段
+     *
+     * @param investmentStage 投资阶段
      */
     public void setInvestmentStage(String investmentStage) {
         this.investmentStage = investmentStage;
     }
 
     /**
-     * @return investment_segmentation
+     * 获取投资领域
+     *
+     * @return investment_segmentation - 投资领域
      */
     public String getInvestmentSegmentation() {
         return investmentSegmentation;
     }
 
     /**
-     * @param investmentSegmentation
+     * 设置投资领域
+     *
+     * @param investmentSegmentation 投资领域
      */
     public void setInvestmentSegmentation(String investmentSegmentation) {
         this.investmentSegmentation = investmentSegmentation;
     }
 
     /**
-     * @return city
+     * 获取城市
+     *
+     * @return city - 城市
      */
     public String getCity() {
         return city;
     }
 
     /**
-     * @param city
+     * 设置城市
+     *
+     * @param city 城市
      */
     public void setCity(String city) {
         this.city = city;
+    }
+
+    /**
+     * @return investor_id
+     */
+    public Integer getInvestorId() {
+        return investorId;
+    }
+
+    /**
+     * @param investorId
+     */
+    public void setInvestorId(Integer investorId) {
+        this.investorId = investorId;
     }
 }

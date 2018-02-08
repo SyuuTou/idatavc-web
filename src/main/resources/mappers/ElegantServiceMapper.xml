@@ -22,5 +22,6 @@
     <result column="scence_key" property="scenceKey" jdbcType="VARCHAR" />
     <result column="yn" property="yn" jdbcType="INTEGER" />
     <result column="web_switch" property="webSwitch" jdbcType="INTEGER" />
+    <result column="appid" property="appid" jdbcType="INTEGER" />
   </resultMap>
 </mapper>

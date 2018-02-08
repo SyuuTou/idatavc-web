@@ -8,9 +8,10 @@
     <id column="ID" property="id" jdbcType="INTEGER" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="scene_key" property="sceneKey" jdbcType="VARCHAR" />
-    <result column="cost_num" property="costNum" jdbcType="INTEGER" />
+    <result column="cost_num" property="costNum" jdbcType="DECIMAL" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="begin_time" property="beginTime" jdbcType="TIMESTAMP" />
     <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+    <result column="app_id" property="appId" jdbcType="INTEGER" />
   </resultMap>
 </mapper>

@@ -16,6 +16,12 @@ public class InvestorDemand {
     private Integer userid;
 
     /**
+     * 投资人id
+     */
+    @Column(name = "investor_id")
+    private Integer investorId;
+
+    /**
      * 地域偏好
      */
     @Column(name = "city_preference")
@@ -153,6 +159,24 @@ public class InvestorDemand {
      */
     public void setUserid(Integer userid) {
         this.userid = userid;
+    }
+
+    /**
+     * 获取投资人id
+     *
+     * @return investor_id - 投资人id
+     */
+    public Integer getInvestorId() {
+        return investorId;
+    }
+
+    /**
+     * 设置投资人id
+     *
+     * @param investorId 投资人id
+     */
+    public void setInvestorId(Integer investorId) {
+        this.investorId = investorId;
     }
 
     /**

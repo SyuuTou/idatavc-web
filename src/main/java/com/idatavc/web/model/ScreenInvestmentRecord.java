@@ -16,7 +16,7 @@ public class ScreenInvestmentRecord {
     private Integer userId;
 
     /**
-     * 机构的类型0：非50,1:50机构
+     * 机构的类型0：非50,1:50机构,2表示全部
      */
     @Column(name = "investment_type")
     private Integer investmentType;
@@ -70,18 +70,18 @@ public class ScreenInvestmentRecord {
     }
 
     /**
-     * 获取机构的类型0：非50,1:50机构
+     * 获取机构的类型0：非50,1:50机构,2表示全部
      *
-     * @return investment_type - 机构的类型0：非50,1:50机构
+     * @return investment_type - 机构的类型0：非50,1:50机构,2表示全部
      */
     public Integer getInvestmentType() {
         return investmentType;
     }
 
     /**
-     * 设置机构的类型0：非50,1:50机构
+     * 设置机构的类型0：非50,1:50机构,2表示全部
      *
-     * @param investmentType 机构的类型0：非50,1:50机构
+     * @param investmentType 机构的类型0：非50,1:50机构,2表示全部
      */
     public void setInvestmentType(Integer investmentType) {
         this.investmentType = investmentType;

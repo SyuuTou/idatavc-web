@@ -1,32 +1,32 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.idatavc.web.mapper.InvestorDemandMapper">
-  <resultMap id="BaseResultMap" type="com.idatavc.web.model.InvestorDemand">
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.idatavc.web.mapper.InvestorDemandMapper" >
+  <resultMap id="BaseResultMap" type="com.idatavc.web.model.InvestorDemand" >
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="userid" jdbcType="INTEGER" property="userid" />
-    <result column="investor_id" jdbcType="INTEGER" property="investorId" />
-    <result column="city_preference" jdbcType="VARCHAR" property="cityPreference" />
-    <result column="demand" jdbcType="VARCHAR" property="demand" />
-    <result column="investment_amount_low" jdbcType="DECIMAL" property="investmentAmountLow" />
-    <result column="investment_amount_high" jdbcType="DECIMAL" property="investmentAmountHigh" />
-    <result column="investment_amount_low_dollars" jdbcType="DECIMAL" property="investmentAmountLowDollars" />
-    <result column="investment_amount_high_dollars" jdbcType="DECIMAL" property="investmentAmountHighDollars" />
-    <result column="recently_concerned_subdivision_circuit" jdbcType="VARCHAR" property="recentlyConcernedSubdivisionCircuit" />
-    <result column="concerned_founders_characteristic" jdbcType="VARCHAR" property="concernedFoundersCharacteristic" />
-    <result column="industry" jdbcType="VARCHAR" property="industry" />
-    <result column="financing_stage" jdbcType="VARCHAR" property="financingStage" />
-    <result column="creat_time" jdbcType="TIMESTAMP" property="creatTime" />
-    <result column="future" jdbcType="VARCHAR" property="future" />
-    <result column="weights" jdbcType="INTEGER" property="weights" />
-    <result column="demand_status" jdbcType="INTEGER" property="demandStatus" />
-    <result column="appid" jdbcType="INTEGER" property="appid" />
-    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
-    <result column="company_name" jdbcType="VARCHAR" property="companyName" />
-    <result column="company_duties" jdbcType="VARCHAR" property="companyDuties" />
-    <result column="user_name" jdbcType="VARCHAR" property="userName" />
-    <result column="phonenumber" jdbcType="VARCHAR" property="phonenumber" />
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="userid" property="userid" jdbcType="INTEGER" />
+    <result column="investor_id" property="investorId" jdbcType="INTEGER" />
+    <result column="city_preference" property="cityPreference" jdbcType="VARCHAR" />
+    <result column="demand" property="demand" jdbcType="VARCHAR" />
+    <result column="investment_amount_low" property="investmentAmountLow" jdbcType="DECIMAL" />
+    <result column="investment_amount_high" property="investmentAmountHigh" jdbcType="DECIMAL" />
+    <result column="investment_amount_low_dollars" property="investmentAmountLowDollars" jdbcType="DECIMAL" />
+    <result column="investment_amount_high_dollars" property="investmentAmountHighDollars" jdbcType="DECIMAL" />
+    <result column="recently_concerned_subdivision_circuit" property="recentlyConcernedSubdivisionCircuit" jdbcType="VARCHAR" />
+    <result column="concerned_founders_characteristic" property="concernedFoundersCharacteristic" jdbcType="VARCHAR" />
+    <result column="industry" property="industry" jdbcType="VARCHAR" />
+    <result column="financing_stage" property="financingStage" jdbcType="VARCHAR" />
+    <result column="creat_time" property="creatTime" jdbcType="TIMESTAMP" />
+    <result column="future" property="future" jdbcType="VARCHAR" />
+    <result column="weights" property="weights" jdbcType="INTEGER" />
+    <result column="demand_status" property="demandStatus" jdbcType="INTEGER" />
+    <result column="appid" property="appid" jdbcType="INTEGER" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="company_name" property="companyName" jdbcType="VARCHAR" />
+    <result column="company_duties" property="companyDuties" jdbcType="VARCHAR" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="phonenumber" property="phonenumber" jdbcType="VARCHAR" />
   </resultMap>
 </mapper>
