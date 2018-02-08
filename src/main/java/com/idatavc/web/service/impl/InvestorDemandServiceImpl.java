@@ -39,14 +39,16 @@ public class InvestorDemandServiceImpl implements InvestorDemandService {
         LOGGER.info("beginning..............");
         data.forEach((k,v) -> {
             LOGGER.info("insert current" + k +  "value" );
+
             InvestmentInstitutions investmentInstitutions = new InvestmentInstitutions();
             investmentInstitutions.setShortName(v.get(1).getContent().trim());
-            List<InvestmentInstitutions> result = investmentInstitutionsMapper.select(investmentInstitutions);
-            if (null == result || result.size() == 0){
+
+            InvestmentInstitutions investmentInstitutions1 = investmentInstitutionsMapper.selectByShortName(v.get(1).getContent().trim());
+            if (null == investmentInstitutions1){
                 investmentInstitutionsMapper.insert(investmentInstitutions);
             }else{
+                investmentInstitutions.setId(investmentInstitutions1.getId());
                 investmentInstitutionsMapper.updateByPrimaryKeySelective(investmentInstitutions);
-
             }
 
             Investors investors = new Investors();
@@ -66,7 +68,7 @@ public class InvestorDemandServiceImpl implements InvestorDemandService {
             }
 
             DatasOperationManage datasOperationManage = new DatasOperationManage();
-            datasOperationManage.setDataId(investors.getId());
+            datasOperationManage.setDataId(investorId);
             datasOperationManage.setDataType("INVESTOR");
             DatasOperationManage result2 = datasOperationManageMapper.selectByPrimaryKey(datasOperationManage);
             if(null == result2){
@@ -78,14 +80,17 @@ public class InvestorDemandServiceImpl implements InvestorDemandService {
             }
 
             InvestmentInstitutionTeam investmentInstitutionTeamRecord = new InvestmentInstitutionTeam();
-            investmentInstitutionTeamRecord.setInvestmentInstitutionId(investmentInstitutions.getId());
             investmentInstitutionTeamRecord.setInvestorId(investorId);
-            List<InvestmentInstitutionTeam> investmentInstitutionTeams = investmentInstitutionTeamMapper.select(investmentInstitutionTeamRecord);
+            investmentInstitutionTeamRecord.setInvestmentInstitutionId(investmentInstitutions.getId());
 
-            if (null == investmentInstitutionTeams && investmentInstitutionTeams.size() <=0){
+            InvestmentInstitutionTeam investmentInstitutionTeams1 = investmentInstitutionTeamMapper.selectByInvestorId(investorId);
+
+            if (null == investmentInstitutionTeams1){
                 investmentInstitutionTeamMapper.insert(investmentInstitutionTeamRecord);
+            }else{
+                investmentInstitutionTeamRecord.setId(investmentInstitutionTeams1.getId());
+                investmentInstitutionTeamMapper.updateByPrimaryKeySelective(investmentInstitutionTeamRecord);
             }
-
 
         });
         LOGGER.info("ending...........");
