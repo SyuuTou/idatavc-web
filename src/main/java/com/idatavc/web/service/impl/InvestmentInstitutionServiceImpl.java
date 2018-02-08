@@ -254,14 +254,14 @@ public class InvestmentInstitutionServiceImpl implements InvestmentInstitutionSe
                 }
 
                 DatasOperationManage datasOperationManage = new DatasOperationManage();
-                datasOperationManage.setDataId(investors.getId());
+                datasOperationManage.setDataId(investorId);
                 datasOperationManage.setDataType("INVESTOR");
                 DatasOperationManage result2 = datasOperationManageMapper.selectByPrimaryKey(datasOperationManage);
                 if(null == result2){
-//                    datasOperationManage.setWechatGroupId(v.get(0).getContent().trim());
+                    datasOperationManage.setWechatGroupId(v.get(0).getContent().trim());
                     datasOperationManageMapper.insert(datasOperationManage);
                 }else{
-//                    datasOperationManage.setWechatGroupId(v.get(0).getContent().trim());
+                    datasOperationManage.setWechatGroupId(v.get(0).getContent().trim());
                     datasOperationManageMapper.updateByPrimaryKeySelective(datasOperationManage);
                 }
 
@@ -324,11 +324,6 @@ public class InvestmentInstitutionServiceImpl implements InvestmentInstitutionSe
                     this.LOGGER.info("案例：{}",investorCase);
                     investorInvestmentCaseMapper.insert(investorInvestmentCase);
                 }
-
-
-
-
-
 
             }
         });
