@@ -13,7 +13,10 @@
     <result column="phone_country_code" property="phoneCountryCode" jdbcType="VARCHAR" />
     <result column="phone_district_code" property="phoneDistrictCode" jdbcType="VARCHAR" />
     <result column="phone_number" property="phoneNumber" jdbcType="VARCHAR" />
+    <result column="part_email" property="partEmail" jdbcType="VARCHAR" />
     <result column="longitude" property="longitude" jdbcType="DECIMAL" />
     <result column="latitude" property="latitude" jdbcType="DECIMAL" />
+    <result column="yn" property="yn" jdbcType="INTEGER" />
+    <result column="weight" property="weight" jdbcType="INTEGER" />
   </resultMap>
 </mapper>

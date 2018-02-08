@@ -20,11 +20,6 @@ public class Report {
     private String subTitle;
 
     /**
-     * 主文
-     */
-    private String content;
-
-    /**
      * 点评
      */
     private String comments;
@@ -83,6 +78,11 @@ public class Report {
     private String author;
 
     /**
+     * 主文
+     */
+    private String content;
+
+    /**
      * @return id
      */
     public Integer getId() {
@@ -130,24 +130,6 @@ public class Report {
      */
     public void setSubTitle(String subTitle) {
         this.subTitle = subTitle;
-    }
-
-    /**
-     * 获取主文
-     *
-     * @return content - 主文
-     */
-    public String getContent() {
-        return content;
-    }
-
-    /**
-     * 设置主文
-     *
-     * @param content 主文
-     */
-    public void setContent(String content) {
-        this.content = content;
     }
 
     /**
@@ -342,5 +324,23 @@ public class Report {
      */
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    /**
+     * 获取主文
+     *
+     * @return content - 主文
+     */
+    public String getContent() {
+        return content;
+    }
+
+    /**
+     * 设置主文
+     *
+     * @param content 主文
+     */
+    public void setContent(String content) {
+        this.content = content;
     }
 }

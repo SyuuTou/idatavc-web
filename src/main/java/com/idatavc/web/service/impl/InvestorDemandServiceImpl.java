@@ -30,9 +30,13 @@ public class InvestorDemandServiceImpl implements InvestorDemandService {
     @Autowired
     private DatasOperationManageMapper datasOperationManageMapper;
 
+    @Autowired
+    private InvestmentInstitutionTeamMapper investmentInstitutionTeamMapper;
+
     @Override
     public void demand(Map<Integer, List<MyCell>> data) {
 
+        LOGGER.info("beginning..............");
         data.forEach((k,v) -> {
             LOGGER.info("insert current" + k +  "value" );
             InvestmentInstitutions investmentInstitutions = new InvestmentInstitutions();
@@ -41,21 +45,24 @@ public class InvestorDemandServiceImpl implements InvestorDemandService {
             if (null == result || result.size() == 0){
                 investmentInstitutionsMapper.insert(investmentInstitutions);
             }else{
-                investmentInstitutions = result.get(0);
                 investmentInstitutionsMapper.updateByPrimaryKeySelective(investmentInstitutions);
+
             }
 
             Investors investors = new Investors();
             investors.setName(v.get(2).getContent().trim());
             investors.setInvestmentInstitutionsId(investmentInstitutions.getId());
             Investors result1 = investorsMapper.selectByInstitutionIdAndName(v.get(2).getContent().trim(), investmentInstitutions.getId());
+            Integer investorId = null;
             if (null == result1){
                 investors.setPosition(v.get(3).getContent().trim());
                 investorsMapper.insert(investors);
+                investorId = investors.getId();
             }else{
                 investors.setId(result1.getId());
                 investors.setPosition(v.get(3).getContent().trim());
                 investorsMapper.updateByPrimaryKeySelective(investors);
+                investorId = result1.getId();
             }
 
             DatasOperationManage datasOperationManage = new DatasOperationManage();
@@ -69,7 +76,19 @@ public class InvestorDemandServiceImpl implements InvestorDemandService {
                 datasOperationManage.setWechatGroupId(v.get(0).getContent().trim());
                 datasOperationManageMapper.updateByPrimaryKeySelective(datasOperationManage);
             }
+
+            InvestmentInstitutionTeam investmentInstitutionTeamRecord = new InvestmentInstitutionTeam();
+            investmentInstitutionTeamRecord.setInvestmentInstitutionId(investmentInstitutions.getId());
+            investmentInstitutionTeamRecord.setInvestorId(investorId);
+            List<InvestmentInstitutionTeam> investmentInstitutionTeams = investmentInstitutionTeamMapper.select(investmentInstitutionTeamRecord);
+
+            if (null == investmentInstitutionTeams && investmentInstitutionTeams.size() <=0){
+                investmentInstitutionTeamMapper.insert(investmentInstitutionTeamRecord);
+            }
+
+
         });
+        LOGGER.info("ending...........");
     }
 
 }

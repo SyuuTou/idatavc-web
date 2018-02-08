@@ -9,6 +9,9 @@ public class AdminOperationLog {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(name = "module_name")
+    private String moduleName;
+
     /**
      * 操作功能模块名称
      */
@@ -18,6 +21,8 @@ public class AdminOperationLog {
      * 操作类型：add, update, delete
      */
     private String type;
+
+    private String description;
 
     /**
      * 操作前的数据，添加数据时为 null，更新和删除时要记录更新和删除前的数据
@@ -57,6 +62,20 @@ public class AdminOperationLog {
     }
 
     /**
+     * @return module_name
+     */
+    public String getModuleName() {
+        return moduleName;
+    }
+
+    /**
+     * @param moduleName
+     */
+    public void setModuleName(String moduleName) {
+        this.moduleName = moduleName;
+    }
+
+    /**
      * 获取操作功能模块名称
      *
      * @return name - 操作功能模块名称
@@ -90,6 +109,20 @@ public class AdminOperationLog {
      */
     public void setType(String type) {
         this.type = type;
+    }
+
+    /**
+     * @return description
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * @param description
+     */
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     /**

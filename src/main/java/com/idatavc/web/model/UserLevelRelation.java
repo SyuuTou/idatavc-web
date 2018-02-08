@@ -50,7 +50,7 @@ public class UserLevelRelation {
      * 0: 未支付
 1: 支付完成
 2: 取消支付
-3: 支付失败
+3: 支付失败;4:后台赠送
      */
     private Integer status;
 
@@ -188,12 +188,12 @@ public class UserLevelRelation {
      * 获取0: 未支付
 1: 支付完成
 2: 取消支付
-3: 支付失败
+3: 支付失败;4:后台赠送
      *
      * @return status - 0: 未支付
 1: 支付完成
 2: 取消支付
-3: 支付失败
+3: 支付失败;4:后台赠送
      */
     public Integer getStatus() {
         return status;
@@ -203,12 +203,12 @@ public class UserLevelRelation {
      * 设置0: 未支付
 1: 支付完成
 2: 取消支付
-3: 支付失败
+3: 支付失败;4:后台赠送
      *
      * @param status 0: 未支付
 1: 支付完成
 2: 取消支付
-3: 支付失败
+3: 支付失败;4:后台赠送
      */
     public void setStatus(Integer status) {
         this.status = status;

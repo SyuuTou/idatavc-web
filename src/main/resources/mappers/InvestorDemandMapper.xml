@@ -7,6 +7,7 @@
     -->
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="userid" property="userid" jdbcType="INTEGER" />
+    <result column="investor_id" property="investorId" jdbcType="INTEGER" />
     <result column="city_preference" property="cityPreference" jdbcType="VARCHAR" />
     <result column="demand" property="demand" jdbcType="VARCHAR" />
     <result column="investment_amount_low" property="investmentAmountLow" jdbcType="DECIMAL" />

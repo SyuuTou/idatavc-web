@@ -8,7 +8,6 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="title" property="title" jdbcType="VARCHAR" />
     <result column="sub_title" property="subTitle" jdbcType="VARCHAR" />
-    <result column="content" property="content" jdbcType="VARCHAR" />
     <result column="comments" property="comments" jdbcType="VARCHAR" />
     <result column="cover_url" property="coverUrl" jdbcType="VARCHAR" />
     <result column="from_rul" property="fromRul" jdbcType="VARCHAR" />
@@ -20,5 +19,6 @@
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
     <result column="creater" property="creater" jdbcType="VARCHAR" />
     <result column="author" property="author" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="LONGVARCHAR" />
   </resultMap>
 </mapper>

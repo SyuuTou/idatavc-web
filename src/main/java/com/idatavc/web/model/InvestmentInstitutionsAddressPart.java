@@ -49,9 +49,25 @@ public class InvestmentInstitutionsAddressPart {
     @Column(name = "phone_number")
     private String phoneNumber;
 
+    /**
+     * 分部独立邮箱
+     */
+    @Column(name = "part_email")
+    private String partEmail;
+
     private BigDecimal longitude;
 
     private BigDecimal latitude;
+
+    /**
+     * 删除标志:0代表有效；1代表无效
+     */
+    private Integer yn;
+
+    /**
+     * 权重
+     */
+    private Integer weight;
 
     /**
      * @return id
@@ -194,6 +210,24 @@ public class InvestmentInstitutionsAddressPart {
     }
 
     /**
+     * 获取分部独立邮箱
+     *
+     * @return part_email - 分部独立邮箱
+     */
+    public String getPartEmail() {
+        return partEmail;
+    }
+
+    /**
+     * 设置分部独立邮箱
+     *
+     * @param partEmail 分部独立邮箱
+     */
+    public void setPartEmail(String partEmail) {
+        this.partEmail = partEmail;
+    }
+
+    /**
      * @return longitude
      */
     public BigDecimal getLongitude() {
@@ -219,5 +253,41 @@ public class InvestmentInstitutionsAddressPart {
      */
     public void setLatitude(BigDecimal latitude) {
         this.latitude = latitude;
+    }
+
+    /**
+     * 获取删除标志:0代表有效；1代表无效
+     *
+     * @return yn - 删除标志:0代表有效；1代表无效
+     */
+    public Integer getYn() {
+        return yn;
+    }
+
+    /**
+     * 设置删除标志:0代表有效；1代表无效
+     *
+     * @param yn 删除标志:0代表有效；1代表无效
+     */
+    public void setYn(Integer yn) {
+        this.yn = yn;
+    }
+
+    /**
+     * 获取权重
+     *
+     * @return weight - 权重
+     */
+    public Integer getWeight() {
+        return weight;
+    }
+
+    /**
+     * 设置权重
+     *
+     * @param weight 权重
+     */
+    public void setWeight(Integer weight) {
+        this.weight = weight;
     }
 }

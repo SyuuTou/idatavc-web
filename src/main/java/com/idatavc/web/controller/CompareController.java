@@ -57,4 +57,7 @@ public class CompareController {
         investmentInstitutionService.compare(data);
         return "excel";
     }
+
+
+
 }

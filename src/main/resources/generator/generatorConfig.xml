@@ -27,7 +27,7 @@
         <javaClientGenerator targetPackage="com.idatavc.web.mapper" targetProject="src/main/java"
                              type="XMLMAPPER"/>
 
-        <table tableName="investment_institution_team">
+        <table tableName="%">
             <!--mysql 配置-->
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
             <!--oracle 配置-->

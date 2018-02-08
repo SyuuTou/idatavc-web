@@ -16,7 +16,7 @@ public class AdminUser {
     private Integer userId;
 
     /**
-     * 管理员类型，0表示root管理员（超级管理员），1普通管理员, 2业务员
+     * 管理员类型，0表示root管理员（超级管理员）,1普通管理员, 2业务员,3FA承销,4FA承做
      */
     @Column(name = "admin_type")
     private Integer adminType;
@@ -41,6 +41,11 @@ public class AdminUser {
     private String phonenumber;
 
     private String name;
+
+    /**
+     * 密码
+     */
+    private String password;
 
     /**
      * @return id
@@ -75,18 +80,18 @@ public class AdminUser {
     }
 
     /**
-     * 获取管理员类型，0表示root管理员（超级管理员），1普通管理员, 2业务员
+     * 获取管理员类型，0表示root管理员（超级管理员）,1普通管理员, 2业务员,3FA承销,4FA承做
      *
-     * @return admin_type - 管理员类型，0表示root管理员（超级管理员），1普通管理员, 2业务员
+     * @return admin_type - 管理员类型，0表示root管理员（超级管理员）,1普通管理员, 2业务员,3FA承销,4FA承做
      */
     public Integer getAdminType() {
         return adminType;
     }
 
     /**
-     * 设置管理员类型，0表示root管理员（超级管理员），1普通管理员, 2业务员
+     * 设置管理员类型，0表示root管理员（超级管理员）,1普通管理员, 2业务员,3FA承销,4FA承做
      *
-     * @param adminType 管理员类型，0表示root管理员（超级管理员），1普通管理员, 2业务员
+     * @param adminType 管理员类型，0表示root管理员（超级管理员）,1普通管理员, 2业务员,3FA承销,4FA承做
      */
     public void setAdminType(Integer adminType) {
         this.adminType = adminType;
@@ -172,5 +177,23 @@ public class AdminUser {
      */
     public void setName(String name) {
         this.name = name;
+    }
+
+    /**
+     * 获取密码
+     *
+     * @return password - 密码
+     */
+    public String getPassword() {
+        return password;
+    }
+
+    /**
+     * 设置密码
+     *
+     * @param password 密码
+     */
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

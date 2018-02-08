@@ -104,6 +104,11 @@ public class ElegantService {
     private Integer webSwitch;
 
     /**
+     * 应用id
+     */
+    private Integer appid;
+
+    /**
      * @return id
      */
     public Integer getId() {
@@ -403,5 +408,23 @@ public class ElegantService {
      */
     public void setWebSwitch(Integer webSwitch) {
         this.webSwitch = webSwitch;
+    }
+
+    /**
+     * 获取应用id
+     *
+     * @return appid - 应用id
+     */
+    public Integer getAppid() {
+        return appid;
+    }
+
+    /**
+     * 设置应用id
+     *
+     * @param appid 应用id
+     */
+    public void setAppid(Integer appid) {
+        this.appid = appid;
     }
 }
