@@ -1,16 +1,16 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.idatavc.web.mapper.MetaAppMapper" >
-  <resultMap id="BaseResultMap" type="com.idatavc.web.model.MetaApp" >
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.idatavc.web.mapper.MetaAppMapper">
+  <resultMap id="BaseResultMap" type="com.idatavc.web.model.MetaApp">
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="app_name" property="appName" jdbcType="VARCHAR" />
-    <result column="app_key" property="appKey" jdbcType="VARCHAR" />
-    <result column="app_description" property="appDescription" jdbcType="VARCHAR" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="yn" property="yn" jdbcType="INTEGER" />
-    <result column="investment_institution_id" property="investmentInstitutionId" jdbcType="INTEGER" />
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="app_name" jdbcType="VARCHAR" property="appName" />
+    <result column="app_key" jdbcType="VARCHAR" property="appKey" />
+    <result column="app_description" jdbcType="VARCHAR" property="appDescription" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="yn" jdbcType="INTEGER" property="yn" />
+    <result column="investment_institution_id" jdbcType="INTEGER" property="investmentInstitutionId" />
   </resultMap>
 </mapper>

@@ -1,41 +1,47 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.idatavc.web.mapper.InvestmentInstitutionsMapper" >
-  <resultMap id="BaseResultMap" type="com.idatavc.web.model.InvestmentInstitutions" >
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.idatavc.web.mapper.InvestmentInstitutionsMapper">
+  <resultMap id="BaseResultMap" type="com.idatavc.web.model.InvestmentInstitutions">
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="ID" property="id" jdbcType="INTEGER" />
-    <result column="short_name" property="shortName" jdbcType="VARCHAR" />
-    <result column="full_name" property="fullName" jdbcType="VARCHAR" />
-    <result column="key_words" property="keyWords" jdbcType="VARCHAR" />
-    <result column="commet" property="commet" jdbcType="VARCHAR" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="type" property="type" jdbcType="INTEGER" />
-    <result column="logo" property="logo" jdbcType="VARCHAR" />
-    <result column="case_url" property="caseUrl" jdbcType="VARCHAR" />
-    <result column="kenel_case" property="kenelCase" jdbcType="VARCHAR" />
-    <result column="comment" property="comment" jdbcType="VARCHAR" />
-    <result column="city" property="city" jdbcType="VARCHAR" />
-    <result column="stage" property="stage" jdbcType="VARCHAR" />
-    <result column="representative" property="representative" jdbcType="VARCHAR" />
-    <result column="approval_status" property="approvalStatus" jdbcType="INTEGER" />
-    <result column="approval_time" property="approvalTime" jdbcType="TIMESTAMP" />
-    <result column="home_url" property="homeUrl" jdbcType="VARCHAR" />
-    <result column="yn" property="yn" jdbcType="INTEGER" />
-    <result column="sort" property="sort" jdbcType="INTEGER" />
-    <result column="count" property="count" jdbcType="INTEGER" />
-    <result column="total_fund_scale" property="totalFundScale" jdbcType="DECIMAL" />
-    <result column="rmb_fund_scale" property="rmbFundScale" jdbcType="DECIMAL" />
-    <result column="dollar_fund_scale" property="dollarFundScale" jdbcType="DECIMAL" />
-    <result column="rmb_invest_amount_min" property="rmbInvestAmountMin" jdbcType="DECIMAL" />
-    <result column="rmb_invest_amount_max" property="rmbInvestAmountMax" jdbcType="DECIMAL" />
-    <result column="dollar_invest_amount_min" property="dollarInvestAmountMin" jdbcType="DECIMAL" />
-    <result column="dollar_invest_amount_max" property="dollarInvestAmountMax" jdbcType="DECIMAL" />
-    <result column="investment_idea" property="investmentIdea" jdbcType="VARCHAR" />
-    <result column="product_requirement" property="productRequirement" jdbcType="VARCHAR" />
-    <result column="recruitment_requirement" property="recruitmentRequirement" jdbcType="VARCHAR" />
-    <result column="investment_institutions_type" property="investmentInstitutionsType" jdbcType="VARCHAR" />
-    <result column="established_time" property="establishedTime" jdbcType="VARCHAR" />
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="short_name" jdbcType="VARCHAR" property="shortName" />
+    <result column="full_name" jdbcType="VARCHAR" property="fullName" />
+    <result column="key_words" jdbcType="VARCHAR" property="keyWords" />
+    <result column="commet" jdbcType="VARCHAR" property="commet" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="logo" jdbcType="VARCHAR" property="logo" />
+    <result column="case_url" jdbcType="VARCHAR" property="caseUrl" />
+    <result column="kenel_case" jdbcType="VARCHAR" property="kenelCase" />
+    <result column="comment" jdbcType="VARCHAR" property="comment" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="stage" jdbcType="VARCHAR" property="stage" />
+    <result column="representative" jdbcType="VARCHAR" property="representative" />
+    <result column="approval_status" jdbcType="INTEGER" property="approvalStatus" />
+    <result column="approval_time" jdbcType="TIMESTAMP" property="approvalTime" />
+    <result column="home_url" jdbcType="VARCHAR" property="homeUrl" />
+    <result column="yn" jdbcType="INTEGER" property="yn" />
+    <result column="sort" jdbcType="INTEGER" property="sort" />
+    <result column="count" jdbcType="INTEGER" property="count" />
+    <result column="total_fund_scale" jdbcType="DECIMAL" property="totalFundScale" />
+    <result column="rmb_fund_scale" jdbcType="DECIMAL" property="rmbFundScale" />
+    <result column="dollar_fund_scale" jdbcType="DECIMAL" property="dollarFundScale" />
+    <result column="rmb_invest_amount_min" jdbcType="DECIMAL" property="rmbInvestAmountMin" />
+    <result column="rmb_invest_amount_max" jdbcType="DECIMAL" property="rmbInvestAmountMax" />
+    <result column="dollar_invest_amount_min" jdbcType="DECIMAL" property="dollarInvestAmountMin" />
+    <result column="dollar_invest_amount_max" jdbcType="DECIMAL" property="dollarInvestAmountMax" />
+    <result column="investment_idea" jdbcType="VARCHAR" property="investmentIdea" />
+    <result column="product_requirement" jdbcType="VARCHAR" property="productRequirement" />
+    <result column="recruitment_requirement" jdbcType="VARCHAR" property="recruitmentRequirement" />
+    <result column="investment_institutions_type" jdbcType="VARCHAR" property="investmentInstitutionsType" />
+    <result column="established_time" jdbcType="VARCHAR" property="establishedTime" />
+    <result column="data_source_type" jdbcType="INTEGER" property="dataSourceType" />
   </resultMap>
+
+  <select id="selectByShortName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select * from investment_institutions where `short_name` =#{shortName};
+  </select>
+
 </mapper>

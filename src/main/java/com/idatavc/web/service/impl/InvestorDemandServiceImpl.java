@@ -31,6 +31,9 @@ public class InvestorDemandServiceImpl implements InvestorDemandService {
     private DatasOperationManageMapper datasOperationManageMapper;
 
     @Autowired
+    private OriginalDataMapper originalDataMapper;
+
+    @Autowired
     private InvestmentInstitutionTeamMapper investmentInstitutionTeamMapper;
 
     @Override
@@ -40,57 +43,72 @@ public class InvestorDemandServiceImpl implements InvestorDemandService {
         data.forEach((k,v) -> {
             LOGGER.info("insert current" + k +  "value" );
 
-            InvestmentInstitutions investmentInstitutions = new InvestmentInstitutions();
-            investmentInstitutions.setShortName(v.get(1).getContent().trim());
-
-            InvestmentInstitutions investmentInstitutions1 = investmentInstitutionsMapper.selectByShortName(v.get(1).getContent().trim());
-            if (null == investmentInstitutions1){
-                investmentInstitutionsMapper.insert(investmentInstitutions);
-            }else{
-                investmentInstitutions.setId(investmentInstitutions1.getId());
-                investmentInstitutionsMapper.updateByPrimaryKeySelective(investmentInstitutions);
+            OriginalData originalData = new OriginalData();
+            originalData.setPreferenceAndPrecautions(v.get(0).getContent().trim());
+            originalData.setCreateWechatDate(v.get(1).getContent().trim());
+            originalData.setWechatNumber(v.get(2).getContent().trim());
+            originalData.setInstitutionName(v.get(3).getContent().trim());
+            originalData.setChargePeople(v.get(4).getContent().trim());
+            originalData.setInstitutionDesc(v.get(5).getContent().trim());
+            originalData.setFundSize(v.get(6).getContent().trim());
+            originalData.setInstitutionLevel(v.get(7).getContent().trim());
+            originalData.setInstitutionClassify(v.get(8).getContent().trim());
+            originalData.setInstitutionInternalOrganization(v.get(9).getContent().trim());
+            originalData.setInstitutionSource(v.get(10).getContent().trim());
+            originalData.setDataFullYn(0);
+            originalData.setUserName(v.get(12).getContent().trim());
+            originalData.setCompanyDuties(v.get(13).getContent().trim());
+            Integer workCard = 0;
+            if ("是".equals(v.get(14).getContent().trim())){
+                workCard = 1;
             }
+            originalData.setWorkCard(workCard);
+            originalData.setRgzlAttention(v.get(15).getContent().trim());
+            originalData.setRgzlDetail(v.get(16).getContent().trim());
+            originalData.setZnzzAttention(v.get(17).getContent().trim());
+            originalData.setZnzzDetail(v.get(18).getContent().trim());
+            originalData.setQcjthwlAttention(v.get(19).getContent().trim());
+            originalData.setQcjthwlDetail(v.get(20).getContent().trim());
+            originalData.setAqkjAttention(v.get(21).getContent().trim());
+            originalData.setAqkjDetail(v.get(22).getContent().trim());
+            originalData.setXpbdtAttention(v.get(23).getContent().trim());
+            originalData.setXpbdtDetail(v.get(24).getContent().trim());
+            originalData.setJrkjAttention(v.get(25).getContent().trim());
+            originalData.setJrkjDetail(v.get(26).getContent().trim());
+            originalData.setJykjAttention(v.get(27).getContent().trim());
+            originalData.setJykjDetail(v.get(28).getContent().trim());
+            originalData.setJzylAttention(v.get(29).getContent().trim());
+            originalData.setJzylDetail(v.get(30).getContent().trim());
+            originalData.setQyfwAttention(v.get(31).getContent().trim());
+            originalData.setQyfwDetail(v.get(32).getContent().trim());
+            originalData.setXfsjAttention(v.get(33).getContent().trim());
+            originalData.setXfsjDetail(v.get(34).getContent().trim());
+            originalData.setWycmAttention(v.get(35).getContent().trim());
+            originalData.setWycmDetail(v.get(36).getContent().trim());
+            originalData.setTmtAttention(v.get(37).getContent().trim());
+            originalData.setXclAttenton(v.get(38).getContent().trim());
+            originalData.setXnyAttention(v.get(39).getContent().trim());
+            originalData.setWlwAttention(v.get(40).getContent().trim());
+            originalData.setQklAttention(v.get(41).getContent().trim());
+            originalData.setHlwAttention(v.get(42).getContent().trim());
+            originalData.setHlwDetail(v.get(43).getContent().trim());
+            originalData.setArVrAttention(v.get(44).getContent().trim());
+            originalData.setOther(v.get(45).getContent().trim());
+            originalData.setAngerRound(v.get(46).getContent().trim());
+            originalData.setPreARound(v.get(47).getContent().trim());
+            originalData.setaRound(v.get(48).getContent().trim());
+            originalData.setbRound(v.get(49).getContent().trim());
+            originalData.setcRound(v.get(50).getContent().trim());
+            originalData.setBinggoRound(v.get(51).getContent().trim());
+            originalData.setdRound(v.get(52).getContent().trim());
+            originalData.setPreIpoRound(v.get(53).getContent().trim());
+            originalData.setCity(v.get(54).getContent().trim());
+            originalData.setOneInvestmentCount(v.get(55).getContent().trim());
+            originalData.setInvestmentNumFuture(v.get(56).getContent().trim());
+            originalData.setInvestmentPrepare(v.get(57).getContent().trim());
 
-            Investors investors = new Investors();
-            investors.setName(v.get(2).getContent().trim());
-            investors.setInvestmentInstitutionsId(investmentInstitutions.getId());
-            Investors result1 = investorsMapper.selectByInstitutionIdAndName(v.get(2).getContent().trim(), investmentInstitutions.getId());
-            Integer investorId = null;
-            if (null == result1){
-                investors.setPosition(v.get(3).getContent().trim());
-                investorsMapper.insert(investors);
-                investorId = investors.getId();
-            }else{
-                investors.setId(result1.getId());
-                investors.setPosition(v.get(3).getContent().trim());
-                investorsMapper.updateByPrimaryKeySelective(investors);
-                investorId = result1.getId();
-            }
+            originalDataMapper.insertSelective(originalData);
 
-            DatasOperationManage datasOperationManage = new DatasOperationManage();
-            datasOperationManage.setDataId(investorId);
-            datasOperationManage.setDataType("INVESTOR");
-            DatasOperationManage result2 = datasOperationManageMapper.selectByPrimaryKey(datasOperationManage);
-            if(null == result2){
-                datasOperationManage.setWechatGroupId(v.get(0).getContent().trim());
-                datasOperationManageMapper.insert(datasOperationManage);
-            }else{
-                datasOperationManage.setWechatGroupId(v.get(0).getContent().trim());
-                datasOperationManageMapper.updateByPrimaryKeySelective(datasOperationManage);
-            }
-
-            InvestmentInstitutionTeam investmentInstitutionTeamRecord = new InvestmentInstitutionTeam();
-            investmentInstitutionTeamRecord.setInvestorId(investorId);
-            investmentInstitutionTeamRecord.setInvestmentInstitutionId(investmentInstitutions.getId());
-
-            InvestmentInstitutionTeam investmentInstitutionTeams1 = investmentInstitutionTeamMapper.selectByInvestorId(investorId);
-
-            if (null == investmentInstitutionTeams1){
-                investmentInstitutionTeamMapper.insert(investmentInstitutionTeamRecord);
-            }else{
-                investmentInstitutionTeamRecord.setId(investmentInstitutionTeams1.getId());
-                investmentInstitutionTeamMapper.updateByPrimaryKeySelective(investmentInstitutionTeamRecord);
-            }
 
         });
         LOGGER.info("ending...........");

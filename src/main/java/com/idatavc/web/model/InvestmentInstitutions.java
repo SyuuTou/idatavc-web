@@ -179,6 +179,12 @@ public class InvestmentInstitutions {
     private String establishedTime;
 
     /**
+     * 数据来源类型（曹传桂 2018-2-6 20:33:05）
+     */
+    @Column(name = "data_source_type")
+    private Integer dataSourceType;
+
+    /**
      * @return ID
      */
     public Integer getId() {
@@ -736,5 +742,23 @@ public class InvestmentInstitutions {
      */
     public void setEstablishedTime(String establishedTime) {
         this.establishedTime = establishedTime;
+    }
+
+    /**
+     * 获取数据来源类型（曹传桂 2018-2-6 20:33:05）
+     *
+     * @return data_source_type - 数据来源类型（曹传桂 2018-2-6 20:33:05）
+     */
+    public Integer getDataSourceType() {
+        return dataSourceType;
+    }
+
+    /**
+     * 设置数据来源类型（曹传桂 2018-2-6 20:33:05）
+     *
+     * @param dataSourceType 数据来源类型（曹传桂 2018-2-6 20:33:05）
+     */
+    public void setDataSourceType(Integer dataSourceType) {
+        this.dataSourceType = dataSourceType;
     }
 }

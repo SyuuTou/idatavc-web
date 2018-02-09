@@ -1,27 +1,27 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.idatavc.web.mapper.ElegantServiceMapper" >
-  <resultMap id="BaseResultMap" type="com.idatavc.web.model.ElegantService" >
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.idatavc.web.mapper.ElegantServiceMapper">
+  <resultMap id="BaseResultMap" type="com.idatavc.web.model.ElegantService">
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="service_name" property="serviceName" jdbcType="VARCHAR" />
-    <result column="original_price" property="originalPrice" jdbcType="DECIMAL" />
-    <result column="vip_price" property="vipPrice" jdbcType="DECIMAL" />
-    <result column="pre_vip_price_descript" property="preVipPriceDescript" jdbcType="VARCHAR" />
-    <result column="price_unit" property="priceUnit" jdbcType="INTEGER" />
-    <result column="unit" property="unit" jdbcType="VARCHAR" />
-    <result column="background_picture" property="backgroundPicture" jdbcType="VARCHAR" />
-    <result column="begin_time" property="beginTime" jdbcType="TIMESTAMP" />
-    <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
-    <result column="on_off" property="onOff" jdbcType="INTEGER" />
-    <result column="recommend_yn" property="recommendYn" jdbcType="INTEGER" />
-    <result column="sort" property="sort" jdbcType="INTEGER" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="scence_key" property="scenceKey" jdbcType="VARCHAR" />
-    <result column="yn" property="yn" jdbcType="INTEGER" />
-    <result column="web_switch" property="webSwitch" jdbcType="INTEGER" />
-    <result column="appid" property="appid" jdbcType="INTEGER" />
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="service_name" jdbcType="VARCHAR" property="serviceName" />
+    <result column="original_price" jdbcType="DECIMAL" property="originalPrice" />
+    <result column="vip_price" jdbcType="DECIMAL" property="vipPrice" />
+    <result column="pre_vip_price_descript" jdbcType="VARCHAR" property="preVipPriceDescript" />
+    <result column="price_unit" jdbcType="INTEGER" property="priceUnit" />
+    <result column="unit" jdbcType="VARCHAR" property="unit" />
+    <result column="background_picture" jdbcType="VARCHAR" property="backgroundPicture" />
+    <result column="begin_time" jdbcType="TIMESTAMP" property="beginTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="on_off" jdbcType="INTEGER" property="onOff" />
+    <result column="recommend_yn" jdbcType="INTEGER" property="recommendYn" />
+    <result column="sort" jdbcType="INTEGER" property="sort" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="scence_key" jdbcType="VARCHAR" property="scenceKey" />
+    <result column="yn" jdbcType="INTEGER" property="yn" />
+    <result column="web_switch" jdbcType="INTEGER" property="webSwitch" />
+    <result column="appid" jdbcType="INTEGER" property="appid" />
   </resultMap>
 </mapper>

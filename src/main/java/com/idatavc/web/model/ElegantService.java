@@ -35,7 +35,7 @@ public class ElegantService {
     private String preVipPriceDescript;
 
     /**
-     * 价格单位，0表示人民币，1表示美元
+     * 价格单位，0表示人民币，1表示美元, 2表示令牌
      */
     @Column(name = "price_unit")
     private Integer priceUnit;
@@ -195,18 +195,18 @@ public class ElegantService {
     }
 
     /**
-     * 获取价格单位，0表示人民币，1表示美元
+     * 获取价格单位，0表示人民币，1表示美元, 2表示令牌
      *
-     * @return price_unit - 价格单位，0表示人民币，1表示美元
+     * @return price_unit - 价格单位，0表示人民币，1表示美元, 2表示令牌
      */
     public Integer getPriceUnit() {
         return priceUnit;
     }
 
     /**
-     * 设置价格单位，0表示人民币，1表示美元
+     * 设置价格单位，0表示人民币，1表示美元, 2表示令牌
      *
-     * @param priceUnit 价格单位，0表示人民币，1表示美元
+     * @param priceUnit 价格单位，0表示人民币，1表示美元, 2表示令牌
      */
     public void setPriceUnit(Integer priceUnit) {
         this.priceUnit = priceUnit;

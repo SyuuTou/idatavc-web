@@ -1,16 +1,16 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.idatavc.web.mapper.UserFormidMapper" >
-  <resultMap id="BaseResultMap" type="com.idatavc.web.model.UserFormid" >
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.idatavc.web.mapper.UserFormidMapper">
+  <resultMap id="BaseResultMap" type="com.idatavc.web.model.UserFormid">
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="users_id" property="usersId" jdbcType="INTEGER" />
-    <result column="formid" property="formid" jdbcType="VARCHAR" />
-    <result column="formid_type" property="formidType" jdbcType="INTEGER" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="yn" property="yn" jdbcType="INTEGER" />
-    <result column="user_time" property="userTime" jdbcType="TIMESTAMP" />
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="users_id" jdbcType="INTEGER" property="usersId" />
+    <result column="formid" jdbcType="VARCHAR" property="formid" />
+    <result column="formid_type" jdbcType="INTEGER" property="formidType" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="yn" jdbcType="INTEGER" property="yn" />
+    <result column="user_time" jdbcType="TIMESTAMP" property="userTime" />
   </resultMap>
 </mapper>

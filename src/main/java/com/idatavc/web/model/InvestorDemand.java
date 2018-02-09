@@ -130,6 +130,12 @@ public class InvestorDemand {
     private String phonenumber;
 
     /**
+     * 事件Key
+     */
+    @Column(name = "event_key")
+    private String eventKey;
+
+    /**
      * @return id
      */
     public Integer getId() {
@@ -529,5 +535,23 @@ public class InvestorDemand {
      */
     public void setPhonenumber(String phonenumber) {
         this.phonenumber = phonenumber;
+    }
+
+    /**
+     * 获取事件Key
+     *
+     * @return event_key - 事件Key
+     */
+    public String getEventKey() {
+        return eventKey;
+    }
+
+    /**
+     * 设置事件Key
+     *
+     * @param eventKey 事件Key
+     */
+    public void setEventKey(String eventKey) {
+        this.eventKey = eventKey;
     }
 }

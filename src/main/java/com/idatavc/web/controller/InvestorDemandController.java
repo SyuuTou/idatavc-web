@@ -2,8 +2,6 @@ package com.idatavc.web.controller;
 
 import com.idatavc.web.ExcelPoiHelper;
 import com.idatavc.web.MyCell;
-import com.idatavc.web.model.InvestorDemand;
-import com.idatavc.web.service.InvestmentInstitutionService;
 import com.idatavc.web.service.InvestorDemandService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

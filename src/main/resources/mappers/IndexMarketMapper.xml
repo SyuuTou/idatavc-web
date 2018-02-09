@@ -1,13 +1,14 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.idatavc.web.mapper.IndexMarketMapper" >
-  <resultMap id="BaseResultMap" type="com.idatavc.web.model.IndexMarket" >
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.idatavc.web.mapper.IndexMarketMapper">
+  <resultMap id="BaseResultMap" type="com.idatavc.web.model.IndexMarket">
     <!--
       WARNING - @mbg.generated
     -->
-    <result column="project_id" property="projectId" jdbcType="INTEGER" />
-    <result column="segmentation" property="segmentation" jdbcType="INTEGER" />
-    <result column="subdivide_segmentation" property="subdivideSegmentation" jdbcType="INTEGER" />
-    <result column="operating_conditions" property="operatingConditions" jdbcType="INTEGER" />
+    <result column="project_id" jdbcType="INTEGER" property="projectId" />
+    <result column="segmentation" jdbcType="INTEGER" property="segmentation" />
+    <result column="subdivide_segmentation" jdbcType="INTEGER" property="subdivideSegmentation" />
+    <result column="operating_conditions" jdbcType="INTEGER" property="operatingConditions" />
   </resultMap>
+
 </mapper>

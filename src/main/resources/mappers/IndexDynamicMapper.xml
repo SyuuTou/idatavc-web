@@ -1,12 +1,13 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.idatavc.web.mapper.IndexDynamicMapper" >
-  <resultMap id="BaseResultMap" type="com.idatavc.web.model.IndexDynamic" >
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.idatavc.web.mapper.IndexDynamicMapper">
+  <resultMap id="BaseResultMap" type="com.idatavc.web.model.IndexDynamic">
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="project_id" property="projectId" jdbcType="INTEGER" />
-    <result column="concern" property="concern" jdbcType="INTEGER" />
-    <result column="turn_around" property="turnAround" jdbcType="INTEGER" />
+    <id column="project_id" jdbcType="INTEGER" property="projectId" />
+    <result column="concern" jdbcType="INTEGER" property="concern" />
+    <result column="turn_around" jdbcType="INTEGER" property="turnAround" />
   </resultMap>
+
 </mapper>

@@ -1,29 +1,29 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.idatavc.web.mapper.MetaFinancingMapper" >
-  <resultMap id="BaseResultMap" type="com.idatavc.web.model.MetaFinancing" >
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.idatavc.web.mapper.MetaFinancingMapper">
+  <resultMap id="BaseResultMap" type="com.idatavc.web.model.MetaFinancing">
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="ID" property="id" jdbcType="BIGINT" />
-    <result column="company_brand" property="companyBrand" jdbcType="VARCHAR" />
-    <result column="company_all_name" property="companyAllName" jdbcType="VARCHAR" />
-    <result column="company_intro" property="companyIntro" jdbcType="VARCHAR" />
-    <result column="established_time" property="establishedTime" jdbcType="VARCHAR" />
-    <result column="register_area" property="registerArea" jdbcType="VARCHAR" />
-    <result column="main_Industry" property="mainIndustry" jdbcType="VARCHAR" />
-    <result column="sub_industry" property="subIndustry" jdbcType="VARCHAR" />
-    <result column="company_tag" property="companyTag" jdbcType="VARCHAR" />
-    <result column="product_name" property="productName" jdbcType="VARCHAR" />
-    <result column="financing_last_time" property="financingLastTime" jdbcType="VARCHAR" />
-    <result column="round" property="round" jdbcType="VARCHAR" />
-    <result column="money" property="money" jdbcType="INTEGER" />
-    <result column="currency" property="currency" jdbcType="VARCHAR" />
-    <result column="share" property="share" jdbcType="VARCHAR" />
-    <result column="Valuation" property="valuation" jdbcType="INTEGER" />
-    <result column="Valuation_currency" property="valuationCurrency" jdbcType="VARCHAR" />
-    <result column="Investors" property="investors" jdbcType="VARCHAR" />
-    <result column="education_experience" property="educationExperience" jdbcType="VARCHAR" />
-    <result column="work_experience" property="workExperience" jdbcType="VARCHAR" />
+    <id column="ID" jdbcType="BIGINT" property="id" />
+    <result column="company_brand" jdbcType="VARCHAR" property="companyBrand" />
+    <result column="company_all_name" jdbcType="VARCHAR" property="companyAllName" />
+    <result column="company_intro" jdbcType="VARCHAR" property="companyIntro" />
+    <result column="established_time" jdbcType="VARCHAR" property="establishedTime" />
+    <result column="register_area" jdbcType="VARCHAR" property="registerArea" />
+    <result column="main_Industry" jdbcType="VARCHAR" property="mainIndustry" />
+    <result column="sub_industry" jdbcType="VARCHAR" property="subIndustry" />
+    <result column="company_tag" jdbcType="VARCHAR" property="companyTag" />
+    <result column="product_name" jdbcType="VARCHAR" property="productName" />
+    <result column="financing_last_time" jdbcType="VARCHAR" property="financingLastTime" />
+    <result column="round" jdbcType="VARCHAR" property="round" />
+    <result column="money" jdbcType="INTEGER" property="money" />
+    <result column="currency" jdbcType="VARCHAR" property="currency" />
+    <result column="share" jdbcType="VARCHAR" property="share" />
+    <result column="Valuation" jdbcType="INTEGER" property="valuation" />
+    <result column="Valuation_currency" jdbcType="VARCHAR" property="valuationCurrency" />
+    <result column="Investors" jdbcType="VARCHAR" property="investors" />
+    <result column="education_experience" jdbcType="VARCHAR" property="educationExperience" />
+    <result column="work_experience" jdbcType="VARCHAR" property="workExperience" />
   </resultMap>
 </mapper>

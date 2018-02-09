@@ -164,7 +164,7 @@ public class ExcelPoiHelper {
 //            for (XSSFSheet sheet : sheets) {
             XSSFSheet sheet = workbook.getSheetAt(0);
                     sheet.getMergedRegions();
-                for (int i = 1; i <= sheet.getLastRowNum(); i++) {
+                for (int i = 0; i <= sheet.getLastRowNum(); i++) {
                     XSSFRow row = sheet.getRow(i);
                     data.put(i, new ArrayList<>());
                     log.info("Index {}", i);

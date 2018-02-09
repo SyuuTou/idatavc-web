@@ -1,30 +1,30 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.idatavc.web.mapper.ViewSegementionInfoMapper" >
-  <resultMap id="BaseResultMap" type="com.idatavc.web.model.ViewSegementionInfo" >
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.idatavc.web.mapper.ViewSegementionInfoMapper">
+  <resultMap id="BaseResultMap" type="com.idatavc.web.model.ViewSegementionInfo">
     <!--
       WARNING - @mbg.generated
     -->
-    <result column="id" property="id" jdbcType="INTEGER" />
-    <result column="serial_number" property="serialNumber" jdbcType="INTEGER" />
-    <result column="short_name" property="shortName" jdbcType="INTEGER" />
-    <result column="full_name" property="fullName" jdbcType="INTEGER" />
-    <result column="kernel_desc" property="kernelDesc" jdbcType="INTEGER" />
-    <result column="url" property="url" jdbcType="INTEGER" />
-    <result column="established_time" property="establishedTime" jdbcType="INTEGER" />
-    <result column="stage" property="stage" jdbcType="INTEGER" />
-    <result column="segmentation" property="segmentation" jdbcType="INTEGER" />
-    <result column="item_label" property="itemLabel" jdbcType="INTEGER" />
-    <result column="address" property="address" jdbcType="INTEGER" />
-    <result column="territory" property="territory" jdbcType="INTEGER" />
-    <result column="create_time" property="createTime" jdbcType="INTEGER" />
-    <result column="continent" property="continent" jdbcType="INTEGER" />
-    <result column="country" property="country" jdbcType="INTEGER" />
-    <result column="province" property="province" jdbcType="INTEGER" />
-    <result column="city" property="city" jdbcType="INTEGER" />
-    <result column="region" property="region" jdbcType="INTEGER" />
-    <result column="investment_institutions_short_name" property="investmentInstitutionsShortName" jdbcType="INTEGER" />
-    <result column="investment_institutions_commet" property="investmentInstitutionsCommet" jdbcType="INTEGER" />
-    <result column="investment_institutions_type" property="investmentInstitutionsType" jdbcType="INTEGER" />
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="serial_number" jdbcType="INTEGER" property="serialNumber" />
+    <result column="short_name" jdbcType="INTEGER" property="shortName" />
+    <result column="full_name" jdbcType="INTEGER" property="fullName" />
+    <result column="kernel_desc" jdbcType="INTEGER" property="kernelDesc" />
+    <result column="url" jdbcType="INTEGER" property="url" />
+    <result column="established_time" jdbcType="INTEGER" property="establishedTime" />
+    <result column="stage" jdbcType="INTEGER" property="stage" />
+    <result column="segmentation" jdbcType="INTEGER" property="segmentation" />
+    <result column="item_label" jdbcType="INTEGER" property="itemLabel" />
+    <result column="address" jdbcType="INTEGER" property="address" />
+    <result column="territory" jdbcType="INTEGER" property="territory" />
+    <result column="create_time" jdbcType="INTEGER" property="createTime" />
+    <result column="continent" jdbcType="INTEGER" property="continent" />
+    <result column="country" jdbcType="INTEGER" property="country" />
+    <result column="province" jdbcType="INTEGER" property="province" />
+    <result column="city" jdbcType="INTEGER" property="city" />
+    <result column="region" jdbcType="INTEGER" property="region" />
+    <result column="investment_institutions_short_name" jdbcType="INTEGER" property="investmentInstitutionsShortName" />
+    <result column="investment_institutions_commet" jdbcType="INTEGER" property="investmentInstitutionsCommet" />
+    <result column="investment_institutions_type" jdbcType="INTEGER" property="investmentInstitutionsType" />
   </resultMap>
 </mapper>

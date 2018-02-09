@@ -1,15 +1,15 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.idatavc.web.mapper.ReportCollectionMapper" >
-  <resultMap id="BaseResultMap" type="com.idatavc.web.model.ReportCollection" >
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.idatavc.web.mapper.ReportCollectionMapper">
+  <resultMap id="BaseResultMap" type="com.idatavc.web.model.ReportCollection">
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="token" property="token" jdbcType="VARCHAR" />
-    <result column="column_id" property="columnId" jdbcType="INTEGER" />
-    <result column="report_id" property="reportId" jdbcType="INTEGER" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="app_id" property="appId" jdbcType="INTEGER" />
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="token" jdbcType="VARCHAR" property="token" />
+    <result column="column_id" jdbcType="INTEGER" property="columnId" />
+    <result column="report_id" jdbcType="INTEGER" property="reportId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="app_id" jdbcType="INTEGER" property="appId" />
   </resultMap>
 </mapper>

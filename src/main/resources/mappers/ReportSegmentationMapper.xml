@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.idatavc.web.mapper.ReportSegmentationMapper" >
-  <resultMap id="BaseResultMap" type="com.idatavc.web.model.ReportSegmentation" >
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.idatavc.web.mapper.ReportSegmentationMapper">
+  <resultMap id="BaseResultMap" type="com.idatavc.web.model.ReportSegmentation">
     <!--
       WARNING - @mbg.generated
     -->
-    <result column="report_id" property="reportId" jdbcType="INTEGER" />
-    <result column="segmentation_id" property="segmentationId" jdbcType="INTEGER" />
+    <result column="report_id" jdbcType="INTEGER" property="reportId" />
+    <result column="segmentation_id" jdbcType="INTEGER" property="segmentationId" />
   </resultMap>
 </mapper>

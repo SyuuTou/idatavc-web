@@ -1,46 +1,46 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.idatavc.web.mapper.ProjectsMapper" >
-  <resultMap id="BaseResultMap" type="com.idatavc.web.model.Projects" >
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.idatavc.web.mapper.ProjectsMapper">
+  <resultMap id="BaseResultMap" type="com.idatavc.web.model.Projects">
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="ID" property="id" jdbcType="INTEGER" />
-    <result column="serial_number" property="serialNumber" jdbcType="INTEGER" />
-    <result column="short_name" property="shortName" jdbcType="VARCHAR" />
-    <result column="full_name" property="fullName" jdbcType="VARCHAR" />
-    <result column="kernel_desc" property="kernelDesc" jdbcType="VARCHAR" />
-    <result column="commet" property="commet" jdbcType="VARCHAR" />
-    <result column="url" property="url" jdbcType="VARCHAR" />
-    <result column="established_time" property="establishedTime" jdbcType="DATE" />
-    <result column="segmentation" property="segmentation" jdbcType="VARCHAR" />
-    <result column="item_label" property="itemLabel" jdbcType="VARCHAR" />
-    <result column="address" property="address" jdbcType="VARCHAR" />
-    <result column="territory" property="territory" jdbcType="VARCHAR" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="continent" property="continent" jdbcType="VARCHAR" />
-    <result column="country" property="country" jdbcType="VARCHAR" />
-    <result column="province" property="province" jdbcType="VARCHAR" />
-    <result column="city" property="city" jdbcType="VARCHAR" />
-    <result column="region" property="region" jdbcType="VARCHAR" />
-    <result column="investment_institutions_id" property="investmentInstitutionsId" jdbcType="INTEGER" />
-    <result column="approval_status" property="approvalStatus" jdbcType="INTEGER" />
-    <result column="approval_time" property="approvalTime" jdbcType="TIMESTAMP" />
-    <result column="yn" property="yn" jdbcType="INTEGER" />
-    <result column="userid" property="userid" jdbcType="INTEGER" />
-    <result column="kernel_desc_status" property="kernelDescStatus" jdbcType="INTEGER" />
-    <result column="city_count" property="cityCount" jdbcType="INTEGER" />
-    <result column="evaluation_recommend" property="evaluationRecommend" jdbcType="DOUBLE" />
-    <result column="project_type" property="projectType" jdbcType="INTEGER" />
-    <result column="project_source" property="projectSource" jdbcType="INTEGER" />
-    <result column="project_logo" property="projectLogo" jdbcType="VARCHAR" />
-    <result column="project_investment_highlights" property="projectInvestmentHighlights" jdbcType="VARCHAR" />
-    <result column="city_count_max" property="cityCountMax" jdbcType="INTEGER" />
-    <result column="city_count_min" property="cityCountMin" jdbcType="INTEGER" />
-    <result column="total_amount" property="totalAmount" jdbcType="DECIMAL" />
-    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
-    <result column="company_email" property="companyEmail" jdbcType="VARCHAR" />
-    <result column="company_hr_email" property="companyHrEmail" jdbcType="VARCHAR" />
-    <result column="foreign_investment_yn" property="foreignInvestmentYn" jdbcType="INTEGER" />
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="serial_number" jdbcType="INTEGER" property="serialNumber" />
+    <result column="short_name" jdbcType="VARCHAR" property="shortName" />
+    <result column="full_name" jdbcType="VARCHAR" property="fullName" />
+    <result column="kernel_desc" jdbcType="VARCHAR" property="kernelDesc" />
+    <result column="commet" jdbcType="VARCHAR" property="commet" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="established_time" jdbcType="DATE" property="establishedTime" />
+    <result column="segmentation" jdbcType="VARCHAR" property="segmentation" />
+    <result column="item_label" jdbcType="VARCHAR" property="itemLabel" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="territory" jdbcType="VARCHAR" property="territory" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="continent" jdbcType="VARCHAR" property="continent" />
+    <result column="country" jdbcType="VARCHAR" property="country" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="region" jdbcType="VARCHAR" property="region" />
+    <result column="investment_institutions_id" jdbcType="INTEGER" property="investmentInstitutionsId" />
+    <result column="approval_status" jdbcType="INTEGER" property="approvalStatus" />
+    <result column="approval_time" jdbcType="TIMESTAMP" property="approvalTime" />
+    <result column="yn" jdbcType="INTEGER" property="yn" />
+    <result column="userid" jdbcType="INTEGER" property="userid" />
+    <result column="kernel_desc_status" jdbcType="INTEGER" property="kernelDescStatus" />
+    <result column="city_count" jdbcType="INTEGER" property="cityCount" />
+    <result column="evaluation_recommend" jdbcType="DOUBLE" property="evaluationRecommend" />
+    <result column="project_type" jdbcType="INTEGER" property="projectType" />
+    <result column="project_source" jdbcType="INTEGER" property="projectSource" />
+    <result column="project_logo" jdbcType="VARCHAR" property="projectLogo" />
+    <result column="project_investment_highlights" jdbcType="VARCHAR" property="projectInvestmentHighlights" />
+    <result column="city_count_max" jdbcType="INTEGER" property="cityCountMax" />
+    <result column="city_count_min" jdbcType="INTEGER" property="cityCountMin" />
+    <result column="total_amount" jdbcType="DECIMAL" property="totalAmount" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="company_email" jdbcType="VARCHAR" property="companyEmail" />
+    <result column="company_hr_email" jdbcType="VARCHAR" property="companyHrEmail" />
+    <result column="foreign_investment_yn" jdbcType="INTEGER" property="foreignInvestmentYn" />
   </resultMap>
 </mapper>

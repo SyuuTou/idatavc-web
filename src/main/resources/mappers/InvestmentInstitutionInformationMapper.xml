@@ -1,29 +1,30 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.idatavc.web.mapper.InvestmentInstitutionInformationMapper" >
-  <resultMap id="BaseResultMap" type="com.idatavc.web.model.InvestmentInstitutionInformation" >
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.idatavc.web.mapper.InvestmentInstitutionInformationMapper">
+  <resultMap id="BaseResultMap" type="com.idatavc.web.model.InvestmentInstitutionInformation">
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="logo" property="logo" jdbcType="VARCHAR" />
-    <result column="short_name" property="shortName" jdbcType="VARCHAR" />
-    <result column="full_name" property="fullName" jdbcType="VARCHAR" />
-    <result column="oneintroduction" property="oneintroduction" jdbcType="VARCHAR" />
-    <result column="summary" property="summary" jdbcType="VARCHAR" />
-    <result column="investment_idea" property="investmentIdea" jdbcType="VARCHAR" />
-    <result column="website" property="website" jdbcType="VARCHAR" />
-    <result column="city" property="city" jdbcType="VARCHAR" />
-    <result column="stage" property="stage" jdbcType="VARCHAR" />
-    <result column="domain" property="domain" jdbcType="VARCHAR" />
-    <result column="ren_amount" property="renAmount" jdbcType="DECIMAL" />
-    <result column="mei_amount" property="meiAmount" jdbcType="DECIMAL" />
-    <result column="ren_amount_mix" property="renAmountMix" jdbcType="DECIMAL" />
-    <result column="ren_amount_max" property="renAmountMax" jdbcType="DECIMAL" />
-    <result column="mei_amount_mix" property="meiAmountMix" jdbcType="DECIMAL" />
-    <result column="mei_amount_max" property="meiAmountMax" jdbcType="DECIMAL" />
-    <result column="representative" property="representative" jdbcType="VARCHAR" />
-    <result column="user_id" property="userId" jdbcType="INTEGER" />
-    <result column="log_id" property="logId" jdbcType="INTEGER" />
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="logo" jdbcType="VARCHAR" property="logo" />
+    <result column="short_name" jdbcType="VARCHAR" property="shortName" />
+    <result column="full_name" jdbcType="VARCHAR" property="fullName" />
+    <result column="oneintroduction" jdbcType="VARCHAR" property="oneintroduction" />
+    <result column="summary" jdbcType="VARCHAR" property="summary" />
+    <result column="investment_idea" jdbcType="VARCHAR" property="investmentIdea" />
+    <result column="website" jdbcType="VARCHAR" property="website" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="stage" jdbcType="VARCHAR" property="stage" />
+    <result column="domain" jdbcType="VARCHAR" property="domain" />
+    <result column="ren_amount" jdbcType="DECIMAL" property="renAmount" />
+    <result column="mei_amount" jdbcType="DECIMAL" property="meiAmount" />
+    <result column="ren_amount_mix" jdbcType="DECIMAL" property="renAmountMix" />
+    <result column="ren_amount_max" jdbcType="DECIMAL" property="renAmountMax" />
+    <result column="mei_amount_mix" jdbcType="DECIMAL" property="meiAmountMix" />
+    <result column="mei_amount_max" jdbcType="DECIMAL" property="meiAmountMax" />
+    <result column="representative" jdbcType="VARCHAR" property="representative" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="log_id" jdbcType="INTEGER" property="logId" />
   </resultMap>
+
 </mapper>

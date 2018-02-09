@@ -1,29 +1,34 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.idatavc.web.mapper.ProjectTeamMemberMapper" >
-  <resultMap id="BaseResultMap" type="com.idatavc.web.model.ProjectTeamMember" >
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.idatavc.web.mapper.ProjectTeamMemberMapper">
+  <resultMap id="BaseResultMap" type="com.idatavc.web.model.ProjectTeamMember">
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="project_id" property="projectId" jdbcType="INTEGER" />
-    <result column="mumber_name" property="mumberName" jdbcType="VARCHAR" />
-    <result column="mumber_duties" property="mumberDuties" jdbcType="VARCHAR" />
-    <result column="share_ratio" property="shareRatio" jdbcType="DECIMAL" />
-    <result column="mumber_desc" property="mumberDesc" jdbcType="VARCHAR" />
-    <result column="yn" property="yn" jdbcType="INTEGER" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="phone" property="phone" jdbcType="VARCHAR" />
-    <result column="isOnJob" property="isonjob" jdbcType="INTEGER" />
-    <result column="weight" property="weight" jdbcType="INTEGER" />
-    <result column="head_picture" property="headPicture" jdbcType="VARCHAR" />
-    <result column="picture" property="picture" jdbcType="VARCHAR" />
-    <result column="email" property="email" jdbcType="VARCHAR" />
-    <result column="weiChat" property="weichat" jdbcType="VARCHAR" />
-    <result column="isHide" property="ishide" jdbcType="INTEGER" />
-    <result column="business_experience_desc" property="businessExperienceDesc" jdbcType="VARCHAR" />
-    <result column="work_experience_desc" property="workExperienceDesc" jdbcType="VARCHAR" />
-    <result column="education_experience_desc" property="educationExperienceDesc" jdbcType="VARCHAR" />
-    <result column="team_id" property="teamId" jdbcType="INTEGER" />
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="project_id" jdbcType="INTEGER" property="projectId" />
+    <result column="mumber_name" jdbcType="VARCHAR" property="mumberName" />
+    <result column="mumber_duties" jdbcType="VARCHAR" property="mumberDuties" />
+    <result column="share_ratio" jdbcType="DECIMAL" property="shareRatio" />
+    <result column="mumber_desc" jdbcType="VARCHAR" property="mumberDesc" />
+    <result column="yn" jdbcType="INTEGER" property="yn" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="isOnJob" jdbcType="INTEGER" property="isonjob" />
+    <result column="weight" jdbcType="INTEGER" property="weight" />
+    <result column="head_picture" jdbcType="VARCHAR" property="headPicture" />
+    <result column="picture" jdbcType="VARCHAR" property="picture" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="weiChat" jdbcType="VARCHAR" property="weichat" />
+    <result column="isHide" jdbcType="INTEGER" property="ishide" />
+    <result column="business_experience_desc" jdbcType="VARCHAR" property="businessExperienceDesc" />
+    <result column="work_experience_desc" jdbcType="VARCHAR" property="workExperienceDesc" />
+    <result column="education_experience_desc" jdbcType="VARCHAR" property="educationExperienceDesc" />
+    <result column="team_id" jdbcType="INTEGER" property="teamId" />
+    <result column="birth_day" jdbcType="TIMESTAMP" property="birthDay" />
+    <result column="tenure_time" jdbcType="TIMESTAMP" property="tenureTime" />
+    <result column="sex" jdbcType="INTEGER" property="sex" />
+    <result column="diploma" jdbcType="INTEGER" property="diploma" />
+    <result column="nationality" jdbcType="INTEGER" property="nationality" />
   </resultMap>
 </mapper>

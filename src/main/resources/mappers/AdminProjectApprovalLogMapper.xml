@@ -1,17 +1,17 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.idatavc.web.mapper.AdminProjectApprovalLogMapper" >
-  <resultMap id="BaseResultMap" type="com.idatavc.web.model.AdminProjectApprovalLog" >
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.idatavc.web.mapper.AdminProjectApprovalLogMapper">
+  <resultMap id="BaseResultMap" type="com.idatavc.web.model.AdminProjectApprovalLog">
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="project_source_id" property="projectSourceId" jdbcType="INTEGER" />
-    <result column="project_source_type" property="projectSourceType" jdbcType="INTEGER" />
-    <result column="project_id" property="projectId" jdbcType="INTEGER" />
-    <result column="approvaled_status" property="approvaledStatus" jdbcType="INTEGER" />
-    <result column="approvaled_time" property="approvaledTime" jdbcType="TIMESTAMP" />
-    <result column="approvaled_description" property="approvaledDescription" jdbcType="VARCHAR" />
-    <result column="approvaled_admin_name" property="approvaledAdminName" jdbcType="VARCHAR" />
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="project_source_id" jdbcType="INTEGER" property="projectSourceId" />
+    <result column="project_source_type" jdbcType="INTEGER" property="projectSourceType" />
+    <result column="project_id" jdbcType="INTEGER" property="projectId" />
+    <result column="approvaled_status" jdbcType="INTEGER" property="approvaledStatus" />
+    <result column="approvaled_time" jdbcType="TIMESTAMP" property="approvaledTime" />
+    <result column="approvaled_description" jdbcType="VARCHAR" property="approvaledDescription" />
+    <result column="approvaled_admin_name" jdbcType="VARCHAR" property="approvaledAdminName" />
   </resultMap>
 </mapper>

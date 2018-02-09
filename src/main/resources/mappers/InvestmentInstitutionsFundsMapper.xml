@@ -1,26 +1,26 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.idatavc.web.mapper.InvestmentInstitutionsFundsMapper" >
-  <resultMap id="BaseResultMap" type="com.idatavc.web.model.InvestmentInstitutionsFunds" >
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.idatavc.web.mapper.InvestmentInstitutionsFundsMapper">
+  <resultMap id="BaseResultMap" type="com.idatavc.web.model.InvestmentInstitutionsFunds">
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="investment_institutions_id" property="investmentInstitutionsId" jdbcType="INTEGER" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="duration" property="duration" jdbcType="INTEGER" />
-    <result column="units" property="units" jdbcType="VARCHAR" />
-    <result column="currency" property="currency" jdbcType="VARCHAR" />
-    <result column="scale" property="scale" jdbcType="DECIMAL" />
-    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
-    <result column="creator" property="creator" jdbcType="VARCHAR" />
-    <result column="full_name" property="fullName" jdbcType="VARCHAR" />
-    <result column="intro" property="intro" jdbcType="VARCHAR" />
-    <result column="investment_amount_begin" property="investmentAmountBegin" jdbcType="DECIMAL" />
-    <result column="investment_amount_end" property="investmentAmountEnd" jdbcType="DECIMAL" />
-    <result column="investment_philosophy" property="investmentPhilosophy" jdbcType="VARCHAR" />
-    <result column="funs_addres" property="funsAddres" jdbcType="VARCHAR" />
-    <result column="yn" property="yn" jdbcType="INTEGER" />
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="investment_institutions_id" jdbcType="INTEGER" property="investmentInstitutionsId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="duration" jdbcType="INTEGER" property="duration" />
+    <result column="units" jdbcType="VARCHAR" property="units" />
+    <result column="currency" jdbcType="VARCHAR" property="currency" />
+    <result column="scale" jdbcType="DECIMAL" property="scale" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="full_name" jdbcType="VARCHAR" property="fullName" />
+    <result column="intro" jdbcType="VARCHAR" property="intro" />
+    <result column="investment_amount_begin" jdbcType="DECIMAL" property="investmentAmountBegin" />
+    <result column="investment_amount_end" jdbcType="DECIMAL" property="investmentAmountEnd" />
+    <result column="investment_philosophy" jdbcType="VARCHAR" property="investmentPhilosophy" />
+    <result column="funs_addres" jdbcType="VARCHAR" property="funsAddres" />
+    <result column="yn" jdbcType="INTEGER" property="yn" />
   </resultMap>
 </mapper>

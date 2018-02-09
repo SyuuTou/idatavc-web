@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.idatavc.web.mapper.FoundersEducationMapper" >
-  <resultMap id="BaseResultMap" type="com.idatavc.web.model.FoundersEducation" >
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.idatavc.web.mapper.FoundersEducationMapper">
+  <resultMap id="BaseResultMap" type="com.idatavc.web.model.FoundersEducation">
     <!--
       WARNING - @mbg.generated
     -->
-    <result column="founder_ID" property="founderId" jdbcType="INTEGER" />
-    <result column="education_experience" property="educationExperience" jdbcType="VARCHAR" />
-    <result column="count" property="count" jdbcType="INTEGER" />
+    <result column="founder_ID" jdbcType="INTEGER" property="founderId" />
+    <result column="education_experience" jdbcType="VARCHAR" property="educationExperience" />
+    <result column="count" jdbcType="INTEGER" property="count" />
   </resultMap>
 </mapper>

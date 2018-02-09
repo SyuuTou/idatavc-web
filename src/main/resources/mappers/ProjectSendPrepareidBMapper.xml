@@ -1,14 +1,14 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.idatavc.web.mapper.ProjectSendPrepareidBMapper" >
-  <resultMap id="BaseResultMap" type="com.idatavc.web.model.ProjectSendPrepareidB" >
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.idatavc.web.mapper.ProjectSendPrepareidBMapper">
+  <resultMap id="BaseResultMap" type="com.idatavc.web.model.ProjectSendPrepareidB">
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="user_id" property="userId" jdbcType="INTEGER" />
-    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
-    <result column="audit_status" property="auditStatus" jdbcType="INTEGER" />
-    <result column="appid" property="appid" jdbcType="INTEGER" />
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="audit_time" jdbcType="TIMESTAMP" property="auditTime" />
+    <result column="audit_status" jdbcType="INTEGER" property="auditStatus" />
+    <result column="appid" jdbcType="INTEGER" property="appid" />
   </resultMap>
 </mapper>

@@ -1,24 +1,24 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.idatavc.web.mapper.ProjectSendLogsMapper" >
-  <resultMap id="BaseResultMap" type="com.idatavc.web.model.ProjectSendLogs" >
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.idatavc.web.mapper.ProjectSendLogsMapper">
+  <resultMap id="BaseResultMap" type="com.idatavc.web.model.ProjectSendLogs">
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="userid" property="userid" jdbcType="INTEGER" />
-    <result column="company_name" property="companyName" jdbcType="VARCHAR" />
-    <result column="company_desc" property="companyDesc" jdbcType="VARCHAR" />
-    <result column="city" property="city" jdbcType="VARCHAR" />
-    <result column="field" property="field" jdbcType="VARCHAR" />
-    <result column="project_tags" property="projectTags" jdbcType="VARCHAR" />
-    <result column="creat_time" property="creatTime" jdbcType="TIMESTAMP" />
-    <result column="check_status" property="checkStatus" jdbcType="INTEGER" />
-    <result column="check_time" property="checkTime" jdbcType="TIMESTAMP" />
-    <result column="company_logo" property="companyLogo" jdbcType="VARCHAR" />
-    <result column="company_one_sentence_introduct" property="companyOneSentenceIntroduct" jdbcType="VARCHAR" />
-    <result column="company_investment_highlights" property="companyInvestmentHighlights" jdbcType="VARCHAR" />
-    <result column="company_official_website" property="companyOfficialWebsite" jdbcType="VARCHAR" />
-    <result column="company_short_name" property="companyShortName" jdbcType="VARCHAR" />
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="userid" jdbcType="INTEGER" property="userid" />
+    <result column="company_name" jdbcType="VARCHAR" property="companyName" />
+    <result column="company_desc" jdbcType="VARCHAR" property="companyDesc" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="field" jdbcType="VARCHAR" property="field" />
+    <result column="project_tags" jdbcType="VARCHAR" property="projectTags" />
+    <result column="creat_time" jdbcType="TIMESTAMP" property="creatTime" />
+    <result column="check_status" jdbcType="INTEGER" property="checkStatus" />
+    <result column="check_time" jdbcType="TIMESTAMP" property="checkTime" />
+    <result column="company_logo" jdbcType="VARCHAR" property="companyLogo" />
+    <result column="company_one_sentence_introduct" jdbcType="VARCHAR" property="companyOneSentenceIntroduct" />
+    <result column="company_investment_highlights" jdbcType="VARCHAR" property="companyInvestmentHighlights" />
+    <result column="company_official_website" jdbcType="VARCHAR" property="companyOfficialWebsite" />
+    <result column="company_short_name" jdbcType="VARCHAR" property="companyShortName" />
   </resultMap>
 </mapper>
