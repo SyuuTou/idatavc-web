@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.idatavc.web.mapper.InvestmentInstitutionPreferSegmentationMapper" >
+  <resultMap id="BaseResultMap" type="com.idatavc.web.model.InvestmentInstitutionPreferSegmentation" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="segmentation_prefer_id" property="segmentationPreferId" jdbcType="INTEGER" />
+    <result column="company_id" property="companyId" jdbcType="INTEGER" />
+  </resultMap>
+</mapper>

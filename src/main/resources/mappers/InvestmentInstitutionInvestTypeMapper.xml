@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.idatavc.web.mapper.InvestmentInstitutionInvestTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.idatavc.web.model.InvestmentInstitutionInvestType" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="company_id" property="companyId" jdbcType="INTEGER" />
+    <result column="invest_type_id" property="investTypeId" jdbcType="INTEGER" />
+  </resultMap>
+</mapper>

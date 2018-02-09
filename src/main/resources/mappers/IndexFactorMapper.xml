@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.idatavc.web.mapper.IndexFactorMapper" >
+  <resultMap id="BaseResultMap" type="com.idatavc.web.model.IndexFactor" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="city" property="city" jdbcType="DECIMAL" />
+    <result column="seg" property="seg" jdbcType="DECIMAL" />
+    <result column="jigou" property="jigou" jdbcType="DECIMAL" />
+    <result column="edus" property="edus" jdbcType="DECIMAL" />
+    <result column="work" property="work" jdbcType="DECIMAL" />
+    <result column="city_count" property="cityCount" jdbcType="INTEGER" />
+    <result column="seg_count" property="segCount" jdbcType="INTEGER" />
+    <result column="jigou_count" property="jigouCount" jdbcType="INTEGER" />
+    <result column="edus_count" property="edusCount" jdbcType="INTEGER" />
+    <result column="work_count" property="workCount" jdbcType="INTEGER" />
+  </resultMap>
+</mapper>
