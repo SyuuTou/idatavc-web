@@ -96,7 +96,7 @@ public class OriginalData {
      * 名片
      */
     @Column(name = "work_card")
-    private Integer workCard;
+    private String workCard;
 
     /**
      * 人工智能是否关注
@@ -353,6 +353,12 @@ public class OriginalData {
      */
     @Column(name = "investment_prepare")
     private String investmentPrepare;
+
+    /**
+     * 机构领域详细描述存放字段
+     */
+    @Column(name = "segmentation_other_description")
+    private String segmentationOtherDescription;
 
     /**
      * @return id
@@ -625,7 +631,7 @@ public class OriginalData {
      *
      * @return work_card - 名片
      */
-    public Integer getWorkCard() {
+    public String getWorkCard() {
         return workCard;
     }
 
@@ -634,7 +640,7 @@ public class OriginalData {
      *
      * @param workCard 名片
      */
-    public void setWorkCard(Integer workCard) {
+    public void setWorkCard(String workCard) {
         this.workCard = workCard;
     }
 
@@ -1410,5 +1416,23 @@ public class OriginalData {
      */
     public void setInvestmentPrepare(String investmentPrepare) {
         this.investmentPrepare = investmentPrepare;
+    }
+
+    /**
+     * 获取机构领域详细描述存放字段
+     *
+     * @return segmentation_other_description - 机构领域详细描述存放字段
+     */
+    public String getSegmentationOtherDescription() {
+        return segmentationOtherDescription;
+    }
+
+    /**
+     * 设置机构领域详细描述存放字段
+     *
+     * @param segmentationOtherDescription 机构领域详细描述存放字段
+     */
+    public void setSegmentationOtherDescription(String segmentationOtherDescription) {
+        this.segmentationOtherDescription = segmentationOtherDescription;
     }
 }
